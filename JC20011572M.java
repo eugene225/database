@@ -1,3 +1,5 @@
+//Í∞ÄÌù¨Ïñ∏ÎãàÎ∞îÎ≥¥
+
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,31 +29,31 @@ public class JC20011572M extends JFrame implements ActionListener {
 	private String[][] datas1 = new String[0][7];
 	private DefaultTableModel model1 = new DefaultTableModel(datas1, title1);
 	private JTable table1 = new JTable(model1);
-	private JLabel lblCount1 = new JLabel("∞≥ºˆ:+0");
+	private JLabel lblCount1 = new JLabel("Í∞úÏàò:+0");
 	
 	private String[] title2 = new String[] {"nur_id","major_job","nur_name","nur_gen","nur_phone","nur_email","nur_position"};
 	private String[][] datas2 = new String[0][7];
 	private DefaultTableModel model2 = new DefaultTableModel(datas2, title2);
 	private JTable table2 = new JTable(model2);
-	private JLabel lblCount2 = new JLabel("∞≥ºˆ:+0");
+	private JLabel lblCount2 = new JLabel("Í∞úÏàò:+0");
 	
 	private String[] title3 = new String[] {"pat_id","nur_id","doc_id","pat_name","pat_gen","pat_jumin","pat_addr","pat_phone","pat_email","pat_job"};
 	private String[][] datas3 = new String[0][10];
 	private DefaultTableModel model3 = new DefaultTableModel(datas3, title3);
 	private JTable table3 = new JTable(model3);
-	private JLabel lblCount3 = new JLabel("∞≥ºˆ:+0");
+	private JLabel lblCount3 = new JLabel("Í∞úÏàò:+0");
 	
 	private String[] title4 = new String[] {"treat_id","pat_id","doc_id","treat_contents","treat_date"};
 	private String[][] datas4 = new String[0][5];
 	private DefaultTableModel model4 = new DefaultTableModel(datas4, title4);
 	private JTable table4 = new JTable(model4);
-	private JLabel lblCount4 = new JLabel("∞≥ºˆ:+0");
+	private JLabel lblCount4 = new JLabel("Í∞úÏàò:+0");
 	
 	private String[] title5 = new String[] {"chart_id","treat_id","doc_id","pat_id","nur_id","chart_contents"};
 	private String[][] datas5 = new String[0][6];
 	private DefaultTableModel model5 = new DefaultTableModel(datas5, title5);
 	private JTable table5 = new JTable(model5);
-	private JLabel lblCount5 = new JLabel("∞≥ºˆ:+0");
+	private JLabel lblCount5 = new JLabel("Í∞úÏàò:+0");
 
     private Connection conn;
     private PreparedStatement pstmt;
@@ -63,14 +65,14 @@ public class JC20011572M extends JFrame implements ActionListener {
 
         accDb();
 
-        setTitle("20011572/π⁄¿Ø¡¯");
+        setTitle("20011572/Î∞ïÏú†ÏßÑ");
         setBounds(500, 500, 700, 650);
         setVisible(true);
 
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent arg0) {
-                int re = JOptionPane.showConfirmDialog(JC20011572M.this, "¡æ∑·«“±Óø‰?", "¡æ∑·",
+                int re = JOptionPane.showConfirmDialog(JC20011572M.this, "Ï¢ÖÎ£åÌï†ÍπåÏöî?", "Ï¢ÖÎ£å",
                         JOptionPane.OK_CANCEL_OPTION);
 
                 if (re == JOptionPane.OK_OPTION) {
@@ -83,12 +85,12 @@ public class JC20011572M extends JFrame implements ActionListener {
     }
 
     private void initLayout() {
-    	btn1 = new JButton("√ ±‚»≠ πˆ∆∞");
-        btn2 = new JButton("¿‘∑¬ πˆ∆∞");
-        btn3 = new JButton("∞Àªˆ-∏µÁ≈◊¿Ã∫Ì πˆ∆∞");
-        btn4 = new JButton("∞Àªˆ1");
-        btn5 = new JButton("∞Àªˆ2");
-        btn6 = new JButton("∞Àªˆ3");
+    	btn1 = new JButton("Ï¥àÍ∏∞Ìôî Î≤ÑÌäº");
+        btn2 = new JButton("ÏûÖÎ†• Î≤ÑÌäº");
+        btn3 = new JButton("Í≤ÄÏÉâ-Î™®Îì†ÌÖåÏù¥Î∏î Î≤ÑÌäº");
+        btn4 = new JButton("Í≤ÄÏÉâ1");
+        btn5 = new JButton("Í≤ÄÏÉâ2");
+        btn6 = new JButton("Í≤ÄÏÉâ3");
         
         btn1.addActionListener(this);
         btn2.addActionListener(this);
@@ -133,9 +135,9 @@ public class JC20011572M extends JFrame implements ActionListener {
                 model.addRow(imsi);
                 count++;
             }
-            lblCount.setText("∞≥ºˆ :" + count);
+            lblCount.setText("Í∞úÏàò :" + count);
         } catch (Exception e) {
-            System.out.println("ø°∑Ø πﬂª˝ : " + e);
+            System.out.println("ÏóêÎü¨ Î∞úÏÉù : " + e);
         } finally {
             try {
 
@@ -158,7 +160,7 @@ public class JC20011572M extends JFrame implements ActionListener {
             
     }else if(arg0.getSource() == btn3 || arg0.getSource() == btn1) {
     	JPanel pn = new JPanel();
-    	// ≈◊¿Ã∫Ì¿« ø≠∆¯ ¡∂¿˝
+    	// ÌÖåÏù¥Î∏îÏùò Ïó¥Ìè≠ Ï°∞Ï†à
     	table1.getColumnModel().getColumn(0).setPreferredWidth(50);
         table1.getColumnModel().getColumn(1).setPreferredWidth(100);
         JScrollPane scrollPane1 = new JScrollPane(table1);
@@ -214,7 +216,7 @@ public class JC20011572M extends JFrame implements ActionListener {
 		String[][] datas = new String[0][5];
 		DefaultTableModel model = new DefaultTableModel(datas, title);
 		JTable table = new JTable(model);
-		JLabel lblCount = new JLabel("∞≥ºˆ:+0");
+		JLabel lblCount = new JLabel("Í∞úÏàò:+0");
 		
 
     	table.getColumnModel().getColumn(0).setPreferredWidth(30);
@@ -226,14 +228,14 @@ public class JC20011572M extends JFrame implements ActionListener {
 		sql = "SELECT pat_name,pat_addr,pat_phone,treat_contents,treat_date\r\n"
 				+ "FROM patients, treatments\r\n"
 				+ "WHERE patients.pat_id=treatments.pat_id\r\n"
-				+ "and patients.doc_id=(SELECT doc_id from doctors where doctors.doc_name='±Ë∫¥∏∏');";
+				+ "and patients.doc_id=(SELECT doc_id from doctors where doctors.doc_name='ÍπÄÎ≥ëÎßå');";
 		displayData(model, lblCount, title);
     }else if(arg0.getSource() == btn5) {
 		String[] title = new String[] {"doc_id","major_treat","doc_name","doc_gen","doc_phone","doc_email","doc_position"};
 		String[][] datas = new String[0][7];
 		DefaultTableModel model = new DefaultTableModel(datas, title);
 		JTable table = new JTable(model);
-		JLabel lblCount = new JLabel("∞≥ºˆ:+0");
+		JLabel lblCount = new JLabel("Í∞úÏàò:+0");
 		
 
     	table.getColumnModel().getColumn(0).setPreferredWidth(30);
@@ -253,9 +255,9 @@ public class JC20011572M extends JFrame implements ActionListener {
 		String[][] datas = new String[0][7];
 		DefaultTableModel model = new DefaultTableModel(datas, title);
 		JTable table = new JTable(model);
-		JLabel lblCount = new JLabel("∞≥ºˆ:+0");
+		JLabel lblCount = new JLabel("Í∞úÏàò:+0");
 		
-		// ≈◊¿Ã∫Ì¿« ø≠∆¯ ¡∂¿˝
+		// ÌÖåÏù¥Î∏îÏùò Ïó¥Ìè≠ Ï°∞Ï†à
     	table.getColumnModel().getColumn(0).setPreferredWidth(30);
         table.getColumnModel().getColumn(1).setPreferredWidth(100);
         JScrollPane scrollPane = new JScrollPane(table);
@@ -274,7 +276,7 @@ public class JC20011572M extends JFrame implements ActionListener {
 	}
     }
 
-    // ªÛ«∞ √ﬂ∞°∏¶ ¿ß«— ≥ª∫Œ ≈¨∑°Ω∫ ª˝º∫
+    // ÏÉÅÌíà Ï∂îÍ∞ÄÎ•º ÏúÑÌïú ÎÇ¥Î∂Ä ÌÅ¥ÎûòÏä§ ÏÉùÏÑ±
     class InsertForm extends JDialog implements ActionListener{
         JTextField name = new JTextField();
         JTextField data1 = new JTextField();
@@ -284,14 +286,14 @@ public class JC20011572M extends JFrame implements ActionListener {
         JTextField data5 = new JTextField();
         JTextField data6 = new JTextField();
         JTextField data7 = new JTextField();
-        JButton btnOk = new JButton("µÓ∑œ");
-        JButton btnCancel = new JButton("√Îº“");
+        JButton btnOk = new JButton("Îì±Î°ù");
+        JButton btnCancel = new JButton("Ï∑®ÏÜå");
         
         public InsertForm(JFrame frame) {
-            super(frame, "µ•¿Ã≈Õ √ﬂ∞°");
+            super(frame, "Îç∞Ïù¥ÌÑ∞ Ï∂îÍ∞Ä");
             setModal(true);
         
-            // √ﬂ∞° »≠∏È µ¿⁄¿Œ
+            // Ï∂îÍ∞Ä ÌôîÎ©¥ ÎîîÏûêÏù∏
             JPanel pn1 = new JPanel(new GridLayout(3,2));
             pn1.add(new JLabel("table name"));
             pn1.add(name);
@@ -313,7 +315,7 @@ public class JC20011572M extends JFrame implements ActionListener {
             btnOk.addActionListener(this);
             btnCancel.addActionListener(this);
             
-            add("North", new JLabel("∫¥ø¯µ•¿Ã≈Õ ¿‘∑¬"));
+            add("North", new JLabel("Î≥ëÏõêÎç∞Ïù¥ÌÑ∞ ÏûÖÎ†•"));
             add("Center", pn1);
             
             setBounds(500,500,400,400);
@@ -333,42 +335,42 @@ public class JC20011572M extends JFrame implements ActionListener {
             if(arg0.getSource() == btnOk) { 
             	
             if(name.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "«•¡¶∏Ò ¿‘∑¬!");
+                JOptionPane.showMessageDialog(this, "ÌëúÏ†úÎ™© ÏûÖÎ†•!");
                 name.requestFocus();
                 return;
             }
             if(data1.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "data1 ¿‘∑¬!");
+                JOptionPane.showMessageDialog(this, "data1 ÏûÖÎ†•!");
                 data1.requestFocus();
                 return;
             }
             if(data2.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "data2 ¿‘∑¬!");
+                JOptionPane.showMessageDialog(this, "data2 ÏûÖÎ†•!");
                 data2.requestFocus();
                 return;
             }
             if(data3.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "data3 ¿‘∑¬!");
+                JOptionPane.showMessageDialog(this, "data3 ÏûÖÎ†•!");
                 data3.requestFocus();
                 return;
             }
             if(data4.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "data4 ¿‘∑¬!");
+                JOptionPane.showMessageDialog(this, "data4 ÏûÖÎ†•!");
                 data4.requestFocus();
                 return;
             }
             if(data5.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "data5 ¿‘∑¬!");
+                JOptionPane.showMessageDialog(this, "data5 ÏûÖÎ†•!");
                 data5.requestFocus();
                 return;
             }
             if(data6.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "data6 ¿‘∑¬!");
+                JOptionPane.showMessageDialog(this, "data6 ÏûÖÎ†•!");
                 data6.requestFocus();
                 return;
             }
             if(data7.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "data7 ¿‘∑¬!");
+                JOptionPane.showMessageDialog(this, "data7 ÏûÖÎ†•!");
                 data7.requestFocus();
                 return;
             }
@@ -394,13 +396,13 @@ public class JC20011572M extends JFrame implements ActionListener {
                 pstmt.setString(6, data6.getText().trim());
                 pstmt.setString(7, data7.getText().trim());
                 if(pstmt.executeUpdate() > 0) {
-                    JOptionPane.showMessageDialog(this, "µÓ∑œº∫∞¯");
+                    JOptionPane.showMessageDialog(this, "Îì±Î°ùÏÑ±Í≥µ");
                 }else {
-                    JOptionPane.showConfirmDialog(this, "data Ω«∆–");
+                    JOptionPane.showConfirmDialog(this, "data Ïã§Ìå®");
                 }                
                                 
             } catch (Exception e) {
-                System.out.println("data µÓ∑œ Ω«∆– : " + e);
+                System.out.println("data Îì±Î°ù Ïã§Ìå® : " + e);
                 }finally {
                     try {
                         if (rs != null)
@@ -414,7 +416,7 @@ public class JC20011572M extends JFrame implements ActionListener {
             
             
             
-            }else if(arg0.getSource() == btnCancel)    { //¿€æ˜ √Îº“
+            }else if(arg0.getSource() == btnCancel)    { //ÏûëÏóÖ Ï∑®ÏÜå
                 dispose();
                         
         }
