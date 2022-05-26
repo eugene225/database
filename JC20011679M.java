@@ -1,3 +1,5 @@
+//ì—¥ì—ã…”ì—ì—ì—¥ã…‡
+
 import java.io.*;
 import java.sql.*;
 import java.awt.*;
@@ -15,15 +17,15 @@ public class JC20011679M {
 
 	     try { 
 	       Class.forName("com.mysql.cj.jdbc.Driver");   
-	       System.out.println("µå¶óÀÌ¹ö ·Îµå ¼º°ø");
+	       System.out.println("ë“œë¼ì´ë²„ ë¡œë“œ ì„±ê³µ");
 	     } catch(ClassNotFoundException e) {
 	         e.printStackTrace();
 	      }
 	      
 	     try { 
-	       System.out.println("µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á ÁØºñ...");	
+	       System.out.println("ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²° ì¤€ë¹„...");	
 	       con=DriverManager.getConnection(url, userid, pwd);
-	       System.out.println("µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á ¼º°ø");
+	       System.out.println("ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²° ì„±ê³µ");
 	     } catch(SQLException e) {
 	         e.printStackTrace();
 	       }
@@ -33,7 +35,7 @@ public class JC20011679M {
       JFrame jframe = new JFrame();
       // jframe.setLayout(null);
       jframe.setSize(1500, 800);
-      jframe.setTitle("20011679 ¾ç°¡Èñ");
+      jframe.setTitle("20011679 ì–‘ê°€í¬");
       jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       jframe.setVisible(true);
 
@@ -41,12 +43,12 @@ public class JC20011679M {
       
       JPanel pnWest = new JPanel();
       pnWest.setLayout(new GridLayout(6, 1));
-      Button rb = new Button("ÃÊ±âÈ­");
-      Button ib = new Button("ÀÔ·Â");
-      Button ba = new Button("°Ë»ö-¸ğµçÅ×ÀÌºí");
-      Button b1 = new Button("°Ë»ö1");
-      Button b2 = new Button("°Ë»ö2");
-      Button b3 = new Button("°Ë»ö3");
+      Button rb = new Button("ì´ˆê¸°í™”");
+      Button ib = new Button("ì…ë ¥");
+      Button ba = new Button("ê²€ìƒ‰-ëª¨ë“ í…Œì´ë¸”");
+      Button b1 = new Button("ê²€ìƒ‰1");
+      Button b2 = new Button("ê²€ìƒ‰2");
+      Button b3 = new Button("ê²€ìƒ‰3");
       pnWest.add(rb);
       pnWest.add(ib);
       pnWest.add(ba);
@@ -69,7 +71,7 @@ public class JC20011679M {
       JTextField doc_phone = new JTextField(8);
       JTextField doc_email = new JTextField(10);
       JTextField doc_position = new JTextField(4);
-      JButton btnDoctors = new JButton("Doctors ÀÔ·Â");
+      JButton btnDoctors = new JButton("Doctors ì…ë ¥");
       pnDoctors.add(new JLabel("doc_id "));
       pnDoctors.add(doc_id);
       pnDoctors.add(new JLabel("major_treat "));
@@ -93,7 +95,7 @@ public class JC20011679M {
       JTextField nur_phone = new JTextField(8);
       JTextField nur_email = new JTextField(10);
       JTextField nur_position = new JTextField(4);
-      JButton btnNurses = new JButton("Nurses ÀÔ·Â");
+      JButton btnNurses = new JButton("Nurses ì…ë ¥");
       pnNurses.add(new JLabel("nur_id "));
       pnNurses.add(nur_id);
       pnNurses.add(new JLabel("major_job "));
@@ -120,7 +122,7 @@ public class JC20011679M {
       JTextField patients_pat_phone = new JTextField(4);
       JTextField patients_pat_email = new JTextField(4);
       JTextField patients_pat_job = new JTextField(4);
-      JButton btnPatients = new JButton("Patients ÀÔ·Â");
+      JButton btnPatients = new JButton("Patients ì…ë ¥");
       pnPatients.add(new JLabel("pat_id "));
       pnPatients.add(patients_pat_id);
       pnPatients.add(new JLabel("nur_id "));
@@ -148,7 +150,7 @@ public class JC20011679M {
       JTextField treatments_doc_id = new JTextField(4);
       JTextField treatments_treat_contents = new JTextField(2);
       JTextField treatments_treat_date = new JTextField(8);
-      JButton btnTreatments = new JButton("Treatments ÀÔ·Â");
+      JButton btnTreatments = new JButton("Treatments ì…ë ¥");
       pnTreatments.add(new JLabel("treat_id "));
       pnTreatments.add(treatments_treat_id);
       pnTreatments.add(new JLabel("pat_id "));
@@ -167,7 +169,7 @@ public class JC20011679M {
       JTextField charts_pat_id = new JTextField(2);
       JTextField charts_nur_id = new JTextField(8);
       JTextField charts_chart_contents = new JTextField(8);
-      JButton btnCharts = new JButton("Charts ÀÔ·Â");
+      JButton btnCharts = new JButton("Charts ì…ë ¥");
       pnCharts.add(new JLabel("chart_id "));
       pnCharts.add(charts_chart_id);
       pnCharts.add(new JLabel("treat_id "));
@@ -204,7 +206,7 @@ public class JC20011679M {
             if (doc_id.getText().equals("") || major_treat.getText().equals("") || doc_name.getText().equals("")
                   || doc_gen.getText().equals("") || doc_phone.getText().equals("")|| doc_email.getText().equals("")
                   || doc_position.getText().equals("")) {
-               JOptionPane.showMessageDialog(null, "°ªÀ» ¸ğµÎ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+               JOptionPane.showMessageDialog(null, "ê°’ì„ ëª¨ë‘ ì…ë ¥í•´ì£¼ì„¸ìš”.");
                return;
             }
 
@@ -216,7 +218,7 @@ public class JC20011679M {
                Statement stmt = con.createStatement();
                stmt.executeUpdate(query);
                
-               JOptionPane.showMessageDialog(null, "Æ©ÇÃ Ãß°¡ ¼º°ø.\n");
+               JOptionPane.showMessageDialog(null, "íŠœí”Œ ì¶”ê°€ ì„±ê³µ.\n");
                doc_id.setText("");
                major_treat.setText("");
                doc_name.setText("");
@@ -225,7 +227,7 @@ public class JC20011679M {
                doc_email.setText("");
                doc_position.setText("");
             } catch (SQLException ex) {
-               JOptionPane.showMessageDialog(null, "Æ©ÇÃ Ãß°¡¿¡ ½ÇÆĞ.\nError Message: " + ex);
+               JOptionPane.showMessageDialog(null, "íŠœí”Œ ì¶”ê°€ì— ì‹¤íŒ¨.\nError Message: " + ex);
             }
          }
       });
@@ -235,7 +237,7 @@ public class JC20011679M {
         	 if (nur_id.getText().equals("") || major_job.getText().equals("") || nur_name.getText().equals("")
                      || nur_gen.getText().equals("") || nur_phone.getText().equals("")|| nur_email.getText().equals("")
                      || nur_position.getText().equals("")) {
-                  JOptionPane.showMessageDialog(null, "°ªÀ» ¸ğµÎ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+                  JOptionPane.showMessageDialog(null, "ê°’ì„ ëª¨ë‘ ì…ë ¥í•´ì£¼ì„¸ìš”.");
                   return;
                }
 
@@ -247,7 +249,7 @@ public class JC20011679M {
                   Statement stmt = con.createStatement();
                   stmt.executeUpdate(query);
                   
-                  JOptionPane.showMessageDialog(null, "Æ©ÇÃ Ãß°¡ ¼º°ø.\n");
+                  JOptionPane.showMessageDialog(null, "íŠœí”Œ ì¶”ê°€ ì„±ê³µ.\n");
                   nur_id.setText("");
                   major_job.setText("");
                   nur_name.setText("");
@@ -256,7 +258,7 @@ public class JC20011679M {
                   nur_email.setText("");
                   nur_position.setText("");
                } catch (SQLException ex) {
-                  JOptionPane.showMessageDialog(null, "Æ©ÇÃ Ãß°¡¿¡ ½ÇÆĞ.\nError Message: " + ex);
+                  JOptionPane.showMessageDialog(null, "íŠœí”Œ ì¶”ê°€ì— ì‹¤íŒ¨.\nError Message: " + ex);
                }
 
          }
@@ -268,7 +270,7 @@ public class JC20011679M {
                      || patients_pat_name.getText().equals("") || patients_pat_gen.getText().equals("")|| patients_pat_jumin.getText().equals("")
                      || patients_pat_addr.getText().equals("")|| patients_pat_phone.getText().equals("")|| patients_pat_email.getText().equals("")
                      || patients_pat_job.getText().equals("")) {
-                  JOptionPane.showMessageDialog(null, "°ªÀ» ¸ğµÎ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+                  JOptionPane.showMessageDialog(null, "ê°’ì„ ëª¨ë‘ ì…ë ¥í•´ì£¼ì„¸ìš”.");
                   return;
                }
 
@@ -281,7 +283,7 @@ public class JC20011679M {
                   Statement stmt = con.createStatement();
                   stmt.executeUpdate(query);
                   
-                  JOptionPane.showMessageDialog(null, "Æ©ÇÃ Ãß°¡ ¼º°ø.\n");
+                  JOptionPane.showMessageDialog(null, "íŠœí”Œ ì¶”ê°€ ì„±ê³µ.\n");
                   patients_pat_id.setText("");
                   patients_nur_id.setText("");
                   patients_doc_id.setText("");
@@ -294,7 +296,7 @@ public class JC20011679M {
                   patients_pat_job.setText("");
 
                } catch (SQLException ex) {
-                  JOptionPane.showMessageDialog(null, "Æ©ÇÃ Ãß°¡¿¡ ½ÇÆĞ.\nError Message: " + ex);
+                  JOptionPane.showMessageDialog(null, "íŠœí”Œ ì¶”ê°€ì— ì‹¤íŒ¨.\nError Message: " + ex);
                }
            
          }
@@ -303,7 +305,7 @@ public class JC20011679M {
          public void actionPerformed(ActionEvent e) {
         	 if (treatments_treat_id.getText().equals("") || treatments_pat_id.getText().equals("") || treatments_doc_id.getText().equals("")
                      || treatments_treat_contents.getText().equals("") || treatments_treat_date.getText().equals("")) {
-                  JOptionPane.showMessageDialog(null, "°ªÀ» ¸ğµÎ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+                  JOptionPane.showMessageDialog(null, "ê°’ì„ ëª¨ë‘ ì…ë ¥í•´ì£¼ì„¸ìš”.");
                   return;
                }
 
@@ -315,7 +317,7 @@ public class JC20011679M {
                   Statement stmt = con.createStatement();
                   stmt.executeUpdate(query);
                   
-                  JOptionPane.showMessageDialog(null, "Æ©ÇÃ Ãß°¡ ¼º°ø.\n");
+                  JOptionPane.showMessageDialog(null, "íŠœí”Œ ì¶”ê°€ ì„±ê³µ.\n");
                   treatments_treat_id.setText("");
                   treatments_pat_id.setText("");
                   treatments_doc_id.setText("");
@@ -323,7 +325,7 @@ public class JC20011679M {
                   treatments_treat_date.setText("");
 
                } catch (SQLException ex) {
-                  JOptionPane.showMessageDialog(null, "Æ©ÇÃ Ãß°¡¿¡ ½ÇÆĞ.\nError Message: " + ex);
+                  JOptionPane.showMessageDialog(null, "íŠœí”Œ ì¶”ê°€ì— ì‹¤íŒ¨.\nError Message: " + ex);
                }
          }
       });
@@ -331,7 +333,7 @@ public class JC20011679M {
          public void actionPerformed(ActionEvent e) {
         	 if (charts_chart_id.getText().equals("") || charts_treat_id.getText().equals("") || charts_doc_id.getText().equals("")
                      || charts_pat_id.getText().equals("") || charts_nur_id.getText().equals("")|| charts_chart_contents.getText().equals("")) {
-                  JOptionPane.showMessageDialog(null, "°ªÀ» ¸ğµÎ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+                  JOptionPane.showMessageDialog(null, "ê°’ì„ ëª¨ë‘ ì…ë ¥í•´ì£¼ì„¸ìš”.");
                   return;
                }
 
@@ -343,7 +345,7 @@ public class JC20011679M {
                   Statement stmt = con.createStatement();
                   stmt.executeUpdate(query);
                   
-                  JOptionPane.showMessageDialog(null, "Æ©ÇÃ Ãß°¡ ¼º°ø.\n");
+                  JOptionPane.showMessageDialog(null, "íŠœí”Œ ì¶”ê°€ ì„±ê³µ.\n");
                   charts_chart_id.setText("");
                   charts_treat_id.setText("");
                   charts_doc_id.setText("");
@@ -352,7 +354,7 @@ public class JC20011679M {
                   charts_chart_contents.setText("");
 
                } catch (SQLException ex) {
-                  JOptionPane.showMessageDialog(null, "Æ©ÇÃ Ãß°¡¿¡ ½ÇÆĞ.\nError Message: " + ex);
+                  JOptionPane.showMessageDialog(null, "íŠœí”Œ ì¶”ê°€ì— ì‹¤íŒ¨.\nError Message: " + ex);
                }
          }
       });
@@ -440,7 +442,7 @@ public class JC20011679M {
        	   txt.setText("");
        	   try { 
 	           		 String query="select pat_name, pat_addr, pat_phone, treat_contents, treat_date from patients,treatments\r\n"
-	           		 		+ "where patients.pat_id=treatments.pat_id and patients.doc_id in (select doc_id from doctors where doc_name='±èº´¸¸');"; 
+	           		 		+ "where patients.pat_id=treatments.pat_id and patients.doc_id in (select doc_id from doctors where doc_name='ê¹€ë³‘ë§Œ');"; 
 	           	  	 Statement stmt=con.createStatement();
 	           	  	 ResultSet rs=stmt.executeQuery(query);
 	           	  	 String st=" pat_name \tpat_addr \tpat_phone \ttreat_contents \t\ttreat_date \n";
@@ -504,7 +506,7 @@ public class JC20011679M {
 	       public void windowClosing(WindowEvent windowEvent) {
 	    	   try {
 	    	       con.close();
-	    	       System.out.println("ÇÁ·Î±×·¥ Á¾·á");
+	    	       System.out.println("í”„ë¡œê·¸ë¨ ì¢…ë£Œ");
 	    	   } catch (SQLException a) {
 	    	       a.printStackTrace();
 	    	   }
@@ -514,7 +516,7 @@ public class JC20011679M {
            public void actionPerformed(ActionEvent e){
         	   txt.setText("");
            	  try { 
-           	  txt.append("\nµ¥ÀÌÅÍ¸¦ ÃÊ±âÈ­ÇÕ´Ï´Ù.\n");
+           	  txt.append("\në°ì´í„°ë¥¼ ì´ˆê¸°í™”í•©ë‹ˆë‹¤.\n");
            	  Statement stmt=con.createStatement();
            	  stmt.execute("DROP TABLE Charts;");
               stmt.execute("DROP TABLE Treatments;");
@@ -538,57 +540,57 @@ public class JC20011679M {
               stmt.execute("ALTER TABLE Charts  ADD CONSTRAINT chart_treat_doc_pat_id_pk PRIMARY KEY (chart_id, treat_id, doc_id, pat_id);");
               stmt.execute("ALTER TABLE Charts  ADD (CONSTRAINT R_4 FOREIGN KEY (nur_id) REFERENCES Nurses (nur_id));");
               stmt.execute("ALTER TABLE Charts  ADD (CONSTRAINT R_7 FOREIGN KEY (treat_id, pat_id, doc_id) REFERENCES Treatments (treat_id, pat_id, doc_id));");
-              stmt.execute("INSERT INTO Doctors VALUES(980312, '¼Ò¾Æ°ú', 'ÀÌÅÂÁ¤', 'M', '010-333-1340', 'ltj@hanbit.com', '°úÀå');");
-              stmt.execute("INSERT INTO Doctors VALUES(000601, '³»°ú', '¾È¼º±â', 'M', '011-222-0987', 'ask@hanbit.com', '°úÀå');");
-              stmt.execute("INSERT INTO Doctors VALUES(001208, '¿Ü°ú', '±è¹ÎÁ¾', 'M', '010-333-8743', 'kmj@hanbit.com', '°úÀå');");
-              stmt.execute("INSERT INTO Doctors VALUES(020403, 'ÇÇºÎ°ú', 'ÀÌÅÂ¼­', 'M', '019-777-3764', 'lts@hanbit.com', '°úÀå');");
-              stmt.execute("INSERT INTO Doctors VALUES(050900, '¼Ò¾Æ°ú', '±è¿¬¾Æ', 'F', '010-555-3746', 'kya@hanbit.com', 'Àü¹®ÀÇ');");
-              stmt.execute("INSERT INTO Doctors VALUES(050101, '³»°ú', 'Â÷ÅÂÇö', 'M', '011-222-7643', 'cth@hanbit.com', 'Àü¹®ÀÇ');");
-              stmt.execute("INSERT INTO Doctors VALUES(062019, '¼Ò¾Æ°ú', 'ÀüÁöÇö', 'F', '010-999-1265', 'jjh@hanbit.com', 'Àü¹®ÀÇ');");
-              stmt.execute("INSERT INTO Doctors VALUES(070576, 'ÇÇºÎ°ú', 'È«±æµ¿', 'M', '016-333-7263', 'hgd@hanbit.com', 'Àü¹®ÀÇ');");
-              stmt.execute("INSERT INTO Doctors VALUES(080543, '¹æ»ç¼±°ú', 'À¯Àç¼®', 'M', '010-222-1263', 'yjs@hanbit.com', '°úÀå');");
-              stmt.execute("INSERT INTO Doctors VALUES(091001, '¿Ü°ú', '±èº´¸¸', 'M', '010-555-3542', 'kbm@hanbit.com', 'Àü¹®ÀÇ');");              
-              stmt.execute("INSERT INTO Nurses VALUES(050302, '¼Ò¾Æ°ú', '±èÀº¿µ', 'F', '010-555-8751', 'key@hanbit.com', '¼ö°£È£»ç');");
-              stmt.execute("INSERT INTO Nurses VALUES(050021, '³»°ú', 'À±¼º¾Ö', 'F', '016-333-8745', 'ysa@hanbit.com', '¼ö°£È£»ç');");
-              stmt.execute("INSERT INTO Nurses VALUES(040089, 'ÇÇºÎ°ú', '½ÅÁö¿ø', 'M', '010-666-7646', 'sjw@hanbit.com', 'ÁÖÀÓ');");
-              stmt.execute("INSERT INTO Nurses VALUES(070605, '¹æ»ç¼±°ú', 'À¯Á¤È­', 'F', '010-333-4588', 'yjh@hanbit.com', 'ÁÖÀÓ');");
-              stmt.execute("INSERT INTO Nurses VALUES(070804, '³»°ú', '¶óÇÏ³ª', 'F', '010-222-1340', 'nhn@hanbit.com', 'ÁÖÀÓ');");
-              stmt.execute("INSERT INTO Nurses VALUES(071018, '¼Ò¾Æ°ú', '±èÈ­°æ', 'F', '019-888-4116', 'khk@hanbit.com', 'ÁÖÀÓ');");
-              stmt.execute("INSERT INTO Nurses VALUES(100356, '¼Ò¾Æ°ú', 'ÀÌ¼±¿ë', 'M', '010-777-1234', 'lsy@hanbit.com', '°£È£»ç');");
-              stmt.execute("INSERT INTO Nurses VALUES(104145, '¿Ü°ú', '±èÇö', 'M', '010-999-8520', 'kh@hanbit.com', '°£È£»ç');");
-              stmt.execute("INSERT INTO Nurses VALUES(120309, 'ÇÇºÎ°ú', '¹Ú¼º¿Ï', 'M', '010-777-4996', 'psw@hanbit.com', '°£È£»ç');");
-              stmt.execute("INSERT INTO Nurses VALUES(130211, '¿Ü°ú', 'ÀÌ¼­¿¬', 'F', '010-222-3214', 'lsy2@hanbit.com', '°£È£»ç');");
-              stmt.execute("INSERT INTO Patients VALUES(2345, 050302, 980312, '¾È»ó°Ç', 'M', 232345, '¼­¿ï', '010-555-7845', 'ask@ab.com', 'È¸»ç¿ø');");
-              stmt.execute("INSERT INTO Patients VALUES(3545, 040089, 020403, '±è¼º·æ', 'M', 543545, '¼­¿ï', '010-333-7812', 'ksn@bb.com', 'ÀÚ¿µ¾÷');");
-              stmt.execute("INSERT INTO Patients VALUES(3424, 070605, 080543, 'ÀÌÁ¾Áø', 'M', 433424, 'ºÎ»ê', '010-888-4859', 'ljj@ab.com', 'È¸»ç¿ø');");
-              stmt.execute("INSERT INTO Patients VALUES(7675, 100356, 050900, 'ÃÖ±¤¼®', 'M', 677675, '´çÁø', '010-222-4847', 'cks@cc.com', 'È¸»ç¿ø');");
-              stmt.execute("INSERT INTO Patients VALUES(4533, 070804, 000601, 'Á¤ÇÑ°æ', 'M', 744533, '°­¸ª', '010-777-9630', 'jhk@ab.com', '±³¼ö');");
-              stmt.execute("INSERT INTO Patients VALUES(5546, 120309, 070576, 'À¯¿øÇö', 'M', 765546, '´ë±¸', '016-777-0214', 'ywh@cc.com', 'ÀÚ¿µ¾÷');");
-              stmt.execute("INSERT INTO Patients VALUES(4543, 070804, 050101, 'ÃÖÀçÁ¤', 'M', 454543, 'ºÎ»ê', '010-555-4187', 'cjj@bb.com', 'È¸»ç¿ø');");
-              stmt.execute("INSERT INTO Patients VALUES(9768, 130211, 091001, 'ÀÌÁøÈñ', 'F', 119768, '¼­¿ï', '010-888-3675', 'ljh@ab.com', '±³¼ö');");
-              stmt.execute("INSERT INTO Patients VALUES(4234, 130211, 091001, '¿À³ª¹Ì', 'F', 234234, '¼ÓÃÊ', '010-999-6541', 'onm@cc.com', 'ÇĞ»ı');");
-              stmt.execute("INSERT INTO Patients VALUES(7643, 071018, 062019, '¼Û¼®¹¬', 'M', 987643, '¼­¿ï', '010-222-5874', 'ssm@bb.com', 'ÇĞ»ı');");
-              stmt.execute("INSERT INTO Treatments VALUES(130516023, 2345, 980312, '°¨±â, ¸ö»ì', STR_TO_DATE('2013-05-16','%Y-%m-%d'));");
-              stmt.execute("INSERT INTO Treatments VALUES(130628100, 3545, 020403, 'ÇÇºÎ Æ®·¯ºí Ä¡·á', STR_TO_DATE('2013-06-28','%Y-%m-%d'));");
-              stmt.execute("INSERT INTO Treatments VALUES(131205056, 3424, 080543, '¸ñ µğ½ºÅ©·Î MRI ÃÔ¿µ', STR_TO_DATE('2013-12-05','%Y-%m-%d'));");
-              stmt.execute("INSERT INTO Treatments VALUES(131218024, 7675, 050900, 'ÁßÀÌ¿°', STR_TO_DATE('2013-12-18','%Y-%m-%d'));");
-              stmt.execute("INSERT INTO Treatments VALUES(131224012, 4533, 000601, 'Àå¿°', STR_TO_DATE('2013-12-24','%Y-%m-%d'));");
-              stmt.execute("INSERT INTO Treatments VALUES(140103001, 5546, 070576, '¿©µå¸§ Ä¡·á', STR_TO_DATE('2014-01-03','%Y-%m-%d'));");
-              stmt.execute("INSERT INTO Treatments VALUES(140109026, 4543, 050101, 'À§¿°', STR_TO_DATE('2014-01-09','%Y-%m-%d'));");
-              stmt.execute("INSERT INTO Treatments VALUES(140226102, 9768, 091001, 'È­»óÄ¡·á', STR_TO_DATE('2014-02-26','%Y-%m-%d'));");
-              stmt.execute("INSERT INTO Treatments VALUES(140303003, 4234, 091001, '±³Åë»ç°í ¿Ü»óÄ¡·á', STR_TO_DATE('2014-03-03','%Y-%m-%d'));");
-              stmt.execute("INSERT INTO Treatments VALUES(140308087, 7643, 062019, 'Àå¿°', STR_TO_DATE('2014-03-08','%Y-%m-%d'));");
-              stmt.execute("INSERT INTO Charts VALUES('PD13572410', 130516023, 980312, 2345, 050302, 'Æíµµ¼±, °¨±â¾à Ã³¹æ');");
-              stmt.execute("INSERT INTO Charts VALUES('DM11389132', 130628100, 020403, 3545, 040089, 'ÇÇºÎ¾à Ã³¹æ');");
-              stmt.execute("INSERT INTO Charts VALUES('RD10023842', 131205056, 080543, 3424, 070605, '¸ñ µğ½ºÅ© ÀÇ½É, Ãß°¡ °Ë»ç ÇÊ¿ä');");
-              stmt.execute("INSERT INTO Charts VALUES('PD13581241', 131218024, 050900, 7675, 100356, '¼¼¹İ°í¸®°ü Ãß°¡ °Ë»ç ÇÊ¿ä');");
-              stmt.execute("INSERT INTO Charts VALUES('IM12557901', 131224012, 000601, 4533, 070804, 'À§Àå¾à Ã³¹æ');");
-              stmt.execute("INSERT INTO Charts VALUES('DM11400021', 140103001, 070576, 5546, 120309, '¿©µå¸§ Ä¡·áÁ¦ Ã³¹æ');");
-              stmt.execute("INSERT INTO Charts VALUES('IM12708224', 140109026, 050101, 4543, 070804, 'À§¿° ½É°¢, Ãß°¡ °Ë»ç ÈÄ ¼ö¼ú ±ÇÇÔ');");
-              stmt.execute("INSERT INTO Charts VALUES('GS17223681', 140226102, 091001, 9768, 130211, 'È­»ó¾à Ã³¹æ ¹× ¹°¸®Ä¡·á');");
-              stmt.execute("INSERT INTO Charts VALUES('GS17264430', 140303003, 091001, 4234, 130211, 'Ãß°¡ ¼ºÇü¼ö¼ú ÇÊ¿äÇÔ');");
-              stmt.execute("INSERT INTO Charts VALUES('PD13664611', 140308087, 062019, 7643, 071018, 'Àå¿°¾à Ã³¹æ');");
-              txt.append("\nµ¥ÀÌÅÍ¸¦ ÃÊ±âÈ­Çß½À´Ï´Ù.\n");
+              stmt.execute("INSERT INTO Doctors VALUES(980312, 'ì†Œì•„ê³¼', 'ì´íƒœì •', 'M', '010-333-1340', 'ltj@hanbit.com', 'ê³¼ì¥');");
+              stmt.execute("INSERT INTO Doctors VALUES(000601, 'ë‚´ê³¼', 'ì•ˆì„±ê¸°', 'M', '011-222-0987', 'ask@hanbit.com', 'ê³¼ì¥');");
+              stmt.execute("INSERT INTO Doctors VALUES(001208, 'ì™¸ê³¼', 'ê¹€ë¯¼ì¢…', 'M', '010-333-8743', 'kmj@hanbit.com', 'ê³¼ì¥');");
+              stmt.execute("INSERT INTO Doctors VALUES(020403, 'í”¼ë¶€ê³¼', 'ì´íƒœì„œ', 'M', '019-777-3764', 'lts@hanbit.com', 'ê³¼ì¥');");
+              stmt.execute("INSERT INTO Doctors VALUES(050900, 'ì†Œì•„ê³¼', 'ê¹€ì—°ì•„', 'F', '010-555-3746', 'kya@hanbit.com', 'ì „ë¬¸ì˜');");
+              stmt.execute("INSERT INTO Doctors VALUES(050101, 'ë‚´ê³¼', 'ì°¨íƒœí˜„', 'M', '011-222-7643', 'cth@hanbit.com', 'ì „ë¬¸ì˜');");
+              stmt.execute("INSERT INTO Doctors VALUES(062019, 'ì†Œì•„ê³¼', 'ì „ì§€í˜„', 'F', '010-999-1265', 'jjh@hanbit.com', 'ì „ë¬¸ì˜');");
+              stmt.execute("INSERT INTO Doctors VALUES(070576, 'í”¼ë¶€ê³¼', 'í™ê¸¸ë™', 'M', '016-333-7263', 'hgd@hanbit.com', 'ì „ë¬¸ì˜');");
+              stmt.execute("INSERT INTO Doctors VALUES(080543, 'ë°©ì‚¬ì„ ê³¼', 'ìœ ì¬ì„', 'M', '010-222-1263', 'yjs@hanbit.com', 'ê³¼ì¥');");
+              stmt.execute("INSERT INTO Doctors VALUES(091001, 'ì™¸ê³¼', 'ê¹€ë³‘ë§Œ', 'M', '010-555-3542', 'kbm@hanbit.com', 'ì „ë¬¸ì˜');");              
+              stmt.execute("INSERT INTO Nurses VALUES(050302, 'ì†Œì•„ê³¼', 'ê¹€ì€ì˜', 'F', '010-555-8751', 'key@hanbit.com', 'ìˆ˜ê°„í˜¸ì‚¬');");
+              stmt.execute("INSERT INTO Nurses VALUES(050021, 'ë‚´ê³¼', 'ìœ¤ì„±ì• ', 'F', '016-333-8745', 'ysa@hanbit.com', 'ìˆ˜ê°„í˜¸ì‚¬');");
+              stmt.execute("INSERT INTO Nurses VALUES(040089, 'í”¼ë¶€ê³¼', 'ì‹ ì§€ì›', 'M', '010-666-7646', 'sjw@hanbit.com', 'ì£¼ì„');");
+              stmt.execute("INSERT INTO Nurses VALUES(070605, 'ë°©ì‚¬ì„ ê³¼', 'ìœ ì •í™”', 'F', '010-333-4588', 'yjh@hanbit.com', 'ì£¼ì„');");
+              stmt.execute("INSERT INTO Nurses VALUES(070804, 'ë‚´ê³¼', 'ë¼í•˜ë‚˜', 'F', '010-222-1340', 'nhn@hanbit.com', 'ì£¼ì„');");
+              stmt.execute("INSERT INTO Nurses VALUES(071018, 'ì†Œì•„ê³¼', 'ê¹€í™”ê²½', 'F', '019-888-4116', 'khk@hanbit.com', 'ì£¼ì„');");
+              stmt.execute("INSERT INTO Nurses VALUES(100356, 'ì†Œì•„ê³¼', 'ì´ì„ ìš©', 'M', '010-777-1234', 'lsy@hanbit.com', 'ê°„í˜¸ì‚¬');");
+              stmt.execute("INSERT INTO Nurses VALUES(104145, 'ì™¸ê³¼', 'ê¹€í˜„', 'M', '010-999-8520', 'kh@hanbit.com', 'ê°„í˜¸ì‚¬');");
+              stmt.execute("INSERT INTO Nurses VALUES(120309, 'í”¼ë¶€ê³¼', 'ë°•ì„±ì™„', 'M', '010-777-4996', 'psw@hanbit.com', 'ê°„í˜¸ì‚¬');");
+              stmt.execute("INSERT INTO Nurses VALUES(130211, 'ì™¸ê³¼', 'ì´ì„œì—°', 'F', '010-222-3214', 'lsy2@hanbit.com', 'ê°„í˜¸ì‚¬');");
+              stmt.execute("INSERT INTO Patients VALUES(2345, 050302, 980312, 'ì•ˆìƒê±´', 'M', 232345, 'ì„œìš¸', '010-555-7845', 'ask@ab.com', 'íšŒì‚¬ì›');");
+              stmt.execute("INSERT INTO Patients VALUES(3545, 040089, 020403, 'ê¹€ì„±ë£¡', 'M', 543545, 'ì„œìš¸', '010-333-7812', 'ksn@bb.com', 'ìì˜ì—…');");
+              stmt.execute("INSERT INTO Patients VALUES(3424, 070605, 080543, 'ì´ì¢…ì§„', 'M', 433424, 'ë¶€ì‚°', '010-888-4859', 'ljj@ab.com', 'íšŒì‚¬ì›');");
+              stmt.execute("INSERT INTO Patients VALUES(7675, 100356, 050900, 'ìµœê´‘ì„', 'M', 677675, 'ë‹¹ì§„', '010-222-4847', 'cks@cc.com', 'íšŒì‚¬ì›');");
+              stmt.execute("INSERT INTO Patients VALUES(4533, 070804, 000601, 'ì •í•œê²½', 'M', 744533, 'ê°•ë¦‰', '010-777-9630', 'jhk@ab.com', 'êµìˆ˜');");
+              stmt.execute("INSERT INTO Patients VALUES(5546, 120309, 070576, 'ìœ ì›í˜„', 'M', 765546, 'ëŒ€êµ¬', '016-777-0214', 'ywh@cc.com', 'ìì˜ì—…');");
+              stmt.execute("INSERT INTO Patients VALUES(4543, 070804, 050101, 'ìµœì¬ì •', 'M', 454543, 'ë¶€ì‚°', '010-555-4187', 'cjj@bb.com', 'íšŒì‚¬ì›');");
+              stmt.execute("INSERT INTO Patients VALUES(9768, 130211, 091001, 'ì´ì§„í¬', 'F', 119768, 'ì„œìš¸', '010-888-3675', 'ljh@ab.com', 'êµìˆ˜');");
+              stmt.execute("INSERT INTO Patients VALUES(4234, 130211, 091001, 'ì˜¤ë‚˜ë¯¸', 'F', 234234, 'ì†ì´ˆ', '010-999-6541', 'onm@cc.com', 'í•™ìƒ');");
+              stmt.execute("INSERT INTO Patients VALUES(7643, 071018, 062019, 'ì†¡ì„ë¬µ', 'M', 987643, 'ì„œìš¸', '010-222-5874', 'ssm@bb.com', 'í•™ìƒ');");
+              stmt.execute("INSERT INTO Treatments VALUES(130516023, 2345, 980312, 'ê°ê¸°, ëª¸ì‚´', STR_TO_DATE('2013-05-16','%Y-%m-%d'));");
+              stmt.execute("INSERT INTO Treatments VALUES(130628100, 3545, 020403, 'í”¼ë¶€ íŠ¸ëŸ¬ë¸” ì¹˜ë£Œ', STR_TO_DATE('2013-06-28','%Y-%m-%d'));");
+              stmt.execute("INSERT INTO Treatments VALUES(131205056, 3424, 080543, 'ëª© ë””ìŠ¤í¬ë¡œ MRI ì´¬ì˜', STR_TO_DATE('2013-12-05','%Y-%m-%d'));");
+              stmt.execute("INSERT INTO Treatments VALUES(131218024, 7675, 050900, 'ì¤‘ì´ì—¼', STR_TO_DATE('2013-12-18','%Y-%m-%d'));");
+              stmt.execute("INSERT INTO Treatments VALUES(131224012, 4533, 000601, 'ì¥ì—¼', STR_TO_DATE('2013-12-24','%Y-%m-%d'));");
+              stmt.execute("INSERT INTO Treatments VALUES(140103001, 5546, 070576, 'ì—¬ë“œë¦„ ì¹˜ë£Œ', STR_TO_DATE('2014-01-03','%Y-%m-%d'));");
+              stmt.execute("INSERT INTO Treatments VALUES(140109026, 4543, 050101, 'ìœ„ì—¼', STR_TO_DATE('2014-01-09','%Y-%m-%d'));");
+              stmt.execute("INSERT INTO Treatments VALUES(140226102, 9768, 091001, 'í™”ìƒì¹˜ë£Œ', STR_TO_DATE('2014-02-26','%Y-%m-%d'));");
+              stmt.execute("INSERT INTO Treatments VALUES(140303003, 4234, 091001, 'êµí†µì‚¬ê³  ì™¸ìƒì¹˜ë£Œ', STR_TO_DATE('2014-03-03','%Y-%m-%d'));");
+              stmt.execute("INSERT INTO Treatments VALUES(140308087, 7643, 062019, 'ì¥ì—¼', STR_TO_DATE('2014-03-08','%Y-%m-%d'));");
+              stmt.execute("INSERT INTO Charts VALUES('PD13572410', 130516023, 980312, 2345, 050302, 'í¸ë„ì„ , ê°ê¸°ì•½ ì²˜ë°©');");
+              stmt.execute("INSERT INTO Charts VALUES('DM11389132', 130628100, 020403, 3545, 040089, 'í”¼ë¶€ì•½ ì²˜ë°©');");
+              stmt.execute("INSERT INTO Charts VALUES('RD10023842', 131205056, 080543, 3424, 070605, 'ëª© ë””ìŠ¤í¬ ì˜ì‹¬, ì¶”ê°€ ê²€ì‚¬ í•„ìš”');");
+              stmt.execute("INSERT INTO Charts VALUES('PD13581241', 131218024, 050900, 7675, 100356, 'ì„¸ë°˜ê³ ë¦¬ê´€ ì¶”ê°€ ê²€ì‚¬ í•„ìš”');");
+              stmt.execute("INSERT INTO Charts VALUES('IM12557901', 131224012, 000601, 4533, 070804, 'ìœ„ì¥ì•½ ì²˜ë°©');");
+              stmt.execute("INSERT INTO Charts VALUES('DM11400021', 140103001, 070576, 5546, 120309, 'ì—¬ë“œë¦„ ì¹˜ë£Œì œ ì²˜ë°©');");
+              stmt.execute("INSERT INTO Charts VALUES('IM12708224', 140109026, 050101, 4543, 070804, 'ìœ„ì—¼ ì‹¬ê°, ì¶”ê°€ ê²€ì‚¬ í›„ ìˆ˜ìˆ  ê¶Œí•¨');");
+              stmt.execute("INSERT INTO Charts VALUES('GS17223681', 140226102, 091001, 9768, 130211, 'í™”ìƒì•½ ì²˜ë°© ë° ë¬¼ë¦¬ì¹˜ë£Œ');");
+              stmt.execute("INSERT INTO Charts VALUES('GS17264430', 140303003, 091001, 4234, 130211, 'ì¶”ê°€ ì„±í˜•ìˆ˜ìˆ  í•„ìš”í•¨');");
+              stmt.execute("INSERT INTO Charts VALUES('PD13664611', 140308087, 062019, 7643, 071018, 'ì¥ì—¼ì•½ ì²˜ë°©');");
+              txt.append("\në°ì´í„°ë¥¼ ì´ˆê¸°í™”í–ˆìŠµë‹ˆë‹¤.\n");
            	  	 
            	  } catch(SQLException a) {
            	  	   a.printStackTrace();
