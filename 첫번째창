@@ -1,0 +1,166 @@
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.text.ParseException;
+
+public class J20011572_20011679 extends JFrame {
+	
+	private String sql;
+	private Connection con;
+    private PreparedStatement pstmt;
+    private ResultSet rs;
+    
+    
+    private void initLayout() {
+    	
+    	JLabel label = new JLabel();
+    	label.setText("<회원 로그인>");
+    	
+    	JTextField tf = new JTextField(20);
+    	
+    	JButton btn_login = new JButton();
+    	btn_login.setText("로그인");
+    	
+    	JButton btn_admin = new JButton();
+    	btn_admin.setText("관리자");
+    	
+    	
+    	JPanel pan1 = new JPanel();
+    	JPanel pan2 = new JPanel();
+    	JPanel pan3 = new JPanel();
+    	
+    	try
+	 	 {
+		    String strDate = "20211215";
+			SimpleDateFormat dtFormat = new SimpleDateFormat("yyyyMMdd");
+			SimpleDateFormat newDtFormat = new SimpleDateFormat("yyyy-MM-dd-E요일");
+			Date formatDate = dtFormat.parse(strDate);
+			String strNewDtFormat = newDtFormat.format(formatDate);
+			System.out.println("현재 날짜 : " + strNewDtFormat);
+			
+			JLabel lb_date = new JLabel();
+	    	lb_date.setText(strNewDtFormat);
+	    	pan1.add(lb_date);
+	    }
+	    catch (ParseException e) {
+			e.printStackTrace();
+		}
+    	
+    	pan1.add(label);
+    	pan2.add(tf);
+    	pan2.add(btn_login);
+    	pan3.add(btn_admin);
+        
+        add("North",pan1);
+        add("Center",pan2);
+        add("South",pan3);
+    }
+    
+    public J20011572_20011679() {
+
+        initLayout();
+
+        accDb();
+
+        setTitle("데베 프로젝트");
+        setBounds(200, 200, 300, 250);
+        setVisible(true);
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent arg0) {
+                int re = JOptionPane.showConfirmDialog(J20011572_20011679.this, "종료할까요?", "종료",
+                        JOptionPane.OK_CANCEL_OPTION);
+
+                if (re == JOptionPane.OK_OPTION) {
+                    System.exit(0);
+                } else {
+                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                }
+            }
+        });
+    }
+
+	/*private void displayData(DefaultTableModel model, JLabel lblCount, String[] title) {
+        model.setNumRows(0);
+        try {
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/madang?&serverTimezone=Asia/Seoul", "madang", "madang");
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            int count = 0;
+
+            while (rs.next()) {
+            	String[] imsi = new String[title.length];
+            	for(int i=0;i<title.length;i++) {
+            		imsi[i] = rs.getString(title[i]);
+            	}
+                model.addRow(imsi);
+                count++;
+            }
+            lblCount.setText("개수 :" + count);
+        } catch (Exception e) {
+            System.out.println("에러 발생 : " + e);
+        } finally {
+            try {
+
+                if (rs != null)
+                    rs.close();
+                if (pstmt != null)
+                    pstmt.close();
+                if (conn != null)
+                    conn.close();
+            } catch (Exception e2) {
+
+            }
+        }
+    }*/
+    
+    private void accDb() {
+    	 String Driver="";
+	     String url="jdbc:mysql://localhost:3306/madang?&serverTimezone=Asia/Seoul"; 
+	     String userid="madang";
+	     String pwd="madang";
+
+	     try { 
+	       Class.forName("com.mysql.cj.jdbc.Driver");   
+	       System.out.println("드라이버 로드 성공");
+	     } catch(ClassNotFoundException e) {
+	         e.printStackTrace();
+	      }
+	      
+	     try { 
+	       System.out.println("데이터베이스 연결 준비...");	
+	       con=DriverManager.getConnection(url, userid, pwd);
+	       System.out.println("데이터베이스 연결 성공");
+	     } catch(SQLException e) {
+	         e.printStackTrace();
+	       }
+    }
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new J20011572_20011679();
+	}
+
+}
