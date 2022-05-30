@@ -16,3 +16,15 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.text.ParseException;
+
+
+			   jframe.addWindowListener(new WindowAdapter() {
+			       public void windowClosing(WindowEvent windowEvent) {
+			    	   try {
+			    	       con.close();
+			    	       System.out.println("프로그램 종료");
+			    	   } catch (SQLException a) {
+			    	       a.printStackTrace();
+			    	   }
+			       }
+			   });
