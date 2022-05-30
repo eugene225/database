@@ -31,3 +31,20 @@ import java.text.ParseException;
 
 -새창열기
 https://dinae.tistory.com/27
+
+
+        btn_admin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Part1();
+                
+            }
+        });
+        
+        btn_login.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Part1();
+                
+            }
+        });
