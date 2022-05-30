@@ -32,6 +32,22 @@ import java.text.ParseException;
 -새창열기
 https://dinae.tistory.com/27
 
+private class admin_chang extends JFrame{
+    	admin_chang(){
+    		super("관리자창");
+    		JPanel panel = new JPanel();
+    		setSize(600,500);
+    		
+    		add(panel);
+    		
+    		Dimension frameSize = getSize();
+            Dimension windowSize = Toolkit.getDefaultToolkit().getScreenSize();
+            
+            //setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+            setVisible(true);
+    	}
+    }
+
 
         btn_admin.addActionListener(new ActionListener() {
             @Override
