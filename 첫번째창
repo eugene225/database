@@ -30,9 +30,40 @@ public class J20011572_20011679 extends JFrame {
 	private Connection con;
     private PreparedStatement pstmt;
     private ResultSet rs;
+     
+    public J20011572_20011679() {
+
+        initLayout();
+
+        accDb();
+
+        setTitle("데베 프로젝트");
+        setBounds(200, 200, 300, 250);
+        setVisible(true);
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent arg0) {
+                int re = JOptionPane.showConfirmDialog(J20011572_20011679.this, "종료할까요?", "종료",
+                        JOptionPane.OK_CANCEL_OPTION);
+
+                if (re == JOptionPane.OK_OPTION) {
+                	try {
+						con.close();
+						System.out.println("프로그램 종료");
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+                    System.exit(0);
+                } else {
+                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                }
+            }
+        });
+    }
     
-    
-    private void initLayout() {
+private void initLayout() {
     	
     	JLabel label = new JLabel();
     	label.setText("<회원 로그인>");
@@ -75,31 +106,6 @@ public class J20011572_20011679 extends JFrame {
         add("North",pan1);
         add("Center",pan2);
         add("South",pan3);
-    }
-    
-    public J20011572_20011679() {
-
-        initLayout();
-
-        accDb();
-
-        setTitle("데베 프로젝트");
-        setBounds(200, 200, 300, 250);
-        setVisible(true);
-
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent arg0) {
-                int re = JOptionPane.showConfirmDialog(J20011572_20011679.this, "종료할까요?", "종료",
-                        JOptionPane.OK_CANCEL_OPTION);
-
-                if (re == JOptionPane.OK_OPTION) {
-                    System.exit(0);
-                } else {
-                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-                }
-            }
-        });
     }
     
     private void accDb() {
