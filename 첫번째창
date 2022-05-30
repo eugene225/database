@@ -101,40 +101,6 @@ public class J20011572_20011679 extends JFrame {
             }
         });
     }
-
-	/*private void displayData(DefaultTableModel model, JLabel lblCount, String[] title) {
-        model.setNumRows(0);
-        try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/madang?&serverTimezone=Asia/Seoul", "madang", "madang");
-            pstmt = conn.prepareStatement(sql);
-            rs = pstmt.executeQuery();
-            int count = 0;
-
-            while (rs.next()) {
-            	String[] imsi = new String[title.length];
-            	for(int i=0;i<title.length;i++) {
-            		imsi[i] = rs.getString(title[i]);
-            	}
-                model.addRow(imsi);
-                count++;
-            }
-            lblCount.setText("개수 :" + count);
-        } catch (Exception e) {
-            System.out.println("에러 발생 : " + e);
-        } finally {
-            try {
-
-                if (rs != null)
-                    rs.close();
-                if (pstmt != null)
-                    pstmt.close();
-                if (conn != null)
-                    conn.close();
-            } catch (Exception e2) {
-
-            }
-        }
-    }*/
     
     private void accDb() {
     	 String Driver="";
