@@ -171,3 +171,23 @@ private class admin_chang extends JFrame{
 		           	    }
 		           }
 		       });	
+
+
+btn_movie_info.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                //버튼 생성
+	            	JTextField tf_movie_id = new JTextField(10);
+	            	tf_movie_id.add(new JLabel("movie_id"));
+	            	JTextField tf_movie_name = new JTextField(10);
+	            	tf_movie_name.add(new JLabel("movie_name"));
+	            	JTextField tf_movie_name = new JTextField(10);
+	            	tf_movie_name.add(new JLabel("movie_name"));
+	            	JTextField tf_movie_name = new JTextField(10);
+	            	tf_movie_name.add(new JLabel("movie_name"));
+	            	JTextField tf_movie_name = new JTextField(10);
+	            	tf_movie_name.add(new JLabel("movie_name"));
+	                
+	            }
+	        });
+			
