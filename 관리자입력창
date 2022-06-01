@@ -1,4 +1,5 @@
 private class insert_chang extends JFrame {
+    	
     	insert_chang(){
     		super("관리자 입력창");
     		setSize(600,400);
@@ -48,10 +49,59 @@ private class insert_chang extends JFrame {
 	            public void actionPerformed(ActionEvent e) {
 	            	pninserttxt.removeAll();
 	            	
-	                JTextField tf = new JTextField(10);
-	                pninserttxt.add(new JLabel("tf"));
-	                pninserttxt.add(tf);
+	                JTextField tf_movie_id = new JTextField(5);
+	                pninserttxt.add(new JLabel("movie_id"));
+	                pninserttxt.add(tf_movie_id);	                
+	                JTextField tf_movie_name = new JTextField(10);
+	                pninserttxt.add(new JLabel("movie_name"));
+	                pninserttxt.add(tf_movie_name);	                
+	                JTextField tf_movie_runtime = new JTextField(5);
+	                pninserttxt.add(new JLabel("movie_runtime"));
+	                pninserttxt.add(tf_movie_runtime);	                
+	                JTextField tf_movie_grade = new JTextField(5);
+	                pninserttxt.add(new JLabel("movie_grade"));
+	                pninserttxt.add(tf_movie_grade);	                
+	                JTextField tf_movie_director = new JTextField(10);
+	                pninserttxt.add(new JLabel("movie_director"));
+	                pninserttxt.add(tf_movie_director);	                
+	                JTextField tf_movie_actor = new JTextField(10);
+	                pninserttxt.add(new JLabel("movie_actor"));
+	                pninserttxt.add(tf_movie_actor);	                
+	                JTextField tf_movie_genre = new JTextField(10);
+	                pninserttxt.add(new JLabel("movie_genre"));
+	                pninserttxt.add(tf_movie_genre);	                
+	                JTextField tf_movie_date = new JTextField(10);
+	                pninserttxt.add(new JLabel("movie_date"));
+	                pninserttxt.add(tf_movie_date);	                
+	                JTextField tf_movie_intro = new JTextField(10);
+	                pninserttxt.add(new JLabel("movie_intro"));
+	                pninserttxt.add(tf_movie_intro);
+
 	                
+	                pninserttxt.revalidate();
+	                pninserttxt.repaint();
+	                setVisible(true);
+	            }
+	        });
+    		
+    		btn_customer.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	            	pninserttxt.removeAll();
+
+	            	JTextField tf_customer_id = new JTextField(5);
+	                pninserttxt.add(new JLabel("customer_id"));
+	                pninserttxt.add(tf_customer_id);
+	                JTextField tf_customer_name = new JTextField(5);
+	                pninserttxt.add(new JLabel("customer_name"));
+	                pninserttxt.add(tf_customer_name);
+	                JTextField tf_customer_phone = new JTextField(5);
+	                pninserttxt.add(new JLabel("customer_phone"));
+	                pninserttxt.add(tf_customer_phone);
+	                JTextField tf_customer_mail = new JTextField(5);
+	                pninserttxt.add(new JLabel("customer_mail"));
+	                pninserttxt.add(tf_customer_mail);
+
 	                pninserttxt.revalidate();
 	                pninserttxt.repaint();
 	                setVisible(true);
@@ -62,16 +112,154 @@ private class insert_chang extends JFrame {
 	            @Override
 	            public void actionPerformed(ActionEvent e) {
 	            	pninserttxt.removeAll();
-	            	//pninserttxt.repaint();
-	                JTextField tf1 = new JTextField(10);
-	                pninserttxt.add(new JLabel("tf1"));
-	                pninserttxt.add(tf1);
+
+	            	JTextField tf_room_id = new JTextField(5);
+	                pninserttxt.add(new JLabel("room_id"));
+	                pninserttxt.add(tf_room_id);
+	                JTextField tf_room_seat = new JTextField(5);
+	                pninserttxt.add(new JLabel("room_seat"));
+	                pninserttxt.add(tf_room_seat);
+	                JTextField tf_room_use = new JTextField(5);
+	                pninserttxt.add(new JLabel("room_use"));
+	                pninserttxt.add(tf_room_use);
 	                
 	                pninserttxt.revalidate();
 	                pninserttxt.repaint();
 	                setVisible(true);
 	            }
 	        });
+    		
+    		btn_book.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	            	pninserttxt.removeAll();
+	            	
+	            	JTextField tf_book_id = new JTextField(5);
+	                pninserttxt.add(new JLabel("book_id"));
+	                pninserttxt.add(tf_book_id);
+	                JTextField tf_book_payway = new JTextField(5);
+	                pninserttxt.add(new JLabel("book_payway"));
+	                pninserttxt.add(tf_book_payway);
+	                JTextField tf_book_state = new JTextField(5);
+	                pninserttxt.add(new JLabel("book_state"));
+	                pninserttxt.add(tf_book_state);
+	                JTextField tf_book_total = new JTextField(5);
+	                pninserttxt.add(new JLabel("book_total"));
+	                pninserttxt.add(tf_book_total);
+	                JTextField tf_book_customer_id = new JTextField(5);
+	                pninserttxt.add(new JLabel("customer_id"));
+	                pninserttxt.add(tf_book_customer_id);
+	                JTextField tf_book_date = new JTextField(5);
+	                pninserttxt.add(new JLabel("book_date"));
+	                pninserttxt.add(tf_book_date);
+	                
+	                pninserttxt.revalidate();
+	                pninserttxt.repaint();
+	                setVisible(true);
+	            }
+	        });
+    		
+    		btn_schedule.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	            	pninserttxt.removeAll();
+
+	                JTextField tf_schedule_id = new JTextField(5);
+	                pninserttxt.add(new JLabel("schedule_id"));
+	                pninserttxt.add(tf_schedule_id);
+	                JTextField tf_schedule_movie_id = new JTextField(5);
+	                pninserttxt.add(new JLabel("movie_id"));
+	                pninserttxt.add(tf_schedule_movie_id);
+	                JTextField tf_schedule_room_id = new JTextField(5);
+	                pninserttxt.add(new JLabel("room_id"));
+	                pninserttxt.add(tf_schedule_room_id);
+	                JTextField tf_schedule_start = new JTextField(5);
+	                pninserttxt.add(new JLabel("schedule_start"));
+	                pninserttxt.add(tf_schedule_start);
+	                JTextField tf_schedule_day = new JTextField(5);
+	                pninserttxt.add(new JLabel("schedule_day"));
+	                pninserttxt.add(tf_schedule_day);
+	                JTextField tf_schedule_num = new JTextField(5);
+	                pninserttxt.add(new JLabel("schedule_num"));
+	                pninserttxt.add(tf_schedule_num);
+	                JTextField tf_schedule_time = new JTextField(5);
+	                pninserttxt.add(new JLabel("schedule_time"));
+	                pninserttxt.add(tf_schedule_time);
+	                	                
+	                pninserttxt.revalidate();
+	                pninserttxt.repaint();
+	                setVisible(true);
+	            }
+	        });
+    		
+    		btn_seat.addActionListener(new ActionListener() {
+    	        @Override
+    	        public void actionPerformed(ActionEvent e) {
+    	        	pninserttxt.removeAll();
+
+    	            JTextField tf_seat_id = new JTextField(5);
+    	            pninserttxt.add(new JLabel("seat_id"));
+    	            pninserttxt.add(tf_seat_id);
+    	            
+    	            JTextField tf_room_id1 = new JTextField(5);
+    	            pninserttxt.add(new JLabel("room_id"));
+    	            pninserttxt.add(tf_room_id1);
+    	            
+    	            JTextField tf_seat_use = new JTextField(5);
+    	            pninserttxt.add(new JLabel("seat_use"));
+    	            pninserttxt.add(tf_seat_use);
+    	            
+    	            pninserttxt.revalidate();
+    	            pninserttxt.repaint();
+    	            setVisible(true);
+    	        }
+    	    });
+    		
+    		
+    		
+    		btn_ticket.addActionListener(new ActionListener() {
+    	        @Override
+    	        public void actionPerformed(ActionEvent e) {
+    	        	pninserttxt.removeAll();
+    	        	
+    	        	
+    	            JTextField tf_ticket_id = new JTextField(5);
+    	            pninserttxt.add(new JLabel("ticket_id"));
+    	            pninserttxt.add(tf_ticket_id);
+    	            
+    	            JTextField tf_schedule_id = new JTextField(5);
+    	            pninserttxt.add(new JLabel("schedule_id"));
+    	            pninserttxt.add(tf_schedule_id);
+    	            
+    	            JTextField tf_room_id2 = new JTextField(5);
+    	            pninserttxt.add(new JLabel("room_id"));
+    	            pninserttxt.add(tf_room_id2);
+    	            
+    	            JTextField tf_seat_id = new JTextField(5);
+    	            pninserttxt.add(new JLabel("seat_id"));
+    	            pninserttxt.add(tf_seat_id);
+    	            
+    	            JTextField tf_book_id = new JTextField(5);
+    	            pninserttxt.add(new JLabel("book_id"));
+    	            pninserttxt.add(tf_book_id);
+    	            
+    	            JTextField tf_book_use = new JTextField(5);
+    	            pninserttxt.add(new JLabel("book_use"));
+    	            pninserttxt.add(tf_book_use);
+    	            
+    	            JTextField tf_ticket_money = new JTextField(10);
+    	            pninserttxt.add(new JLabel("ticket_money"));
+    	            pninserttxt.add(tf_ticket_money);
+    	            
+    	            JTextField tf_ticket_total = new JTextField(10);
+    	            pninserttxt.add(new JLabel("ticket_total"));
+    	            pninserttxt.add(tf_ticket_total);
+    	            
+    	            pninserttxt.revalidate();
+    	            pninserttxt.repaint();
+    	            setVisible(true);
+    	        }
+    	    });
 
             
             add(pninsertbtn);
