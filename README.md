@@ -191,3 +191,57 @@ btn_movie_info.addActionListener(new ActionListener() {
 	            }
 	        });
 			
+						super("관리자 입력창");
+			setSize(600,400);
+			setLayout(new GridLayout(3,1,5,5));
+			setVisible(true);
+			
+			
+			JPanel pninsertbtn = new JPanel();
+			JPanel pninserttxt = new JPanel();
+			JPanel pninsertok = new JPanel();
+			
+			
+			JButton btn_movie_info = new JButton();
+			btn_movie_info.setText("movie_info");
+	        
+	        JButton btn_room = new JButton();
+	        btn_room.setText("room");
+	        
+	        JButton btn_customer = new JButton();
+	        btn_customer.setText("customer");
+	        
+	        JButton btn_book = new JButton();
+	        btn_book.setText("book");
+	        
+	        JButton btn_schedule = new JButton();
+	        btn_schedule.setText("schedule");
+	        
+	        JButton btn_seat = new JButton();
+	        btn_seat.setText("seat");
+	        
+	        JButton btn_ticket = new JButton();
+	        btn_ticket.setText("ticket");
+	        
+	        pninsertbtn.add(btn_movie_info);
+	        pninsertbtn.add(btn_room);
+	        pninsertbtn.add(btn_customer);
+	        pninsertbtn.add(btn_book);
+	        pninsertbtn.add(btn_schedule);
+	        pninsertbtn.add(btn_seat);
+	        pninsertbtn.add(btn_ticket);
+	        
+	        JButton btn_ok = new JButton();
+			btn_ok.setText("입력");
+			
+			pninsertok.add(btn_ok);
+			
+			
+			
+			
+			
+	
+	        
+	        add(pninsertbtn);
+	        add(pninserttxt);
+	        add(pninsertok);
