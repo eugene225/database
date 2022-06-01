@@ -245,3 +245,113 @@ btn_movie_info.addActionListener(new ActionListener() {
 	        add(pninsertbtn);
 	        add(pninserttxt);
 	        add(pninsertok);
+		
+		
+				btn_schedule.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	pninserttxt.removeAll();
+
+                JTextField tf_schedule_id = new JTextField(5);
+                pninserttxt.add(new JLabel("schedule_id"));
+                pninserttxt.add(tf_schedule_id);
+                
+                JTextField tf_movie_id = new JTextField(5);
+                pninserttxt.add(new JLabel("movie_id"));
+                pninserttxt.add(tf_movie_id);
+                
+                JTextField tf_room_id = new JTextField(5);
+                pninserttxt.add(new JLabel("room_id"));
+                pninserttxt.add(tf_room_id);
+                
+                JTextField tf_schedule_start = new JTextField(10);
+                pninserttxt.add(new JLabel("schedule_start"));
+                pninserttxt.add(tf_schedule_start);
+                
+                JTextField tf_schedule_day = new JTextField(5);
+                pninserttxt.add(new JLabel("schedule_day"));
+                pninserttxt.add(tf_schedule_day);
+                
+                JTextField tf_schedule_num = new JTextField(5);
+                pninserttxt.add(new JLabel("schedule_num"));
+                pninserttxt.add(tf_schedule_num);
+                
+                JTextField tf_schedule_time = new JTextField(10);
+                pninserttxt.add(new JLabel("schedule_time"));
+                pninserttxt.add(tf_schedule_time);
+                
+                pninserttxt.revalidate();
+                pninserttxt.repaint();
+                setVisible(true);
+            }
+        });
+		
+		
+		btn_seat.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	pninserttxt.removeAll();
+
+                JTextField tf_seat_id = new JTextField(5);
+                pninserttxt.add(new JLabel("seat_id"));
+                pninserttxt.add(tf_seat_id);
+                
+                JTextField tf_room_id1 = new JTextField(5);
+                pninserttxt.add(new JLabel("room_id"));
+                pninserttxt.add(tf_room_id1);
+                
+                JTextField tf_seat_use = new JTextField(5);
+                pninserttxt.add(new JLabel("seat_use"));
+                pninserttxt.add(tf_seat_use);
+                
+                pninserttxt.revalidate();
+                pninserttxt.repaint();
+                setVisible(true);
+            }
+        });
+		
+		
+		
+		btn_ticket.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	pninserttxt.removeAll();
+            	
+            	
+                JTextField tf_ticket_id = new JTextField(5);
+                pninserttxt.add(new JLabel("ticket_id"));
+                pninserttxt.add(tf_ticket_id);
+                
+                JTextField tf_schedule_id = new JTextField(5);
+                pninserttxt.add(new JLabel("schedule_id"));
+                pninserttxt.add(tf_schedule_id);
+                
+                JTextField tf_room_id2 = new JTextField(5);
+                pninserttxt.add(new JLabel("room_id"));
+                pninserttxt.add(tf_room_id2);
+                
+                JTextField tf_seat_id = new JTextField(5);
+                pninserttxt.add(new JLabel("seat_id"));
+                pninserttxt.add(tf_seat_id);
+                
+                JTextField tf_book_id = new JTextField(5);
+                pninserttxt.add(new JLabel("book_id"));
+                pninserttxt.add(tf_book_id);
+                
+                JTextField tf_book_use = new JTextField(5);
+                pninserttxt.add(new JLabel("book_use"));
+                pninserttxt.add(tf_book_use);
+                
+                JTextField tf_ticket_money = new JTextField(10);
+                pninserttxt.add(new JLabel("ticket_money"));
+                pninserttxt.add(tf_ticket_money);
+                
+                JTextField tf_ticket_total = new JTextField(10);
+                pninserttxt.add(new JLabel("ticket_total"));
+                pninserttxt.add(tf_ticket_total);
+                
+                pninserttxt.revalidate();
+                pninserttxt.repaint();
+                setVisible(true);
+            }
+        });
