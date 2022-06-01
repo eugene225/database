@@ -403,3 +403,108 @@ btn_movie_info.addActionListener(new ActionListener() {
 	private JTextField tf_ticket_book_use = new JTextField(5);
 	private JTextField tf_ticket_money = new JTextField(5);
 	private JTextField tf_ticket_total = new JTextField(5);
+
+`
+if(btn_movie_info.isSelected()) {
+					if (tf_movie_id.getText().equals("") || tf_movie_name.getText().equals("") || tf_movie_runtime.getText().equals("")
+		                     || tf_movie_grade.getText().equals("") || tf_movie_director.getText().equals("") || tf_movie_actor.getText().equals("")
+		                     || tf_movie_genre.getText().equals("") || tf_movie_date.getText().equals("") || tf_movie_intro.getText().equals("")) {
+		                  JOptionPane.showMessageDialog(null, "값을 모두 입력해주세요.");
+		                  return;
+		               }
+
+		               try {
+		                  String query = "INSERT INTO movie_info VALUES (" + Integer.parseInt(tf_movie_id.getText()) +", '"
+		                		+tf_movie_name.getText() +"',"+Integer.parseInt(tf_movie_runtime.getText())+ ",'" 
+		                        + tf_movie_grade.getText() + "', '" + tf_movie_director.getText() + "', '" + tf_movie_actor.getText()+ "', '"
+		                        + tf_movie_genre.getText() + "', STR_TO_DATE('" + tf_movie_date.getText() + "','%Y-%m-%d'), '"
+		                        + tf_movie_intro.getText() + "');";
+		                  
+		                  Statement stmt = con.createStatement();
+		                  stmt.executeUpdate(query);
+		                  
+		                  JOptionPane.showMessageDialog(null, "튜플 추가 성공.\n");
+		                  tf_movie_id.setText("");
+		                  tf_movie_name.setText("");
+		                  tf_movie_runtime.setText("");
+		                  tf_movie_grade.setText("");
+		                  tf_movie_director.setText("");
+		                  tf_movie_actor.setText("");
+		                  tf_movie_genre.setText("");
+		                  tf_movie_date.setText("");
+		                  tf_movie_intro.setText("");
+
+		               } catch (SQLException ex) {
+		                  JOptionPane.showMessageDialog(null, "튜플 추가에 실패.\nError Message: " + ex);
+		               }
+				}else if(btn_room.isSelected()) {
+					if (tf_room_id.getText().equals("") || tf_room_seat.getText().equals("") || tf_room_use.getText().equals("")) {
+		                  JOptionPane.showMessageDialog(null, "값을 모두 입력해주세요.");
+		                  return;
+		            }
+
+	               try {
+	                  String query = "INSERT INTO room VALUES (" + Integer.parseInt(tf_room_id.getText()) +", "
+	                		+ Integer.parseInt(tf_room_seat.getText()) + ", '" + tf_room_use.getText() + "');";
+	                  
+	                  Statement stmt = con.createStatement();
+	                  stmt.executeUpdate(query);
+	                  
+	                  JOptionPane.showMessageDialog(null, "튜플 추가 성공.\n");
+	                  tf_room_id.setText("");
+	                  tf_room_seat.setText("");
+	                  tf_room_use.setText("");
+
+	               } catch (SQLException ex) {
+	                  JOptionPane.showMessageDialog(null, "튜플 추가에 실패.\nError Message: " + ex);
+	               }
+				}else if(btn_customer.isSelected()) {
+					if (tf_customer_id.getText().equals("") || tf_customer_name.getText().equals("") || tf_customer_phone.getText().equals("")
+							|| tf_customer_mail.getText().equals("")) {
+		                  JOptionPane.showMessageDialog(null, "값을 모두 입력해주세요.");
+		                  return;
+		            }
+
+	               try {
+	                  String query = "INSERT INTO customer VALUES ('" + tf_customer_id.getText() +"', '"
+	                		+ tf_customer_name.getText() + "', '" + tf_customer_phone.getText() + "', '" + tf_customer_mail.getText() + "');";
+	                  
+	                  Statement stmt = con.createStatement();
+	                  stmt.executeUpdate(query);
+	                  
+	                  JOptionPane.showMessageDialog(null, "튜플 추가 성공.\n");
+	                  tf_customer_id.setText("");
+	                  tf_customer_name.setText("");
+	                  tf_customer_phone.setText("");
+	                  tf_customer_mail.setText("");
+
+	               } catch (SQLException ex) {
+	                  JOptionPane.showMessageDialog(null, "튜플 추가에 실패.\nError Message: " + ex);
+	               }
+				}else if(btn_book.isSelected()) {
+					if (tf_book_id.getText().equals("") || tf_book_payway.getText().equals("") || tf_book_state.getText().equals("")
+							|| tf_book_total.getText().equals("") || tf_book_customer_id.getText().equals("") || tf_book_date.getText().equals("") ) {
+		                  JOptionPane.showMessageDialog(null, "값을 모두 입력해주세요.");
+		                  return;
+		            }
+
+	               try {
+	                  String query = "INSERT INTO book VALUES (" + Integer.parseInt(tf_book_id.getText()) + ", '"
+	                		+ tf_book_payway.getText() + "', '" + tf_book_state.getText() + "', " + Integer.parseInt(tf_book_total.getText())
+	                		+ ", '" + tf_book_customer_id.getText() + "', STR_TO_DATE('" + tf_book_date.getText() + "','%Y-%m-%d'));";
+	                  
+	                  Statement stmt = con.createStatement();
+	                  stmt.executeUpdate(query);
+	                  
+	                  JOptionPane.showMessageDialog(null, "튜플 추가 성공.\n");
+	                  tf_book_id.setText("");
+	                  tf_book_payway.setText("");
+	                  tf_book_state.setText("");
+	                  tf_book_total.setText("");
+	                  tf_book_customer_id.setText("");
+	                  tf_book_date.setText("");
+
+	               } catch (SQLException ex) {
+	                  JOptionPane.showMessageDialog(null, "튜플 추가에 실패.\nError Message: " + ex);
+	               }
+				}
