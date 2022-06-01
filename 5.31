@@ -1,0 +1,461 @@
+import java.sql.*;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.text.ParseException;
+
+public class J20011572_20011679 extends JFrame {
+	
+	private String sql;
+	private Connection con;
+    private PreparedStatement pstmt;
+    private ResultSet rs;
+    
+    private String[] title_movie_info = new String[] {"movie_id","movie_name","movie_runtime","movie_grade","movie_director","movie_actor","movie_genre","movie_date","movie_intro"};
+	private String[][] data_movie_info = new String[0][9];
+	private DefaultTableModel model_movie_info = new DefaultTableModel(data_movie_info, title_movie_info);
+	private JTable table_movie_info = new JTable(model_movie_info);
+    
+    private String[] title_room = new String[] {"room_id","room_seat","room_use"};
+	private String[][] data_room = new String[0][3];
+	private DefaultTableModel model_room = new DefaultTableModel(data_room, title_room);
+	private JTable table_room = new JTable(model_room);
+	
+    private String[] title_customer = new String[] {"customer_id","customer_name","customer_phone","customer_mail"};
+	private String[][] data_customer = new String[0][4];
+	private DefaultTableModel model_customer = new DefaultTableModel(data_customer, title_customer);
+	private JTable table_customer = new JTable(model_customer);
+	
+	private String[] title_book = new String[] {"book_id","book_payway","book_state","book_total","customer_id","book_date"};
+	private String[][] data_book = new String[0][6];
+	private DefaultTableModel model_book = new DefaultTableModel(data_book, title_book);
+	private JTable table_book = new JTable(model_book);
+	
+	private String[] title_schedule = new String[] {"schedule_id","movie_id","room_id","schedule_start","schedule_day","schedule_num","schedule_time"};
+	private String[][] data_schedule = new String[0][7];
+	private DefaultTableModel model_schedule = new DefaultTableModel(data_schedule, title_schedule);
+	private JTable table_schedule = new JTable(model_schedule);
+	
+	private String[] title_seat = new String[] {"seat_id","room_id1","seat_use"};
+	private String[][] data_seat = new String[0][3];
+	private DefaultTableModel model_seat = new DefaultTableModel(data_seat, title_seat);
+	private JTable table_seat = new JTable(model_seat);
+	
+	private String[] title_ticket = new String[] {"ticket_id","schedule_id","room_id2","seat_id","book_id","book_use","ticket_money","ticket_total"};
+	private String[][] data_ticket = new String[0][8];
+	private DefaultTableModel model_ticket = new DefaultTableModel(data_ticket, title_ticket);
+	private JTable table_ticket = new JTable(model_ticket);
+     
+    public J20011572_20011679() {
+
+        initLayout();
+
+        accDb();
+
+        setTitle("데베 프로젝트");
+        setBounds(200, 200, 300, 250);
+        setVisible(true);
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent arg0) {
+                int re = JOptionPane.showConfirmDialog(J20011572_20011679.this, "종료할까요?", "종료",
+                        JOptionPane.OK_CANCEL_OPTION);
+
+                if (re == JOptionPane.OK_OPTION) {
+                	try {
+						con.close();
+						System.out.println("프로그램 종료");
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+                    System.exit(0);
+                } else {
+                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                }
+            }
+        });
+    }
+    
+private void initLayout() {
+    	
+    	JLabel label = new JLabel();
+    	label.setText("<회원 로그인>");
+    	
+    	JTextField tf = new JTextField(20);
+    	
+    	JButton btn_login = new JButton();
+    	btn_login.setText("로그인");
+    	
+    	JButton btn_admin = new JButton();
+    	btn_admin.setText("관리자");
+    	
+    	
+    	JPanel pan1 = new JPanel();
+    	JPanel pan2 = new JPanel();
+    	JPanel pan3 = new JPanel();
+    	
+    	try
+	 	 {
+		    String strDate = "20211215";
+			SimpleDateFormat dtFormat = new SimpleDateFormat("yyyyMMdd");
+			SimpleDateFormat newDtFormat = new SimpleDateFormat("yyyy-MM-dd-E요일");
+			Date formatDate = dtFormat.parse(strDate);
+			String strNewDtFormat = newDtFormat.format(formatDate);
+			
+			JLabel lb_date = new JLabel();
+	    	lb_date.setText(strNewDtFormat);
+	    	pan1.add(lb_date);
+	    }
+	    catch (ParseException e) {
+			e.printStackTrace();
+		}
+    	
+    	pan1.add(label);
+    	pan2.add(tf);
+    	pan2.add(btn_login);
+    	pan3.add(btn_admin);
+        
+        add("North",pan1);
+        add("Center",pan2);
+        add("South",pan3);
+        
+        btn_admin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new admin_chang();
+                
+            }
+        });
+        
+        btn_login.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //new Part1();
+                
+            }
+        });
+    }
+private class admin_chang extends JFrame{
+	admin_chang(){
+		super("관리자창");
+		JPanel panel = new JPanel();
+		setSize(600,500);
+		
+		add(panel);
+		
+		//Dimension frameSize = getSize();
+        //Dimension windowSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+        setVisible(true);
+        
+        //버튼 추가
+        JButton btn_reset = new JButton();
+        btn_reset.setText("초기화");
+        
+        JButton btn_insert = new JButton();
+        btn_insert.setText("입력");
+        
+        JPanel panel_update = new JPanel();
+        JButton btn_update = new JButton();
+        btn_update.setText("삭제/변경");
+        JTextField tf = new JTextField(20);
+        panel_update.add(tf);
+        panel_update.add(btn_update);
+        
+        JButton btn_all = new JButton();
+        btn_all.setText("전체조회");
+
+        panel.add(btn_reset);
+        panel.add(btn_insert);
+        panel.add(btn_all);
+        
+        add("North",panel);
+        add("Center",panel_update);
+        
+        
+        
+        btn_reset.addActionListener(new ActionListener(){
+	           public void actionPerformed(ActionEvent e){
+	           	  try { 
+	           	  Statement stmt=con.createStatement();
+	           	  
+	              stmt.execute("DROP TABLE ticket;");
+	              stmt.execute("DROP TABLE seat;");
+	              stmt.execute("DROP TABLE schedule;");
+	              stmt.execute("DROP TABLE book;");
+	              stmt.execute("DROP TABLE customer;");
+	              stmt.execute("DROP TABLE room;");
+	              stmt.execute("DROP TABLE movie_info;");
+	              
+
+	              stmt.execute("CREATE TABLE IF NOT EXISTS movie_info (  movie_id INT NOT NULL,    movie_name VARCHAR(45) NOT NULL,  movie_runtime INT NOT NULL,  movie_grade VARCHAR(10) NOT NULL,  \r\n"
+	              		+ "  movie_director VARCHAR(45) NOT NULL,  movie_actor VARCHAR(45) NOT NULL,  movie_genre VARCHAR(45) NOT NULL,  movie_date DATE NOT NULL,  movie_intro VARCHAR(100) NOT NULL,  PRIMARY KEY (movie_id));");
+	              stmt.execute("CREATE TABLE IF NOT EXISTS room (  room_id INT NOT NULL,  room_seat INT NOT NULL,  room_use VARCHAR(1) NOT NULL,  PRIMARY KEY (room_id));");
+	              stmt.execute("CREATE TABLE IF NOT EXISTS customer (  customer_id VARCHAR(45) NOT NULL,  customer_name VARCHAR(45) NOT NULL,  customer_phone VARCHAR(45) NULL,\r\n"
+	              		+ "  customer_mail VARCHAR(45) NULL,  PRIMARY KEY (customer_id),  UNIQUE INDEX customer_mail_UNIQUE (customer_mail ASC) VISIBLE);");
+	              stmt.execute("CREATE TABLE IF NOT EXISTS book (  book_id INT NOT NULL,  book_payway VARCHAR(45) NOT NULL,  book_state VARCHAR(45) NOT NULL,  book_total INT NOT NULL,  customer_id VARCHAR(45) NOT NULL,\r\n"
+	              		+ "  book_date DATE NOT NULL,  PRIMARY KEY (book_id),  CONSTRAINT customer_id    FOREIGN KEY (customer_id)    REFERENCES customer (customer_id)    ON DELETE NO ACTION    ON UPDATE NO ACTION);");
+	              stmt.execute("CREATE TABLE IF NOT EXISTS schedule (  schedule_id INT NOT NULL,  movie_id INT NOT NULL,  room_id INT NOT NULL,  schedule_start DATE NOT NULL,  schedule_day VARCHAR(45) NOT NULL,  schedule_num INT NOT NULL,  \r\n"
+	              		+ "  schedule_time VARCHAR(45) NOT NULL,  PRIMARY KEY (schedule_id),  INDEX movie_id_idx (movie_id ASC) VISIBLE,    INDEX room_id_idx (room_id ASC) VISIBLE,  CONSTRAINT movie_id  FOREIGN KEY (movie_id)    \r\n"
+	              		+ "  REFERENCES movie_info (movie_id)    ON DELETE NO ACTION    ON UPDATE NO ACTION,  CONSTRAINT room_id    FOREIGN KEY (room_id)    REFERENCES room (room_id)    ON DELETE NO ACTION    ON UPDATE NO ACTION);");
+	              stmt.execute("CREATE TABLE IF NOT EXISTS seat (  seat_id INT NOT NULL,  room_id1 INT NOT NULL,  seat_use VARCHAR(1) NOT NULL,  INDEX room_id_idx (room_id1 ASC) VISIBLE,  PRIMARY KEY (seat_id, room_id1),\r\n"
+	              		+ "  CONSTRAINT room_id1    FOREIGN KEY (room_id1)    REFERENCES room (room_id)    ON DELETE NO ACTION    ON UPDATE NO ACTION);");
+	              stmt.execute("CREATE TABLE IF NOT EXISTS ticket (  ticket_id INT NOT NULL,  schedule_id INT NOT NULL,  room_id2 INT NOT NULL,  seat_id INT NOT NULL,  book_id INT NOT NULL,  book_use VARCHAR(1) NOT NULL,  ticket_money INT NOT NULL,\r\n"
+	              		+ "  ticket_total INT NOT NULL,  PRIMARY KEY (ticket_id),  INDEX schedule_id_idx (schedule_id ASC) VISIBLE,  INDEX room_id_idx (room_id2 ASC) VISIBLE,  INDEX seat_id_idx (seat_id ASC) VISIBLE,  INDEX book_id_idx (book_id ASC) VISIBLE,\r\n"
+	              		+ "  CONSTRAINT schedule_id    FOREIGN KEY (schedule_id)    REFERENCES schedule (schedule_id)    ON DELETE NO ACTION    ON UPDATE NO ACTION,  CONSTRAINT room_id2    FOREIGN KEY (room_id2)    REFERENCES room (room_id)\r\n"
+	              		+ "    ON DELETE NO ACTION    ON UPDATE NO ACTION,  CONSTRAINT seat_id    FOREIGN KEY (seat_id)    REFERENCES seat (seat_id)    ON DELETE NO ACTION    ON UPDATE NO ACTION,\r\n"
+	              		+ "  CONSTRAINT book_id    FOREIGN KEY (book_id)    REFERENCES book (book_id)    ON DELETE NO ACTION    ON UPDATE NO ACTION);");
+	              
+	             
+	              stmt.execute("INSERT INTO movie_info VALUES(1, '명량', 128, 'A', '김한민', '최민식', '액션', STR_TO_DATE('2021-01-30','%Y-%m-%d'), '1597년 임진왜란 6년, 조선이야기');");
+	              stmt.execute("INSERT INTO movie_info VALUES(2, '극한직업', 120, 'C', '이병헌', '류승룡', '코미디', STR_TO_DATE('2021-02-23','%Y-%m-%d'), '해체 위기를 맞는 마약반이야기');");
+	              stmt.execute("INSERT INTO movie_info VALUES(3, '신과함께', 110, 'B', '김용화', '차태현', '판타지', STR_TO_DATE('2021-03-20','%Y-%m-%d'), '사후 49일 동안 7번의 재판을 거치는 판타지이야기');");
+	              stmt.execute("INSERT INTO movie_info VALUES(4, '국제시장', 125, 'A', '윤제균', '황정민', '드라마', STR_TO_DATE('2021-04-17','%Y-%m-%d'), '1950년대 한국전쟁 시대이야기');");
+	              stmt.execute("INSERT INTO movie_info VALUES(5, '변호인', 123, 'A', '양우석', '송강호', '드라마', STR_TO_DATE('2021-05-10','%Y-%m-%d'), '1980년대 초 부산 세무 변호사이야기');");
+	              stmt.execute("INSERT INTO movie_info VALUES(6, '해운대', 130, 'D', '윤제균', '설경구', '모험', STR_TO_DATE('2021-06-08','%Y-%m-%d'), '2004년 엄청난 충격을 안겨준 인도네시아 쓰나미이야기');");
+	              stmt.execute("INSERT INTO movie_info VALUES(7, '괴물', 100, 'B', '봉준호', '박해일', '모험', STR_TO_DATE('2021-07-29','%Y-%m-%d'), '한강에 나타난 정체를 알 수 없는 괴물이야기');");
+	              stmt.execute("INSERT INTO movie_info VALUES(8, '베테랑', 117, 'C', '류승완', '유아인', '액션', STR_TO_DATE('2021-08-05','%Y-%m-%d'), '특수 강력사건 담당 광역수사대이야기');");
+	              stmt.execute("INSERT INTO movie_info VALUES(9, '도둑들', 124, 'B', '최동훈', '김윤석', '범죄', STR_TO_DATE('2021-09-25','%Y-%m-%d'), '한 팀으로 활동 중인 한국의 도둑이야기');");
+	              stmt.execute("INSERT INTO movie_info VALUES(10, '암살', 115, 'D', '최동훈', '전지현', '액션', STR_TO_DATE('2021-10-22','%Y-%m-%d'), '1933년 조국이 사라진 시대 대한민국 임시정부이야기');");
+	              stmt.execute("INSERT INTO movie_info VALUES(11, '광해', 140, 'A', '추창민', '이병헌', '드라마', STR_TO_DATE('2021-11-13','%Y-%m-%d'), '붕당정치로 혼란이 극에 달한 광해군 8년이야기');");
+	              stmt.execute("INSERT INTO movie_info VALUES(12, '부산행', 133, 'B', '연상호', '공유', '액션', STR_TO_DATE('2021-12-04','%Y-%m-%d'), '정체불명의 바이러스가 전국으로 확산된 대한민국이야기');");
+	             
+	              
+	              stmt.execute("INSERT INTO room VALUES(1, 3, 'o');");
+	              stmt.execute("INSERT INTO room VALUES(2, 3, 'o');");
+	              stmt.execute("INSERT INTO room VALUES(3, 3, 'o');");
+	              stmt.execute("INSERT INTO room VALUES(4, 3, 'o');");
+	              stmt.execute("INSERT INTO room VALUES(5, 3, 'o');");
+	              stmt.execute("INSERT INTO room VALUES(6, 3, 'o');");
+	              stmt.execute("INSERT INTO room VALUES(7, 3, 'o');");
+	              stmt.execute("INSERT INTO room VALUES(8, 3, 'o');");
+	              stmt.execute("INSERT INTO room VALUES(9, 3, 'o');");
+	              stmt.execute("INSERT INTO room VALUES(10, 3, 'o');");
+	              
+	              
+	              stmt.execute("INSERT INTO customer VALUES('gahee', '양가희', '12345678', 'gahee@naver');");
+	              stmt.execute("INSERT INTO customer VALUES('eugene', '박유진', '11112222', 'eugene@gmail');");
+	              stmt.execute("INSERT INTO customer VALUES('love',   '김사랑',   '33334444',   'love@yahoo');");
+	              stmt.execute("INSERT INTO customer VALUES('cheolsu', '이철수', '55556666', 'cheolsu@naver');");
+	              stmt.execute("INSERT INTO customer VALUES('jisoo', '한지수', '77778888', 'jisoo@naver');");
+	              stmt.execute("INSERT INTO customer VALUES('minsu', '박민수', '99991010', 'minsu@nate');");
+	              stmt.execute("INSERT INTO customer VALUES('dain',   '신다인',   '98765432',  'dain@gmail');");
+	              stmt.execute("INSERT INTO customer VALUES('yongsu', '김용수', '87565630', 'yong@hotmail');");
+	              stmt.execute("INSERT INTO customer VALUES('junsu', '최준수', '54627877', 'junsu@yahoo');");
+	              stmt.execute("INSERT INTO customer VALUES('yunju', '서윤주', '74108521', 'yunju@naver');");
+	              
+	              stmt.execute("INSERT INTO book VALUES (1, '카드', '완료', 10000, 'gahee', STR_TO_DATE('2021-01-31','%Y-%m-%d'));");
+	              stmt.execute("INSERT INTO book VALUES (2, '카드', '완료', 10000, 'eugene', STR_TO_DATE('2021-02-24','%Y-%m-%d'));");
+	              stmt.execute("INSERT INTO book VALUES (3, '카드', '완료', 10000, 'love', STR_TO_DATE('2021-03-21','%Y-%m-%d'));");
+	              stmt.execute("INSERT INTO book VALUES (4, '현금', '완료', 7000, 'cheolsu', STR_TO_DATE('2021-04-18','%Y-%m-%d'));");
+	              stmt.execute("INSERT INTO book VALUES (5, '현금', '완료', 7000, 'jisoo', STR_TO_DATE('2021-05-11','%Y-%m-%d'));");
+	              stmt.execute("INSERT INTO book VALUES (6, '현금', '미완료', 10000, 'minsu', STR_TO_DATE('2021-06-09','%Y-%m-%d'));");
+	              stmt.execute("INSERT INTO book VALUES (7, '카드', '미완료', 13000, 'dain', STR_TO_DATE('2021-07-30','%Y-%m-%d'));");
+	              stmt.execute("INSERT INTO book VALUES (8, '카드', '완료', 7000, 'yongsu', STR_TO_DATE('2021-08-06','%Y-%m-%d'));");
+	              stmt.execute("INSERT INTO book VALUES (9, '카드', '완료', 10000, 'junsu', STR_TO_DATE('2021-09-26','%Y-%m-%d'));");
+	              stmt.execute("INSERT INTO book VALUES (10, '카드', '완료', 10000, 'yunju', STR_TO_DATE('2021-10-23','%Y-%m-%d'));");
+	              
+	              
+	              stmt.execute("INSERT INTO schedule VALUES(1, 1, 1, STR_TO_DATE('2021-1-30','%Y-%m-%d'), '월', 1, '11:00');");
+	              stmt.execute("INSERT INTO schedule VALUES(2, 2, 2, STR_TO_DATE('2021-02-23','%Y-%m-%d'), '화', 2, '12:00');");
+	              stmt.execute("INSERT INTO schedule VALUES(3, 3, 3, STR_TO_DATE('2021-03-20','%Y-%m-%d'), '수', 1, '13:00');");
+	              stmt.execute("INSERT INTO schedule VALUES(4, 4, 4, STR_TO_DATE('2021-04-17','%Y-%m-%d'), '목', 2, '14:00');");
+	              stmt.execute("INSERT INTO schedule VALUES(5, 5, 5, STR_TO_DATE('2021-05-10','%Y-%m-%d'), '금', 1, '15:00');");
+	              stmt.execute("INSERT INTO schedule VALUES(6, 6, 6, STR_TO_DATE('2021-06-08','%Y-%m-%d'), '토', 2, '16:00');");
+	              stmt.execute("INSERT INTO schedule VALUES(7, 7, 7, STR_TO_DATE('2021-07-29','%Y-%m-%d'), '일', 1, '17:00');");
+	              stmt.execute("INSERT INTO schedule VALUES(8, 8, 8, STR_TO_DATE('2021-08-05','%Y-%m-%d'), '월', 2, '18:00');");
+	              stmt.execute("INSERT INTO schedule VALUES(9, 9, 9, STR_TO_DATE('2021-09-25','%Y-%m-%d'), '화', 1, '19:00');");
+	              stmt.execute("INSERT INTO schedule VALUES(10, 10, 10, STR_TO_DATE('2021-10-22','%Y-%m-%d'), '금', 1, '20:00');");
+	              stmt.execute("INSERT INTO schedule VALUES(11, 11, 1, STR_TO_DATE('2021-11-13','%Y-%m-%d'), '수', 1, '21:00');");
+	              stmt.execute("INSERT INTO schedule VALUES(12, 12, 2, STR_TO_DATE('2021-12-04','%Y-%m-%d'), '목', 2, '22:00'); ");
+	              
+	             stmt.execute("INSERT INTO seat VALUES(1, 1, 'x');");
+	        	stmt.execute("INSERT INTO seat VALUES(2, 1, 'x');");
+	        	stmt.execute("INSERT INTO seat VALUES(3, 1, 'x');");
+	        	stmt.execute("INSERT INTO seat VALUES(1, 2, 'x');");
+	        	stmt.execute("INSERT INTO seat VALUES(2, 2, 'x');");
+	        	stmt.execute("INSERT INTO seat VALUES(3, 2, 'x');");
+	        	stmt.execute("INSERT INTO seat VALUES(1, 3, 'x');");
+	        	stmt.execute("INSERT INTO seat VALUES(2, 3, 'x');");
+	        	stmt.execute("INSERT INTO seat VALUES(3, 3, 'x');");
+	        	stmt.execute("INSERT INTO seat VALUES(1, 4, 'x');");
+	        	stmt.execute("INSERT INTO seat VALUES(2, 4, 'x');");
+	        	stmt.execute("INSERT INTO seat VALUES(3, 4, 'x');");
+	        	stmt.execute("INSERT INTO seat VALUES(1, 5, 'x');");
+	        	stmt.execute("INSERT INTO seat VALUES(2, 5, 'x');");
+	        	stmt.execute("INSERT INTO seat VALUES(3, 5, 'x');");
+	        	stmt.execute("INSERT INTO seat VALUES(1, 6, 'x');");
+	        	stmt.execute("INSERT INTO seat VALUES(2, 6, 'x');");
+	        	stmt.execute("INSERT INTO seat VALUES(3, 6, 'x');");
+	        	stmt.execute("INSERT INTO seat VALUES(1, 7, 'x');");
+	        	stmt.execute("INSERT INTO seat VALUES(2, 7, 'x');");
+	        	stmt.execute("INSERT INTO seat VALUES(3, 7, 'x');");
+	        	stmt.execute("INSERT INTO seat VALUES(1, 8, 'x');");
+	        	stmt.execute("INSERT INTO seat VALUES(2, 8, 'x');");
+	        	stmt.execute("INSERT INTO seat VALUES(3, 8, 'x');");
+	        	stmt.execute("INSERT INTO seat VALUES(1, 9, 'x');");
+	        	stmt.execute("INSERT INTO seat VALUES(2, 9, 'x');");
+	        	stmt.execute("INSERT INTO seat VALUES(3, 9, 'x');");
+	        	stmt.execute("INSERT INTO seat VALUES(1, 10, 'x');");
+	        	stmt.execute("INSERT INTO seat VALUES(2, 10, 'x');");
+	        	stmt.execute("INSERT INTO seat VALUES(3, 10, 'x');"); 	
+	        	
+
+	        	stmt.execute("INSERT INTO ticket VALUES(1, 1, 1, 1, 1, 'o', 10000, 10000);");
+	        	stmt.execute("INSERT INTO ticket VALUES(2, 2, 2, 2, 2, 'o', 10000, 10000);");
+	        	stmt.execute("INSERT INTO ticket VALUES(3, 3, 3, 3, 3, 'o', 10000, 10000);");
+	        	stmt.execute("INSERT INTO ticket VALUES(4, 4, 4, 1, 4, 'o', 10000, 7000);");
+	        	stmt.execute("INSERT INTO ticket VALUES(5, 5, 5, 2, 5, 'o', 10000, 7000);");
+	        	stmt.execute("INSERT INTO ticket VALUES(6, 6, 6, 3, 6, 'o', 10000, 10000);");
+	        	stmt.execute("INSERT INTO ticket VALUES(7, 7, 7, 1, 7, 'o', 15000, 13000);");
+	        	stmt.execute("INSERT INTO ticket VALUES(8, 8, 8, 2, 8, 'o', 10000, 7000);");
+	        	stmt.execute("INSERT INTO ticket VALUES(9, 9, 9, 3, 9, 'o', 10000, 10000);");
+	        	stmt.execute("INSERT INTO ticket VALUES(10, 10, 10, 1, 10, 'o', 10000, 10000);");
+	              
+	              
+	              JOptionPane.showMessageDialog(null, "초기화 성공.");
+	           	  	 
+	           	  } catch(SQLException a) {
+	           	  	JOptionPane.showMessageDialog(null, "초기화 실패.\nError Message: " + a);
+	           	    }
+	           }
+	       });
+        
+        
+        btn_all.addActionListener(new ActionListener(){
+	          public void actionPerformed(ActionEvent e){
+	       	   
+	        	JPanel pn = new JPanel();
+	        	//JScrollPane scrollPane = new JScrollPane(pn, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,   JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+	        	
+	        	
+	        	//table_movie_info.getColumnModel().getColumn(0).setPreferredWidth(50);
+	        	//table_movie_info.getColumnModel().getColumn(1).setPreferredWidth(100);//없어도 되는거같음?!
+	            JScrollPane scrollPane1 = new JScrollPane(table_movie_info);
+	            pn.add(scrollPane1);
+	    		sql = "select * from movie_info";
+	    		table_movie_info.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);//테이블 사이즈에 맞게 테이블이 표현됨 스크롤 나옴
+	    		displayData(model_movie_info, title_movie_info);
+	        	
+	        	
+	       		//table_room.getColumnModel().getColumn(0).setPreferredWidth(50);
+	            //table_room.getColumnModel().getColumn(1).setPreferredWidth(100);
+	            JScrollPane scrollPane2 = new JScrollPane(table_room);
+	            pn.add(scrollPane2);
+	    		sql = "select * from room";
+	    		table_room.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+	    		displayData(model_room, title_room);
+	    		
+	       		//table_customer.getColumnModel().getColumn(0).setPreferredWidth(50);
+	            //table_customer.getColumnModel().getColumn(1).setPreferredWidth(100);
+	            JScrollPane scrollPane3 = new JScrollPane(table_customer);
+	            pn.add(scrollPane3);
+	    		sql = "select * from customer";
+	    		table_customer.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+	    		displayData(model_customer, title_customer);
+	    		
+	    		
+	    		//table_book.getColumnModel().getColumn(0).setPreferredWidth(50);
+	            //table_book.getColumnModel().getColumn(1).setPreferredWidth(100);
+	            JScrollPane scrollPane4 = new JScrollPane(table_book);
+	            pn.add(scrollPane4);
+	    		sql = "select * from book";
+	    		table_book.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+	    		displayData(model_book, title_book);
+	    		
+	    		
+	    		//table_schedule.getColumnModel().getColumn(0).setPreferredWidth(50);
+	            //table_schedule.getColumnModel().getColumn(1).setPreferredWidth(100);
+	            JScrollPane scrollPane5 = new JScrollPane(table_schedule);
+	            pn.add(scrollPane5);
+	    		sql = "select * from schedule";
+	    		table_schedule.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+	    		displayData(model_schedule, title_schedule);
+	    		
+	    		     
+	       		//table_seat.getColumnModel().getColumn(0).setPreferredWidth(50);
+	            //table_seat.getColumnModel().getColumn(1).setPreferredWidth(100);
+	            JScrollPane scrollPane6 = new JScrollPane(table_seat);
+	            pn.add(scrollPane6);
+	    		sql = "select * from seat";
+	    		table_seat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+	    		displayData(model_seat, title_seat);
+	    		
+	    		
+	       		//table_ticket.getColumnModel().getColumn(0).setPreferredWidth(50);
+	            //table_ticket.getColumnModel().getColumn(1).setPreferredWidth(100);
+	            JScrollPane scrollPane7 = new JScrollPane(table_ticket);
+	            pn.add(scrollPane7);
+	    		sql = "select * from ticket";
+	    		table_ticket.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+	    		displayData(model_ticket, title_ticket);
+	    		
+	    		
+	    		
+	            //add("South",pn);
+	            add(pn);
+	           // pn.add(scrollPane);
+	            setVisible(true);
+	       		          	
+	          }
+	          
+	      });
+
+        
+		}
+}
+
+	private void displayData(DefaultTableModel model, String[] title) {
+	    model.setNumRows(0);
+	    try {
+	        pstmt = con.prepareStatement(sql);
+	        rs = pstmt.executeQuery();
+	
+	        while (rs.next()) {
+	        	String[] imsi = new String[title.length];
+	        	for(int i=0;i<title.length;i++) {
+	        		imsi[i] = rs.getString(title[i]);
+	        	}
+	            model.addRow(imsi);
+	            
+	        }
+	    } catch (Exception e) {
+	        System.out.println("에러 발생 : " + e);
+	    }
+	}
+    
+
+    private void accDb() {
+    	 String Driver="";
+	     String url="jdbc:mysql://localhost:3306/madang?&serverTimezone=Asia/Seoul"; 
+	     String userid="madang";
+	     String pwd="madang";
+
+	     try { 
+	       Class.forName("com.mysql.cj.jdbc.Driver");   
+	       System.out.println("드라이버 로드 성공");
+	     } catch(ClassNotFoundException e) {
+	         e.printStackTrace();
+	      }
+	      
+	     try { 
+	       System.out.println("데이터베이스 연결 준비...");	
+	       con=DriverManager.getConnection(url, userid, pwd);
+	       System.out.println("데이터베이스 연결 성공");
+	     } catch(SQLException e) {
+	         e.printStackTrace();
+	       }
+    }
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new J20011572_20011679();
+	}
+
+}
