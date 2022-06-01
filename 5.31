@@ -49,6 +49,8 @@ public class J20011572_20011679 extends JFrame {
 	private String[][] data_ticket = new String[0][8];
 	private DefaultTableModel model_ticket = new DefaultTableModel(data_ticket, title_ticket);
 	private JTable table_ticket = new JTable(model_ticket);
+	
+	private int count_reset = 0;
      
     public J20011572_20011679() {
 
@@ -145,9 +147,10 @@ private class admin_chang extends JFrame{
 	admin_chang(){
 		super("관리자창");
 		JPanel panel = new JPanel();
-		setSize(600,500);
-		
+		setSize(650,600);
 		add(panel);
+		
+		setLayout(new GridLayout(5,4,5,5));
 		
 		//Dimension frameSize = getSize();
         //Dimension windowSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -330,80 +333,85 @@ private class admin_chang extends JFrame{
         
         btn_all.addActionListener(new ActionListener(){
 	          public void actionPerformed(ActionEvent e){
-	       	   
-	        	JPanel pn = new JPanel();
-	        	//JScrollPane scrollPane = new JScrollPane(pn, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,   JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-	        	
-	        	
-	        	//table_movie_info.getColumnModel().getColumn(0).setPreferredWidth(50);
-	        	//table_movie_info.getColumnModel().getColumn(1).setPreferredWidth(100);//없어도 되는거같음?!
-	            JScrollPane scrollPane1 = new JScrollPane(table_movie_info);
-	            pn.add(scrollPane1);
-	    		sql = "select * from movie_info";
-	    		table_movie_info.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);//테이블 사이즈에 맞게 테이블이 표현됨 스크롤 나옴
-	    		displayData(model_movie_info, title_movie_info);
-	        	
-	        	
-	       		//table_room.getColumnModel().getColumn(0).setPreferredWidth(50);
-	            //table_room.getColumnModel().getColumn(1).setPreferredWidth(100);
-	            JScrollPane scrollPane2 = new JScrollPane(table_room);
-	            pn.add(scrollPane2);
-	    		sql = "select * from room";
-	    		table_room.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-	    		displayData(model_room, title_room);
-	    		
-	       		//table_customer.getColumnModel().getColumn(0).setPreferredWidth(50);
-	            //table_customer.getColumnModel().getColumn(1).setPreferredWidth(100);
-	            JScrollPane scrollPane3 = new JScrollPane(table_customer);
-	            pn.add(scrollPane3);
-	    		sql = "select * from customer";
-	    		table_customer.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-	    		displayData(model_customer, title_customer);
-	    		
-	    		
-	    		//table_book.getColumnModel().getColumn(0).setPreferredWidth(50);
-	            //table_book.getColumnModel().getColumn(1).setPreferredWidth(100);
-	            JScrollPane scrollPane4 = new JScrollPane(table_book);
-	            pn.add(scrollPane4);
-	    		sql = "select * from book";
-	    		table_book.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-	    		displayData(model_book, title_book);
-	    		
-	    		
-	    		//table_schedule.getColumnModel().getColumn(0).setPreferredWidth(50);
-	            //table_schedule.getColumnModel().getColumn(1).setPreferredWidth(100);
-	            JScrollPane scrollPane5 = new JScrollPane(table_schedule);
-	            pn.add(scrollPane5);
-	    		sql = "select * from schedule";
-	    		table_schedule.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-	    		displayData(model_schedule, title_schedule);
-	    		
-	    		     
-	       		//table_seat.getColumnModel().getColumn(0).setPreferredWidth(50);
-	            //table_seat.getColumnModel().getColumn(1).setPreferredWidth(100);
-	            JScrollPane scrollPane6 = new JScrollPane(table_seat);
-	            pn.add(scrollPane6);
-	    		sql = "select * from seat";
-	    		table_seat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-	    		displayData(model_seat, title_seat);
-	    		
-	    		
-	       		//table_ticket.getColumnModel().getColumn(0).setPreferredWidth(50);
-	            //table_ticket.getColumnModel().getColumn(1).setPreferredWidth(100);
-	            JScrollPane scrollPane7 = new JScrollPane(table_ticket);
-	            pn.add(scrollPane7);
-	    		sql = "select * from ticket";
-	    		table_ticket.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-	    		displayData(model_ticket, title_ticket);
-	    		
-	    		
-	    		
-	            //add("South",pn);
-	            add(pn);
-	           // pn.add(scrollPane);
-	            setVisible(true);
-	       		          	
-	          }
+	       	    count_reset++;
+	       	    if(count_reset%2==1) {
+		        	//JPanel pn = new JPanel();
+		        	//JScrollPane scrollPane = new JScrollPane(pn, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,   JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		        	
+		        	
+		        	//table_movie_info.getColumnModel().getColumn(0).setPreferredWidth(50);
+		        	//table_movie_info.getColumnModel().getColumn(1).setPreferredWidth(100);//없어도 되는거같음?!
+		            JScrollPane scrollPane1 = new JScrollPane(table_movie_info);
+		            add(scrollPane1);
+		    		sql = "select * from movie_info";
+		    		table_movie_info.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);//테이블 사이즈에 맞게 테이블이 표현됨 스크롤 나옴
+		    		displayData(model_movie_info, title_movie_info);
+		        	
+		        	
+		       		//table_room.getColumnModel().getColumn(0).setPreferredWidth(50);
+		            //table_room.getColumnModel().getColumn(1).setPreferredWidth(100);
+		            JScrollPane scrollPane2 = new JScrollPane(table_room);
+		            add(scrollPane2);
+		    		sql = "select * from room";
+		    		table_room.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		    		displayData(model_room, title_room);
+		    		
+		       		//table_customer.getColumnModel().getColumn(0).setPreferredWidth(50);
+		            //table_customer.getColumnModel().getColumn(1).setPreferredWidth(100);
+		            JScrollPane scrollPane3 = new JScrollPane(table_customer);
+		            add(scrollPane3);
+		    		sql = "select * from customer";
+		    		table_customer.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		    		displayData(model_customer, title_customer);
+		    		
+		    		
+		    		//table_book.getColumnModel().getColumn(0).setPreferredWidth(50);
+		            //table_book.getColumnModel().getColumn(1).setPreferredWidth(100);
+		            JScrollPane scrollPane4 = new JScrollPane(table_book);
+		            add(scrollPane4);
+		    		sql = "select * from book";
+		    		table_book.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		    		displayData(model_book, title_book);
+		    		
+		    		
+		    		//table_schedule.getColumnModel().getColumn(0).setPreferredWidth(50);
+		            //table_schedule.getColumnModel().getColumn(1).setPreferredWidth(100);
+		            JScrollPane scrollPane5 = new JScrollPane(table_schedule);
+		            add(scrollPane5);
+		    		sql = "select * from schedule";
+		    		table_schedule.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		    		displayData(model_schedule, title_schedule);
+		    		
+		    		     
+		       		//table_seat.getColumnModel().getColumn(0).setPreferredWidth(50);
+		            //table_seat.getColumnModel().getColumn(1).setPreferredWidth(100);
+		            JScrollPane scrollPane6 = new JScrollPane(table_seat);
+		            add(scrollPane6);
+		    		sql = "select * from seat";
+		    		table_seat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		    		displayData(model_seat, title_seat);
+		    		
+		    		
+		       		//table_ticket.getColumnModel().getColumn(0).setPreferredWidth(50);
+		            //table_ticket.getColumnModel().getColumn(1).setPreferredWidth(100);
+		            JScrollPane scrollPane7 = new JScrollPane(table_ticket);
+		            add(scrollPane7);
+		    		sql = "select * from ticket";
+		    		table_ticket.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		    		displayData(model_ticket, title_ticket);
+		    		
+		    		
+		    		
+		            //add("South",pn);
+		    		//JScrollPane scrollPane = new JScrollPane(pn);
+		    		//pn.add(scrollPane);
+		            //add(scrollPane);
+		            setVisible(true);
+		       		          	
+		          } else {
+		        	  setVisible(false);
+		          }
+	       	  }
 	          
 	      });
 
