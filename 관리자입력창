@@ -1,0 +1,55 @@
+private class insert_chang extends JFrame {
+    	insert_chang(){
+    		super("관리자 입력창");
+    		setSize(600,400);
+    		setLayout(new GridLayout(3,1,5,5));
+    		setVisible(true);
+    		
+    		
+    		JPanel pninsertbtn = new JPanel();
+    		JPanel pninserttxt = new JPanel();
+    		JPanel pninsertok = new JPanel();
+    		
+    		
+    		JRadioButton btn_movie_info = new JRadioButton("movie_info");
+    		JRadioButton btn_room = new JRadioButton("room");
+    		JRadioButton btn_customer = new JRadioButton("customer");
+    		JRadioButton btn_book = new JRadioButton("book");
+    		JRadioButton btn_schedule = new JRadioButton("schedule");
+    		JRadioButton btn_seat = new JRadioButton("seat");
+    		JRadioButton btn_ticket = new JRadioButton("ticket");
+    		
+    		ButtonGroup btn_group = new ButtonGroup();
+    		btn_group.add(btn_movie_info);
+    		btn_group.add(btn_room);
+    		btn_group.add(btn_customer);
+    		btn_group.add(btn_book);
+    		btn_group.add(btn_schedule);
+    		btn_group.add(btn_seat);
+    		btn_group.add(btn_ticket);
+            
+            
+            pninsertbtn.add(btn_movie_info);
+            pninsertbtn.add(btn_room);
+            pninsertbtn.add(btn_customer);
+            pninsertbtn.add(btn_book);
+            pninsertbtn.add(btn_schedule);
+            pninsertbtn.add(btn_seat);
+            pninsertbtn.add(btn_ticket);
+            
+            JButton btn_ok = new JButton();
+    		btn_ok.setText("입력");
+    		
+    		pninsertok.add(btn_ok);
+    		
+    		
+    		
+    		
+    		
+
+            
+            add(pninsertbtn);
+            add(pninserttxt);
+            add(pninsertok);
+    	}
+    }
