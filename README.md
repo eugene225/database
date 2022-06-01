@@ -355,3 +355,51 @@ btn_movie_info.addActionListener(new ActionListener() {
                 setVisible(true);
             }
         });
+
+
+	private JTextField tf_movie_id = new JTextField(5);
+	private JTextField tf_movie_name = new JTextField(5);
+	private JTextField tf_movie_runtime = new JTextField(5);
+	private JTextField tf_movie_grade = new JTextField(5);
+	private JTextField tf_movie_director = new JTextField(5);
+	private JTextField tf_movie_actor = new JTextField(5);
+	private JTextField tf_movie_genre = new JTextField(5);
+	private JTextField tf_movie_date = new JTextField(10);
+	private JTextField tf_movie_intro = new JTextField(20);
+	
+	private JTextField tf_room_id = new JTextField(5);
+	private JTextField tf_room_seat = new JTextField(5);
+	private JTextField tf_room_use = new JTextField(5);
+	
+	private JTextField tf_customer_id = new JTextField(5);
+	private JTextField tf_customer_name = new JTextField(5);
+	private JTextField tf_customer_phone = new JTextField(10);
+	private JTextField tf_customer_mail = new JTextField(10);
+	
+	private JTextField tf_book_id = new JTextField(5);
+	private JTextField tf_book_payway = new JTextField(5);
+	private JTextField tf_book_state = new JTextField(5);
+	private JTextField tf_book_total = new JTextField(5);
+	private JTextField tf_book_customer_id = new JTextField(5);
+	private JTextField tf_book_date = new JTextField(10);
+	
+	private JTextField tf_schedule_id = new JTextField(5);
+	private JTextField tf_schedule_movie_id = new JTextField(5);
+	private JTextField tf_schedule_room_id = new JTextField(5);
+	private JTextField tf_schedule_start = new JTextField(10);
+	private JTextField tf_schedule_day = new JTextField(5);
+	private JTextField tf_schedule_num = new JTextField(5);
+	private JTextField tf_schedule_time = new JTextField(5);
+	
+	private JTextField tf_seat_id = new JTextField(5);
+	private JTextField tf_seat_room_id1 = new JTextField(5);
+	private JTextField tf_seat_use = new JTextField(5);
+	
+	private JTextField tf_ticket_id = new JTextField(5);
+	private JTextField tf_ticket_schedule_id = new JTextField(5);
+	private JTextField tf_ticket_room_id2 = new JTextField(5);
+	private JTextField tf_ticket_seat_id = new JTextField(5);
+	private JTextField tf_ticket_book_id = new JTextField(5);
+	private JTextField tf_ticket_book_use = new JTextField(5);
+	private JTextField tf_ticket_money = new JTextField(5);
+	private JTextField tf_ticket_total = new JTextField(5);
