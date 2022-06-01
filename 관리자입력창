@@ -1,5 +1,52 @@
 private class insert_chang extends JFrame {
     	
+    	private JTextField tf_movie_id = new JTextField(5);
+    	private JTextField tf_movie_name = new JTextField(5);
+    	private JTextField tf_movie_runtime = new JTextField(5);
+    	private JTextField tf_movie_grade = new JTextField(5);
+    	private JTextField tf_movie_director = new JTextField(5);
+    	private JTextField tf_movie_actor = new JTextField(5);
+    	private JTextField tf_movie_genre = new JTextField(5);
+    	private JTextField tf_movie_date = new JTextField(10);
+    	private JTextField tf_movie_intro = new JTextField(20);
+
+    	private JTextField tf_room_id = new JTextField(5);
+    	private JTextField tf_room_seat = new JTextField(5);
+    	private JTextField tf_room_use = new JTextField(5);
+
+    	private JTextField tf_customer_id = new JTextField(5);
+    	private JTextField tf_customer_name = new JTextField(5);
+    	private JTextField tf_customer_phone = new JTextField(10);
+    	private JTextField tf_customer_mail = new JTextField(10);
+
+    	private JTextField tf_book_id = new JTextField(5);
+    	private JTextField tf_book_payway = new JTextField(5);
+    	private JTextField tf_book_state = new JTextField(5);
+    	private JTextField tf_book_total = new JTextField(5);
+    	private JTextField tf_book_customer_id = new JTextField(5);
+    	private JTextField tf_book_date = new JTextField(10);
+
+    	private JTextField tf_schedule_id = new JTextField(5);
+    	private JTextField tf_schedule_movie_id = new JTextField(5);
+    	private JTextField tf_schedule_room_id = new JTextField(5);
+    	private JTextField tf_schedule_start = new JTextField(10);
+    	private JTextField tf_schedule_day = new JTextField(5);
+    	private JTextField tf_schedule_num = new JTextField(5);
+    	private JTextField tf_schedule_time = new JTextField(5);
+
+    	private JTextField tf_seat_id = new JTextField(5);
+    	private JTextField tf_seat_room_id1 = new JTextField(5);
+    	private JTextField tf_seat_use = new JTextField(5);
+
+    	private JTextField tf_ticket_id = new JTextField(5);
+    	private JTextField tf_ticket_schedule_id = new JTextField(5);
+    	private JTextField tf_ticket_room_id2 = new JTextField(5);
+    	private JTextField tf_ticket_seat_id = new JTextField(5);
+    	private JTextField tf_ticket_book_id = new JTextField(5);
+    	private JTextField tf_ticket_book_use = new JTextField(5);
+    	private JTextField tf_ticket_money = new JTextField(5);
+    	private JTextField tf_ticket_total = new JTextField(5);
+    	
     	insert_chang(){
     		super("관리자 입력창");
     		setSize(600,400);
@@ -49,31 +96,31 @@ private class insert_chang extends JFrame {
 	            public void actionPerformed(ActionEvent e) {
 	            	pninserttxt.removeAll();
 	            	
-	                JTextField tf_movie_id = new JTextField(5);
+	                //JTextField tf_movie_id = new JTextField(5);
 	                pninserttxt.add(new JLabel("movie_id"));
 	                pninserttxt.add(tf_movie_id);	                
-	                JTextField tf_movie_name = new JTextField(10);
+	                //JTextField tf_movie_name = new JTextField(10);
 	                pninserttxt.add(new JLabel("movie_name"));
 	                pninserttxt.add(tf_movie_name);	                
-	                JTextField tf_movie_runtime = new JTextField(5);
+	                //JTextField tf_movie_runtime = new JTextField(5);
 	                pninserttxt.add(new JLabel("movie_runtime"));
 	                pninserttxt.add(tf_movie_runtime);	                
-	                JTextField tf_movie_grade = new JTextField(5);
+	                //JTextField tf_movie_grade = new JTextField(5);
 	                pninserttxt.add(new JLabel("movie_grade"));
 	                pninserttxt.add(tf_movie_grade);	                
-	                JTextField tf_movie_director = new JTextField(10);
+	                //JTextField tf_movie_director = new JTextField(10);
 	                pninserttxt.add(new JLabel("movie_director"));
 	                pninserttxt.add(tf_movie_director);	                
-	                JTextField tf_movie_actor = new JTextField(10);
+	                //JTextField tf_movie_actor = new JTextField(10);
 	                pninserttxt.add(new JLabel("movie_actor"));
 	                pninserttxt.add(tf_movie_actor);	                
-	                JTextField tf_movie_genre = new JTextField(10);
+	                //JTextField tf_movie_genre = new JTextField(10);
 	                pninserttxt.add(new JLabel("movie_genre"));
 	                pninserttxt.add(tf_movie_genre);	                
-	                JTextField tf_movie_date = new JTextField(10);
+	               // JTextField tf_movie_date = new JTextField(10);
 	                pninserttxt.add(new JLabel("movie_date"));
 	                pninserttxt.add(tf_movie_date);	                
-	                JTextField tf_movie_intro = new JTextField(10);
+	                //JTextField tf_movie_intro = new JTextField(10);
 	                pninserttxt.add(new JLabel("movie_intro"));
 	                pninserttxt.add(tf_movie_intro);
 
@@ -89,16 +136,16 @@ private class insert_chang extends JFrame {
 	            public void actionPerformed(ActionEvent e) {
 	            	pninserttxt.removeAll();
 
-	            	JTextField tf_customer_id = new JTextField(5);
+	            	//JTextField tf_customer_id = new JTextField(5);
 	                pninserttxt.add(new JLabel("customer_id"));
 	                pninserttxt.add(tf_customer_id);
-	                JTextField tf_customer_name = new JTextField(5);
+	                //JTextField tf_customer_name = new JTextField(5);
 	                pninserttxt.add(new JLabel("customer_name"));
 	                pninserttxt.add(tf_customer_name);
-	                JTextField tf_customer_phone = new JTextField(5);
+	                //JTextField tf_customer_phone = new JTextField(5);
 	                pninserttxt.add(new JLabel("customer_phone"));
 	                pninserttxt.add(tf_customer_phone);
-	                JTextField tf_customer_mail = new JTextField(5);
+	                //JTextField tf_customer_mail = new JTextField(5);
 	                pninserttxt.add(new JLabel("customer_mail"));
 	                pninserttxt.add(tf_customer_mail);
 
@@ -113,13 +160,13 @@ private class insert_chang extends JFrame {
 	            public void actionPerformed(ActionEvent e) {
 	            	pninserttxt.removeAll();
 
-	            	JTextField tf_room_id = new JTextField(5);
+	            	//JTextField tf_room_id = new JTextField(5);
 	                pninserttxt.add(new JLabel("room_id"));
 	                pninserttxt.add(tf_room_id);
-	                JTextField tf_room_seat = new JTextField(5);
+	                //JTextField tf_room_seat = new JTextField(5);
 	                pninserttxt.add(new JLabel("room_seat"));
 	                pninserttxt.add(tf_room_seat);
-	                JTextField tf_room_use = new JTextField(5);
+	                //JTextField tf_room_use = new JTextField(5);
 	                pninserttxt.add(new JLabel("room_use"));
 	                pninserttxt.add(tf_room_use);
 	                
@@ -134,22 +181,22 @@ private class insert_chang extends JFrame {
 	            public void actionPerformed(ActionEvent e) {
 	            	pninserttxt.removeAll();
 	            	
-	            	JTextField tf_book_id = new JTextField(5);
+	            	//JTextField tf_book_id = new JTextField(5);
 	                pninserttxt.add(new JLabel("book_id"));
 	                pninserttxt.add(tf_book_id);
-	                JTextField tf_book_payway = new JTextField(5);
+	                //JTextField tf_book_payway = new JTextField(5);
 	                pninserttxt.add(new JLabel("book_payway"));
 	                pninserttxt.add(tf_book_payway);
-	                JTextField tf_book_state = new JTextField(5);
+	                //JTextField tf_book_state = new JTextField(5);
 	                pninserttxt.add(new JLabel("book_state"));
 	                pninserttxt.add(tf_book_state);
-	                JTextField tf_book_total = new JTextField(5);
+	                //JTextField tf_book_total = new JTextField(5);
 	                pninserttxt.add(new JLabel("book_total"));
 	                pninserttxt.add(tf_book_total);
-	                JTextField tf_book_customer_id = new JTextField(5);
+	                //JTextField tf_book_customer_id = new JTextField(5);
 	                pninserttxt.add(new JLabel("customer_id"));
 	                pninserttxt.add(tf_book_customer_id);
-	                JTextField tf_book_date = new JTextField(5);
+	                //JTextField tf_book_date = new JTextField(5);
 	                pninserttxt.add(new JLabel("book_date"));
 	                pninserttxt.add(tf_book_date);
 	                
@@ -164,25 +211,25 @@ private class insert_chang extends JFrame {
 	            public void actionPerformed(ActionEvent e) {
 	            	pninserttxt.removeAll();
 
-	                JTextField tf_schedule_id = new JTextField(5);
+	                //JTextField tf_schedule_id = new JTextField(5);
 	                pninserttxt.add(new JLabel("schedule_id"));
 	                pninserttxt.add(tf_schedule_id);
-	                JTextField tf_schedule_movie_id = new JTextField(5);
+	                //JTextField tf_schedule_movie_id = new JTextField(5);
 	                pninserttxt.add(new JLabel("movie_id"));
 	                pninserttxt.add(tf_schedule_movie_id);
-	                JTextField tf_schedule_room_id = new JTextField(5);
+	                //JTextField tf_schedule_room_id = new JTextField(5);
 	                pninserttxt.add(new JLabel("room_id"));
 	                pninserttxt.add(tf_schedule_room_id);
-	                JTextField tf_schedule_start = new JTextField(5);
+	                //JTextField tf_schedule_start = new JTextField(5);
 	                pninserttxt.add(new JLabel("schedule_start"));
 	                pninserttxt.add(tf_schedule_start);
-	                JTextField tf_schedule_day = new JTextField(5);
+	                //JTextField tf_schedule_day = new JTextField(5);
 	                pninserttxt.add(new JLabel("schedule_day"));
 	                pninserttxt.add(tf_schedule_day);
-	                JTextField tf_schedule_num = new JTextField(5);
+	                //JTextField tf_schedule_num = new JTextField(5);
 	                pninserttxt.add(new JLabel("schedule_num"));
 	                pninserttxt.add(tf_schedule_num);
-	                JTextField tf_schedule_time = new JTextField(5);
+	                //JTextField tf_schedule_time = new JTextField(5);
 	                pninserttxt.add(new JLabel("schedule_time"));
 	                pninserttxt.add(tf_schedule_time);
 	                	                
@@ -197,15 +244,15 @@ private class insert_chang extends JFrame {
     	        public void actionPerformed(ActionEvent e) {
     	        	pninserttxt.removeAll();
 
-    	            JTextField tf_seat_id = new JTextField(5);
+    	            //JTextField tf_seat_id = new JTextField(5);
     	            pninserttxt.add(new JLabel("seat_id"));
     	            pninserttxt.add(tf_seat_id);
     	            
-    	            JTextField tf_room_id1 = new JTextField(5);
+    	            //JTextField tf_room_id1 = new JTextField(5);
     	            pninserttxt.add(new JLabel("room_id"));
-    	            pninserttxt.add(tf_room_id1);
+    	            pninserttxt.add(tf_seat_room_id1);
     	            
-    	            JTextField tf_seat_use = new JTextField(5);
+    	            //JTextField tf_seat_use = new JTextField(5);
     	            pninserttxt.add(new JLabel("seat_use"));
     	            pninserttxt.add(tf_seat_use);
     	            
@@ -223,35 +270,35 @@ private class insert_chang extends JFrame {
     	        	pninserttxt.removeAll();
     	        	
     	        	
-    	            JTextField tf_ticket_id = new JTextField(5);
+    	            //JTextField tf_ticket_id = new JTextField(5);
     	            pninserttxt.add(new JLabel("ticket_id"));
     	            pninserttxt.add(tf_ticket_id);
     	            
-    	            JTextField tf_schedule_id = new JTextField(5);
+    	            //JTextField tf_schedule_id = new JTextField(5);
     	            pninserttxt.add(new JLabel("schedule_id"));
     	            pninserttxt.add(tf_schedule_id);
     	            
-    	            JTextField tf_room_id2 = new JTextField(5);
+    	            //JTextField tf_room_id2 = new JTextField(5);
     	            pninserttxt.add(new JLabel("room_id"));
-    	            pninserttxt.add(tf_room_id2);
+    	            pninserttxt.add(tf_ticket_room_id2);
     	            
-    	            JTextField tf_seat_id = new JTextField(5);
+    	            //JTextField tf_seat_id = new JTextField(5);
     	            pninserttxt.add(new JLabel("seat_id"));
     	            pninserttxt.add(tf_seat_id);
     	            
-    	            JTextField tf_book_id = new JTextField(5);
+    	            //JTextField tf_book_id = new JTextField(5);
     	            pninserttxt.add(new JLabel("book_id"));
     	            pninserttxt.add(tf_book_id);
     	            
-    	            JTextField tf_book_use = new JTextField(5);
+    	            //JTextField tf_book_use = new JTextField(5);
     	            pninserttxt.add(new JLabel("book_use"));
-    	            pninserttxt.add(tf_book_use);
+    	            pninserttxt.add(tf_ticket_book_use);
     	            
-    	            JTextField tf_ticket_money = new JTextField(10);
+    	            //JTextField tf_ticket_money = new JTextField(10);
     	            pninserttxt.add(new JLabel("ticket_money"));
     	            pninserttxt.add(tf_ticket_money);
     	            
-    	            JTextField tf_ticket_total = new JTextField(10);
+    	            //JTextField tf_ticket_total = new JTextField(10);
     	            pninserttxt.add(new JLabel("ticket_total"));
     	            pninserttxt.add(tf_ticket_total);
     	            
