@@ -43,13 +43,41 @@ private class insert_chang extends JFrame {
     		pninsertok.add(btn_ok);
     		
     		
+    		btn_movie_info.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	            	pninserttxt.removeAll();
+	            	
+	                JTextField tf = new JTextField(10);
+	                pninserttxt.add(new JLabel("tf"));
+	                pninserttxt.add(tf);
+	                
+	                pninserttxt.revalidate();
+	                pninserttxt.repaint();
+	                setVisible(true);
+	            }
+	        });
     		
-    		
-    		
+    		btn_room.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	            	pninserttxt.removeAll();
+	            	//pninserttxt.repaint();
+	                JTextField tf1 = new JTextField(10);
+	                pninserttxt.add(new JLabel("tf1"));
+	                pninserttxt.add(tf1);
+	                
+	                pninserttxt.revalidate();
+	                pninserttxt.repaint();
+	                setVisible(true);
+	            }
+	        });
 
             
             add(pninsertbtn);
             add(pninserttxt);
             add(pninsertok);
+            
+            
     	}
     }
