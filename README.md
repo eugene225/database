@@ -1,5 +1,9 @@
 # database
 
+select distinct movie_name, schedule_start, room_id, seat_id, ticket_money, customer_id
+from movie_info, ticket, schedule, book
+where movie_info.movie_id = schedule.movie_id and schedule.schedule_id = ticket.schedule_id and ticket.book_id = book.book_id and book.customer_id='gahee'
+
   try {
 			    String strDate = "20211215";
 				SimpleDateFormat dtFormat = new SimpleDateFormat("yyyyMMdd");
