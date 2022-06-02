@@ -1,318 +1,577 @@
-private class insert_chang extends JFrame {
-    	
-    	private JTextField tf_movie_id = new JTextField(5);
-    	private JTextField tf_movie_name = new JTextField(5);
-    	private JTextField tf_movie_runtime = new JTextField(5);
-    	private JTextField tf_movie_grade = new JTextField(5);
-    	private JTextField tf_movie_director = new JTextField(5);
-    	private JTextField tf_movie_actor = new JTextField(5);
-    	private JTextField tf_movie_genre = new JTextField(5);
-    	private JTextField tf_movie_date = new JTextField(10);
-    	private JTextField tf_movie_intro = new JTextField(20);
+	private class insert_chang extends JFrame {
+	
+	private JTextField tf_movie_id = new JTextField(5);
+	private JTextField tf_movie_name = new JTextField(5);
+	private JTextField tf_movie_runtime = new JTextField(5);
+	private JTextField tf_movie_grade = new JTextField(5);
+	private JTextField tf_movie_director = new JTextField(5);
+	private JTextField tf_movie_actor = new JTextField(5);
+	private JTextField tf_movie_genre = new JTextField(5);
+	private JTextField tf_movie_date = new JTextField(10);
+	private JTextField tf_movie_intro = new JTextField(20);
+	
+	private JTextField tf_room_id = new JTextField(5);
+	private JTextField tf_room_seat = new JTextField(5);
+	private JTextField tf_room_use = new JTextField(5);
+	
+	private JTextField tf_customer_id = new JTextField(5);
+	private JTextField tf_customer_name = new JTextField(5);
+	private JTextField tf_customer_phone = new JTextField(10);
+	private JTextField tf_customer_mail = new JTextField(10);
+	
+	private JTextField tf_book_id = new JTextField(5);
+	private JTextField tf_book_payway = new JTextField(5);
+	private JTextField tf_book_state = new JTextField(5);
+	private JTextField tf_book_total = new JTextField(5);
+	private JTextField tf_book_customer_id = new JTextField(5);
+	private JTextField tf_book_date = new JTextField(10);
+	
+	private JTextField tf_schedule_id = new JTextField(5);
+	private JTextField tf_schedule_movie_id = new JTextField(5);
+	private JTextField tf_schedule_room_id = new JTextField(5);
+	private JTextField tf_schedule_start = new JTextField(10);
+	private JTextField tf_schedule_day = new JTextField(5);
+	private JTextField tf_schedule_num = new JTextField(5);
+	private JTextField tf_schedule_time = new JTextField(5);
+	
+	private JTextField tf_seat_id = new JTextField(5);
+	private JTextField tf_seat_room_id1 = new JTextField(5);
+	private JTextField tf_seat_use = new JTextField(5);
+	
+	private JTextField tf_ticket_id = new JTextField(5);
+	private JTextField tf_ticket_schedule_id = new JTextField(5);
+	private JTextField tf_ticket_room_id2 = new JTextField(5);
+	private JTextField tf_ticket_seat_id = new JTextField(5);
+	private JTextField tf_ticket_book_id = new JTextField(5);
+	private JTextField tf_ticket_book_use = new JTextField(5);
+	private JTextField tf_ticket_money = new JTextField(5);
+	private JTextField tf_ticket_total = new JTextField(5);
+	
+	
 
-    	private JTextField tf_room_id = new JTextField(5);
-    	private JTextField tf_room_seat = new JTextField(5);
-    	private JTextField tf_room_use = new JTextField(5);
+	insert_chang(){
+		super("관리자 입력창");
+		setSize(600,400);
+		setLayout(new GridLayout(3,1,5,5));
+		setVisible(true);
+		
+		
+		JPanel pninsertbtn = new JPanel();
+		JPanel pninserttxt = new JPanel();
+		JPanel pninsertok = new JPanel();
+		
+		
+		JRadioButton btn_movie_info = new JRadioButton("movie_info");
+		JRadioButton btn_room = new JRadioButton("room");
+		JRadioButton btn_customer = new JRadioButton("customer");
+		JRadioButton btn_book = new JRadioButton("book");
+		JRadioButton btn_schedule = new JRadioButton("schedule");
+		JRadioButton btn_seat = new JRadioButton("seat");
+		JRadioButton btn_ticket = new JRadioButton("ticket");
+		
+		ButtonGroup btn_group = new ButtonGroup();
+		btn_group.add(btn_movie_info);
+		btn_group.add(btn_room);
+		btn_group.add(btn_customer);
+		btn_group.add(btn_book);
+		btn_group.add(btn_schedule);
+		btn_group.add(btn_seat);
+		btn_group.add(btn_ticket);
+        
+        
+        pninsertbtn.add(btn_movie_info);
+        pninsertbtn.add(btn_room);
+        pninsertbtn.add(btn_customer);
+        pninsertbtn.add(btn_book);
+        pninsertbtn.add(btn_schedule);
+        pninsertbtn.add(btn_seat);
+        pninsertbtn.add(btn_ticket);
+        
+        JButton btn_ok = new JButton();
+		btn_ok.setText("입력");
+		JButton btn_cancel = new JButton();
+		btn_cancel.setText("입력취소");
+		
+		pninsertok.add(btn_ok);
+		pninsertok.add(btn_cancel);
+		
+		
+		btn_movie_info.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	pninserttxt.removeAll();
+            	
 
-    	private JTextField tf_customer_id = new JTextField(5);
-    	private JTextField tf_customer_name = new JTextField(5);
-    	private JTextField tf_customer_phone = new JTextField(10);
-    	private JTextField tf_customer_mail = new JTextField(10);
+                pninserttxt.add(new JLabel("movie_id"));
+                pninserttxt.add(tf_movie_id);	                
+                
+                pninserttxt.add(new JLabel("movie_name"));
+                pninserttxt.add(tf_movie_name);	                
+                
+                pninserttxt.add(new JLabel("movie_runtime"));
+                pninserttxt.add(tf_movie_runtime);	                
+                
+                pninserttxt.add(new JLabel("movie_grade"));
+                pninserttxt.add(tf_movie_grade);	                
+                
+                pninserttxt.add(new JLabel("movie_director"));
+                pninserttxt.add(tf_movie_director);	                
+                
+                pninserttxt.add(new JLabel("movie_actor"));
+                pninserttxt.add(tf_movie_actor);	                
+                
+                pninserttxt.add(new JLabel("movie_genre"));
+                pninserttxt.add(tf_movie_genre);	                
+                
+                pninserttxt.add(new JLabel("movie_date"));
+                pninserttxt.add(tf_movie_date);	                
+                
+                pninserttxt.add(new JLabel("movie_intro"));
+                pninserttxt.add(tf_movie_intro);
 
-    	private JTextField tf_book_id = new JTextField(5);
-    	private JTextField tf_book_payway = new JTextField(5);
-    	private JTextField tf_book_state = new JTextField(5);
-    	private JTextField tf_book_total = new JTextField(5);
-    	private JTextField tf_book_customer_id = new JTextField(5);
-    	private JTextField tf_book_date = new JTextField(10);
+                
+                pninserttxt.revalidate();
+                pninserttxt.repaint();
+                setVisible(true);
+            }
+        });
+		
+		btn_customer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	pninserttxt.removeAll();
 
-    	private JTextField tf_schedule_id = new JTextField(5);
-    	private JTextField tf_schedule_movie_id = new JTextField(5);
-    	private JTextField tf_schedule_room_id = new JTextField(5);
-    	private JTextField tf_schedule_start = new JTextField(10);
-    	private JTextField tf_schedule_day = new JTextField(5);
-    	private JTextField tf_schedule_num = new JTextField(5);
-    	private JTextField tf_schedule_time = new JTextField(5);
+            	
+                pninserttxt.add(new JLabel("customer_id"));
+                pninserttxt.add(tf_customer_id);
+                
+                pninserttxt.add(new JLabel("customer_name"));
+                pninserttxt.add(tf_customer_name);
+                
+                pninserttxt.add(new JLabel("customer_phone"));
+                pninserttxt.add(tf_customer_phone);
+              
+                pninserttxt.add(new JLabel("customer_mail"));
+                pninserttxt.add(tf_customer_mail);
 
-    	private JTextField tf_seat_id = new JTextField(5);
-    	private JTextField tf_seat_room_id1 = new JTextField(5);
-    	private JTextField tf_seat_use = new JTextField(5);
+                pninserttxt.revalidate();
+                pninserttxt.repaint();
+                setVisible(true);
+            }
+        });
+		
+		btn_room.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	pninserttxt.removeAll();
 
-    	private JTextField tf_ticket_id = new JTextField(5);
-    	private JTextField tf_ticket_schedule_id = new JTextField(5);
-    	private JTextField tf_ticket_room_id2 = new JTextField(5);
-    	private JTextField tf_ticket_seat_id = new JTextField(5);
-    	private JTextField tf_ticket_book_id = new JTextField(5);
-    	private JTextField tf_ticket_book_use = new JTextField(5);
-    	private JTextField tf_ticket_money = new JTextField(5);
-    	private JTextField tf_ticket_total = new JTextField(5);
-    	
-    	insert_chang(){
-    		super("관리자 입력창");
-    		setSize(600,400);
-    		setLayout(new GridLayout(3,1,5,5));
-    		setVisible(true);
-    		
-    		
-    		JPanel pninsertbtn = new JPanel();
-    		JPanel pninserttxt = new JPanel();
-    		JPanel pninsertok = new JPanel();
-    		
-    		
-    		JRadioButton btn_movie_info = new JRadioButton("movie_info");
-    		JRadioButton btn_room = new JRadioButton("room");
-    		JRadioButton btn_customer = new JRadioButton("customer");
-    		JRadioButton btn_book = new JRadioButton("book");
-    		JRadioButton btn_schedule = new JRadioButton("schedule");
-    		JRadioButton btn_seat = new JRadioButton("seat");
-    		JRadioButton btn_ticket = new JRadioButton("ticket");
-    		
-    		ButtonGroup btn_group = new ButtonGroup();
-    		btn_group.add(btn_movie_info);
-    		btn_group.add(btn_room);
-    		btn_group.add(btn_customer);
-    		btn_group.add(btn_book);
-    		btn_group.add(btn_schedule);
-    		btn_group.add(btn_seat);
-    		btn_group.add(btn_ticket);
-            
-            
-            pninsertbtn.add(btn_movie_info);
-            pninsertbtn.add(btn_room);
-            pninsertbtn.add(btn_customer);
-            pninsertbtn.add(btn_book);
-            pninsertbtn.add(btn_schedule);
-            pninsertbtn.add(btn_seat);
-            pninsertbtn.add(btn_ticket);
-            
-            JButton btn_ok = new JButton();
-    		btn_ok.setText("입력");
-    		
-    		pninsertok.add(btn_ok);
-    		
-    		
-    		btn_movie_info.addActionListener(new ActionListener() {
-	            @Override
-	            public void actionPerformed(ActionEvent e) {
-	            	pninserttxt.removeAll();
-	            	
-	                //JTextField tf_movie_id = new JTextField(5);
-	                pninserttxt.add(new JLabel("movie_id"));
-	                pninserttxt.add(tf_movie_id);	                
-	                //JTextField tf_movie_name = new JTextField(10);
-	                pninserttxt.add(new JLabel("movie_name"));
-	                pninserttxt.add(tf_movie_name);	                
-	                //JTextField tf_movie_runtime = new JTextField(5);
-	                pninserttxt.add(new JLabel("movie_runtime"));
-	                pninserttxt.add(tf_movie_runtime);	                
-	                //JTextField tf_movie_grade = new JTextField(5);
-	                pninserttxt.add(new JLabel("movie_grade"));
-	                pninserttxt.add(tf_movie_grade);	                
-	                //JTextField tf_movie_director = new JTextField(10);
-	                pninserttxt.add(new JLabel("movie_director"));
-	                pninserttxt.add(tf_movie_director);	                
-	                //JTextField tf_movie_actor = new JTextField(10);
-	                pninserttxt.add(new JLabel("movie_actor"));
-	                pninserttxt.add(tf_movie_actor);	                
-	                //JTextField tf_movie_genre = new JTextField(10);
-	                pninserttxt.add(new JLabel("movie_genre"));
-	                pninserttxt.add(tf_movie_genre);	                
-	               // JTextField tf_movie_date = new JTextField(10);
-	                pninserttxt.add(new JLabel("movie_date"));
-	                pninserttxt.add(tf_movie_date);	                
-	                //JTextField tf_movie_intro = new JTextField(10);
-	                pninserttxt.add(new JLabel("movie_intro"));
-	                pninserttxt.add(tf_movie_intro);
+            	
+                pninserttxt.add(new JLabel("room_id"));
+                pninserttxt.add(tf_room_id);
+                
+                pninserttxt.add(new JLabel("room_seat"));
+                pninserttxt.add(tf_room_seat);
+                
+                pninserttxt.add(new JLabel("room_use"));
+                pninserttxt.add(tf_room_use);
+                
+                pninserttxt.revalidate();
+                pninserttxt.repaint();
+                setVisible(true);
+            }
+        });
+		
+		btn_book.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	pninserttxt.removeAll();
+            	
+            	
+                pninserttxt.add(new JLabel("book_id"));
+                pninserttxt.add(tf_book_id);
+                
+                pninserttxt.add(new JLabel("book_payway"));
+                pninserttxt.add(tf_book_payway);
+                
+                pninserttxt.add(new JLabel("book_state"));
+                pninserttxt.add(tf_book_state);
+                
+                pninserttxt.add(new JLabel("book_total"));
+                pninserttxt.add(tf_book_total);
+                
+                pninserttxt.add(new JLabel("customer_id"));
+                pninserttxt.add(tf_book_customer_id);
+                
+                pninserttxt.add(new JLabel("book_date"));
+                pninserttxt.add(tf_book_date);
+                
+                pninserttxt.revalidate();
+                pninserttxt.repaint();
+                setVisible(true);
+            }
+        });
+		
+		btn_schedule.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	pninserttxt.removeAll();
 
-	                
-	                pninserttxt.revalidate();
-	                pninserttxt.repaint();
-	                setVisible(true);
-	            }
-	        });
-    		
-    		btn_customer.addActionListener(new ActionListener() {
-	            @Override
-	            public void actionPerformed(ActionEvent e) {
-	            	pninserttxt.removeAll();
+                
+                pninserttxt.add(new JLabel("schedule_id"));
+                pninserttxt.add(tf_schedule_id);
+                
+                pninserttxt.add(new JLabel("movie_id"));
+                pninserttxt.add(tf_schedule_movie_id);
+                
+                pninserttxt.add(new JLabel("room_id"));
+                pninserttxt.add(tf_schedule_room_id);
+                
+                pninserttxt.add(new JLabel("schedule_start"));
+                pninserttxt.add(tf_schedule_start);
+                
+                pninserttxt.add(new JLabel("schedule_day"));
+                pninserttxt.add(tf_schedule_day);
+                
+                pninserttxt.add(new JLabel("schedule_num"));
+                pninserttxt.add(tf_schedule_num);
+                
+                pninserttxt.add(new JLabel("schedule_time"));
+                pninserttxt.add(tf_schedule_time);
+                	                
+                pninserttxt.revalidate();
+                pninserttxt.repaint();
+                setVisible(true);
+            }
+        });
+		
+		btn_seat.addActionListener(new ActionListener() {
+	        @Override
+	        public void actionPerformed(ActionEvent e) {
+	        	pninserttxt.removeAll();
 
-	            	//JTextField tf_customer_id = new JTextField(5);
-	                pninserttxt.add(new JLabel("customer_id"));
-	                pninserttxt.add(tf_customer_id);
-	                //JTextField tf_customer_name = new JTextField(5);
-	                pninserttxt.add(new JLabel("customer_name"));
-	                pninserttxt.add(tf_customer_name);
-	                //JTextField tf_customer_phone = new JTextField(5);
-	                pninserttxt.add(new JLabel("customer_phone"));
-	                pninserttxt.add(tf_customer_phone);
-	                //JTextField tf_customer_mail = new JTextField(5);
-	                pninserttxt.add(new JLabel("customer_mail"));
-	                pninserttxt.add(tf_customer_mail);
+	            
+	            pninserttxt.add(new JLabel("seat_id"));
+	            pninserttxt.add(tf_seat_id);
+	            
+	            
+	            pninserttxt.add(new JLabel("room_id"));
+	            pninserttxt.add(tf_seat_room_id1);
+	            
+	            
+	            pninserttxt.add(new JLabel("seat_use"));
+	            pninserttxt.add(tf_seat_use);
+	            
+	            pninserttxt.revalidate();
+	            pninserttxt.repaint();
+	            setVisible(true);
+	        }
+	    });
+	
+		btn_ticket.addActionListener(new ActionListener() {
+	        @Override
+	        public void actionPerformed(ActionEvent e) {
+	        	pninserttxt.removeAll();
+	        	
+	        	
+	            pninserttxt.add(new JLabel("ticket_id"));
+	            pninserttxt.add(tf_ticket_id);
+	            
+	            pninserttxt.add(new JLabel("schedule_id"));
+	            pninserttxt.add(tf_ticket_schedule_id);
+	            
+	            pninserttxt.add(new JLabel("room_id"));
+	            pninserttxt.add(tf_ticket_room_id2);
 
-	                pninserttxt.revalidate();
-	                pninserttxt.repaint();
-	                setVisible(true);
-	            }
-	        });
-    		
-    		btn_room.addActionListener(new ActionListener() {
-	            @Override
-	            public void actionPerformed(ActionEvent e) {
-	            	pninserttxt.removeAll();
+	            pninserttxt.add(new JLabel("seat_id"));
+	            pninserttxt.add(tf_ticket_seat_id);
+	            
+	            pninserttxt.add(new JLabel("book_id"));
+	            pninserttxt.add(tf_ticket_book_id);
+	            
+	            pninserttxt.add(new JLabel("book_use"));
+	            pninserttxt.add(tf_ticket_book_use);
+	            
 
-	            	//JTextField tf_room_id = new JTextField(5);
-	                pninserttxt.add(new JLabel("room_id"));
-	                pninserttxt.add(tf_room_id);
-	                //JTextField tf_room_seat = new JTextField(5);
-	                pninserttxt.add(new JLabel("room_seat"));
-	                pninserttxt.add(tf_room_seat);
-	                //JTextField tf_room_use = new JTextField(5);
-	                pninserttxt.add(new JLabel("room_use"));
-	                pninserttxt.add(tf_room_use);
-	                
-	                pninserttxt.revalidate();
-	                pninserttxt.repaint();
-	                setVisible(true);
-	            }
-	        });
-    		
-    		btn_book.addActionListener(new ActionListener() {
-	            @Override
-	            public void actionPerformed(ActionEvent e) {
-	            	pninserttxt.removeAll();
-	            	
-	            	//JTextField tf_book_id = new JTextField(5);
-	                pninserttxt.add(new JLabel("book_id"));
-	                pninserttxt.add(tf_book_id);
-	                //JTextField tf_book_payway = new JTextField(5);
-	                pninserttxt.add(new JLabel("book_payway"));
-	                pninserttxt.add(tf_book_payway);
-	                //JTextField tf_book_state = new JTextField(5);
-	                pninserttxt.add(new JLabel("book_state"));
-	                pninserttxt.add(tf_book_state);
-	                //JTextField tf_book_total = new JTextField(5);
-	                pninserttxt.add(new JLabel("book_total"));
-	                pninserttxt.add(tf_book_total);
-	                //JTextField tf_book_customer_id = new JTextField(5);
-	                pninserttxt.add(new JLabel("customer_id"));
-	                pninserttxt.add(tf_book_customer_id);
-	                //JTextField tf_book_date = new JTextField(5);
-	                pninserttxt.add(new JLabel("book_date"));
-	                pninserttxt.add(tf_book_date);
-	                
-	                pninserttxt.revalidate();
-	                pninserttxt.repaint();
-	                setVisible(true);
-	            }
-	        });
-    		
-    		btn_schedule.addActionListener(new ActionListener() {
-	            @Override
-	            public void actionPerformed(ActionEvent e) {
-	            	pninserttxt.removeAll();
+	            pninserttxt.add(new JLabel("ticket_money"));
+	            pninserttxt.add(tf_ticket_money);
+	            
 
-	                //JTextField tf_schedule_id = new JTextField(5);
-	                pninserttxt.add(new JLabel("schedule_id"));
-	                pninserttxt.add(tf_schedule_id);
-	                //JTextField tf_schedule_movie_id = new JTextField(5);
-	                pninserttxt.add(new JLabel("movie_id"));
-	                pninserttxt.add(tf_schedule_movie_id);
-	                //JTextField tf_schedule_room_id = new JTextField(5);
-	                pninserttxt.add(new JLabel("room_id"));
-	                pninserttxt.add(tf_schedule_room_id);
-	                //JTextField tf_schedule_start = new JTextField(5);
-	                pninserttxt.add(new JLabel("schedule_start"));
-	                pninserttxt.add(tf_schedule_start);
-	                //JTextField tf_schedule_day = new JTextField(5);
-	                pninserttxt.add(new JLabel("schedule_day"));
-	                pninserttxt.add(tf_schedule_day);
-	                //JTextField tf_schedule_num = new JTextField(5);
-	                pninserttxt.add(new JLabel("schedule_num"));
-	                pninserttxt.add(tf_schedule_num);
-	                //JTextField tf_schedule_time = new JTextField(5);
-	                pninserttxt.add(new JLabel("schedule_time"));
-	                pninserttxt.add(tf_schedule_time);
-	                	                
-	                pninserttxt.revalidate();
-	                pninserttxt.repaint();
-	                setVisible(true);
-	            }
-	        });
-    		
-    		btn_seat.addActionListener(new ActionListener() {
-    	        @Override
-    	        public void actionPerformed(ActionEvent e) {
-    	        	pninserttxt.removeAll();
+	            pninserttxt.add(new JLabel("ticket_total"));
+	            pninserttxt.add(tf_ticket_total);
+	            
+	            pninserttxt.revalidate();
+	            pninserttxt.repaint();
+	            setVisible(true);
+	        }
+	    });
 
-    	            //JTextField tf_seat_id = new JTextField(5);
-    	            pninserttxt.add(new JLabel("seat_id"));
-    	            pninserttxt.add(tf_seat_id);
-    	            
-    	            //JTextField tf_room_id1 = new JTextField(5);
-    	            pninserttxt.add(new JLabel("room_id"));
-    	            pninserttxt.add(tf_seat_room_id1);
-    	            
-    	            //JTextField tf_seat_use = new JTextField(5);
-    	            pninserttxt.add(new JLabel("seat_use"));
-    	            pninserttxt.add(tf_seat_use);
-    	            
-    	            pninserttxt.revalidate();
-    	            pninserttxt.repaint();
-    	            setVisible(true);
-    	        }
-    	    });
-    		
-    		
-    		
-    		btn_ticket.addActionListener(new ActionListener() {
-    	        @Override
-    	        public void actionPerformed(ActionEvent e) {
-    	        	pninserttxt.removeAll();
-    	        	
-    	        	
-    	            //JTextField tf_ticket_id = new JTextField(5);
-    	            pninserttxt.add(new JLabel("ticket_id"));
-    	            pninserttxt.add(tf_ticket_id);
-    	            
-    	            //JTextField tf_schedule_id = new JTextField(5);
-    	            pninserttxt.add(new JLabel("schedule_id"));
-    	            pninserttxt.add(tf_schedule_id);
-    	            
-    	            //JTextField tf_room_id2 = new JTextField(5);
-    	            pninserttxt.add(new JLabel("room_id"));
-    	            pninserttxt.add(tf_ticket_room_id2);
-    	            
-    	            //JTextField tf_seat_id = new JTextField(5);
-    	            pninserttxt.add(new JLabel("seat_id"));
-    	            pninserttxt.add(tf_seat_id);
-    	            
-    	            //JTextField tf_book_id = new JTextField(5);
-    	            pninserttxt.add(new JLabel("book_id"));
-    	            pninserttxt.add(tf_book_id);
-    	            
-    	            //JTextField tf_book_use = new JTextField(5);
-    	            pninserttxt.add(new JLabel("book_use"));
-    	            pninserttxt.add(tf_ticket_book_use);
-    	            
-    	            //JTextField tf_ticket_money = new JTextField(10);
-    	            pninserttxt.add(new JLabel("ticket_money"));
-    	            pninserttxt.add(tf_ticket_money);
-    	            
-    	            //JTextField tf_ticket_total = new JTextField(10);
-    	            pninserttxt.add(new JLabel("ticket_total"));
-    	            pninserttxt.add(tf_ticket_total);
-    	            
-    	            pninserttxt.revalidate();
-    	            pninserttxt.repaint();
-    	            setVisible(true);
-    	        }
-    	    });
+		btn_ok.addActionListener(new ActionListener() {
+	        @Override
+	        public void actionPerformed(ActionEvent e) {
+	        	
+	        	if(btn_movie_info.isSelected()) {
+					if (tf_movie_id.getText().equals("") || tf_movie_name.getText().equals("") || tf_movie_runtime.getText().equals("")
+		                     || tf_movie_grade.getText().equals("") || tf_movie_director.getText().equals("") || tf_movie_actor.getText().equals("")
+		                     || tf_movie_genre.getText().equals("") || tf_movie_date.getText().equals("") || tf_movie_intro.getText().equals("")) {
+		                  JOptionPane.showMessageDialog(null, "값을 모두 입력해주세요.");
+		                  return;
+		               }
 
-            
-            add(pninsertbtn);
-            add(pninserttxt);
-            add(pninsertok);
-            
-            
-    	}
-    }
+		               try {
+		                  String query = "INSERT INTO movie_info VALUES (" + Integer.parseInt(tf_movie_id.getText()) +", '"
+		                		+tf_movie_name.getText() +"',"+Integer.parseInt(tf_movie_runtime.getText())+ ",'" 
+		                        + tf_movie_grade.getText() + "', '" + tf_movie_director.getText() + "', '" + tf_movie_actor.getText()+ "', '"
+		                        + tf_movie_genre.getText() + "', STR_TO_DATE('" + tf_movie_date.getText() + "','%Y-%m-%d'), '"
+		                        + tf_movie_intro.getText() + "');";
+		                  
+		                  Statement stmt = con.createStatement();
+		                  stmt.executeUpdate(query);
+		                  
+		                  JOptionPane.showMessageDialog(null, "튜플 추가 성공.\n");
+		                  tf_movie_id.setText("");
+		                  tf_movie_name.setText("");
+		                  tf_movie_runtime.setText("");
+		                  tf_movie_grade.setText("");
+		                  tf_movie_director.setText("");
+		                  tf_movie_actor.setText("");
+		                  tf_movie_genre.setText("");
+		                  tf_movie_date.setText("");
+		                  tf_movie_intro.setText("");
+
+		               } catch (SQLException ex) {
+		                  JOptionPane.showMessageDialog(null, "튜플 추가에 실패.\nError Message: " + ex);
+		               }
+				}
+	        	
+	        	else if(btn_room.isSelected()) {
+					if (tf_room_id.getText().equals("") || tf_room_seat.getText().equals("") || tf_room_use.getText().equals("")) {
+		                  JOptionPane.showMessageDialog(null, "값을 모두 입력해주세요.");
+		                  return;
+		            }
+
+	               try {
+	                  String query = "INSERT INTO room VALUES (" + Integer.parseInt(tf_room_id.getText()) +", "
+	                		+ Integer.parseInt(tf_room_seat.getText()) + ", '" + tf_room_use.getText() + "');";
+	                  
+	                  Statement stmt = con.createStatement();
+	                  stmt.executeUpdate(query);
+	                  
+	                  JOptionPane.showMessageDialog(null, "튜플 추가 성공.\n");
+	                  tf_room_id.setText("");
+	                  tf_room_seat.setText("");
+	                  tf_room_use.setText("");
+
+	               } catch (SQLException ex) {
+	                  JOptionPane.showMessageDialog(null, "튜플 추가에 실패.\nError Message: " + ex);
+	               }
+				}
+	        	
+	        	else if(btn_customer.isSelected()) {
+					if (tf_customer_id.getText().equals("") || tf_customer_name.getText().equals("") || tf_customer_phone.getText().equals("")
+							|| tf_customer_mail.getText().equals("")) {
+		                  JOptionPane.showMessageDialog(null, "값을 모두 입력해주세요.");
+		                  return;
+		            }
+
+	               try {
+	                  String query = "INSERT INTO customer VALUES ('" + tf_customer_id.getText() +"', '"
+	                		+ tf_customer_name.getText() + "', '" + tf_customer_phone.getText() + "', '" + tf_customer_mail.getText() + "');";
+	                  
+	                  Statement stmt = con.createStatement();
+	                  stmt.executeUpdate(query);
+	                  
+	                  JOptionPane.showMessageDialog(null, "튜플 추가 성공.\n");
+	                  tf_customer_id.setText("");
+	                  tf_customer_name.setText("");
+	                  tf_customer_phone.setText("");
+	                  tf_customer_mail.setText("");
+
+	               } catch (SQLException ex) {
+	                  JOptionPane.showMessageDialog(null, "튜플 추가에 실패.\nError Message: " + ex);
+	               }
+				}
+	        	
+	        	else if(btn_book.isSelected()) {
+					if (tf_book_id.getText().equals("") || tf_book_payway.getText().equals("") || tf_book_state.getText().equals("")
+							|| tf_book_total.getText().equals("") || tf_book_customer_id.getText().equals("") || tf_book_date.getText().equals("") ) {
+		                  JOptionPane.showMessageDialog(null, "값을 모두 입력해주세요.");
+		                  return;
+		            }
+
+	               try {
+	                  String query = "INSERT INTO book VALUES (" + Integer.parseInt(tf_book_id.getText()) + ", '"
+	                		+ tf_book_payway.getText() + "', '" + tf_book_state.getText() + "', " + Integer.parseInt(tf_book_total.getText())
+	                		+ ", '" + tf_book_customer_id.getText() + "', STR_TO_DATE('" + tf_book_date.getText() + "','%Y-%m-%d'));";
+	                  
+	                  Statement stmt = con.createStatement();
+	                  stmt.executeUpdate(query);
+	                  
+	                  JOptionPane.showMessageDialog(null, "튜플 추가 성공.\n");
+	                  tf_book_id.setText("");
+	                  tf_book_payway.setText("");
+	                  tf_book_state.setText("");
+	                  tf_book_total.setText("");
+	                  tf_book_customer_id.setText("");
+	                  tf_book_date.setText("");
+
+	               } catch (SQLException ex) {
+	                  JOptionPane.showMessageDialog(null, "튜플 추가에 실패.\nError Message: " + ex);
+	               }
+				}
+	        	else if(btn_schedule.isSelected()) {
+	        		if(tf_schedule_id.getText().equals("") || tf_schedule_movie_id.getText().equals("") || tf_schedule_room_id.getText().equals("")
+	        				||tf_schedule_start.getText().equals("") || tf_schedule_day.getText().equals("") || tf_schedule_num.getText().equals("")
+	        				||tf_schedule_time.getText().equals("")) {
+	        			JOptionPane.showMessageDialog(null, "값을 모두 입력해주세요.");
+		                  return;
+	        		}
+	        		try {
+	        			 String query = "INSERT INTO schedule VALUES (" + Integer.parseInt(tf_schedule_id.getText()) +"," +Integer.parseInt(tf_schedule_movie_id.getText()) 
+			                		+","+Integer.parseInt(tf_schedule_room_id.getText())+ ",STR_TO_DATE('" + tf_schedule_start.getText() +"','%Y-%m-%d'),'"
+			                		+tf_schedule_day.getText()+"',"+ Integer.parseInt(tf_schedule_num.getText()) +",'"+tf_schedule_time.getText()+"');";
+	        			
+	        			Statement stmt = con.createStatement();
+		                stmt.executeUpdate(query);
+		                  
+		                  JOptionPane.showMessageDialog(null, "튜플 추가 성공.\n");
+		                  tf_schedule_id.setText("");
+		                  tf_schedule_movie_id.setText("");
+		                  tf_schedule_room_id.setText("");
+		                  tf_schedule_start.setText("");
+		                  tf_schedule_day.setText("");
+		                  tf_schedule_num.setText("");
+		                  tf_schedule_time.setText("");
+	        		}
+	        		catch (SQLException ex) {
+		                  JOptionPane.showMessageDialog(null, "튜플 추가에 실패.\nError Message: " + ex);
+		            }
+	        	}
+	        	else if(btn_seat.isSelected()) {
+	        		
+	        		if(tf_seat_id.getText().equals("") || tf_seat_room_id1.getText().equals("") || tf_seat_use.getText().equals("")) {
+	        			JOptionPane.showMessageDialog(null, "값을 모두 입력해주세요.");
+		                  return;
+	        		}
+	        		try {
+	        			 String query = "INSERT INTO seat VALUES (" + Integer.parseInt(tf_seat_id.getText()) +","
+			                		+Integer.parseInt(tf_seat_room_id1.getText()) +",'"+tf_seat_use.getText()+ "');";
+	        			
+	        			Statement stmt = con.createStatement();
+		                stmt.executeUpdate(query);
+		                  
+		                  JOptionPane.showMessageDialog(null, "튜플 추가 성공.\n");
+		                  tf_seat_id.setText("");
+		                  tf_seat_room_id1.setText("");
+		                  tf_seat_use.setText("");
+	        		}
+	        		catch (SQLException ex) {
+		                  JOptionPane.showMessageDialog(null, "튜플 추가에 실패.\nError Message: " + ex);
+		            }
+	        		
+	        	}
+	        	else if(btn_ticket.isSelected()) {
+	        		if(tf_ticket_id.getText().equals("") || tf_ticket_schedule_id.getText().equals("") || tf_ticket_room_id2.getText().equals("")
+		                     || tf_ticket_seat_id.getText().equals("") || tf_ticket_book_id.getText().equals("")|| tf_ticket_book_use.getText().equals("")
+		                     || tf_ticket_money.getText().equals("")|| tf_ticket_total.getText().equals("")) {
+	        			JOptionPane.showMessageDialog(null, "값을 모두 입력해주세요.");
+		                  return;
+	        		}
+	        		try {
+	        			 String query = "INSERT INTO ticket VALUES (" + Integer.parseInt(tf_ticket_id.getText()) +","
+			                		+Integer.parseInt(tf_ticket_schedule_id.getText()) +","+Integer.parseInt(tf_ticket_room_id2.getText())+ "," 
+			                        + Integer.parseInt(tf_ticket_seat_id.getText()) +","+ Integer.parseInt(tf_ticket_book_id.getText()) +
+			                        ",'"+tf_ticket_book_use.getText()+"',"+Integer.parseInt(tf_ticket_money.getText())+','+Integer.parseInt(tf_ticket_total.getText())+ ");";
+	        			
+	        			Statement stmt = con.createStatement();
+		                stmt.executeUpdate(query);
+		                  
+		                  JOptionPane.showMessageDialog(null, "튜플 추가 성공.\n");
+		                  tf_ticket_id.setText("");
+		                  tf_ticket_schedule_id.setText("");
+		                  tf_ticket_room_id2.setText("");
+		                  tf_ticket_seat_id.setText("");
+		                  tf_ticket_book_id.setText("");
+		                  tf_ticket_book_use.setText("");
+		                  tf_ticket_money.setText("");
+		                  tf_ticket_total.setText("");
+	        		}
+	        		catch (SQLException ex) {
+		                  JOptionPane.showMessageDialog(null, "튜플 추가에 실패.\nError Message: " + ex);
+		            }
+	        	}
+	        	
+	        }
+	    });
+		
+		btn_cancel.addActionListener(new ActionListener() {
+	        @Override
+	        public void actionPerformed(ActionEvent e) {
+	        	
+	        	if(btn_movie_info.isSelected()) {
+	        		 tf_movie_id.setText("");
+	                  tf_movie_name.setText("");
+	                  tf_movie_runtime.setText("");
+	                  tf_movie_grade.setText("");
+	                  tf_movie_director.setText("");
+	                  tf_movie_actor.setText("");
+	                  tf_movie_genre.setText("");
+	                  tf_movie_date.setText("");
+	                  tf_movie_intro.setText("");
+				}
+	        	
+	        	else if(btn_room.isSelected()) {
+	        		tf_room_id.setText("");
+	                  tf_room_seat.setText("");
+	                  tf_room_use.setText("");
+				}
+	        	
+	        	else if(btn_customer.isSelected()) {
+	        		  tf_customer_id.setText("");
+	                  tf_customer_name.setText("");
+	                  tf_customer_phone.setText("");
+	                  tf_customer_mail.setText("");
+				}
+	        	
+	        	else if(btn_book.isSelected()) {
+	        		tf_book_id.setText("");
+	                  tf_book_payway.setText("");
+	                  tf_book_state.setText("");
+	                  tf_book_total.setText("");
+	                  tf_book_customer_id.setText("");
+	                  tf_book_date.setText("");
+				}
+	        	else if(btn_schedule.isSelected()) {
+	        		tf_schedule_id.setText("");
+	                  tf_schedule_movie_id.setText("");
+	                  tf_schedule_room_id.setText("");
+	                  tf_schedule_start.setText("");
+	                  tf_schedule_day.setText("");
+	                  tf_schedule_num.setText("");
+	                  tf_schedule_time.setText("");
+	        	}
+	        	else if(btn_seat.isSelected()) {
+	        		
+	        		tf_seat_id.setText("");
+	                  tf_seat_room_id1.setText("");
+	                  tf_seat_use.setText("");
+	        		
+	        	}
+	        	else if(btn_ticket.isSelected()) {
+	        		 tf_ticket_id.setText("");
+	                  tf_ticket_schedule_id.setText("");
+	                  tf_ticket_room_id2.setText("");
+	                  tf_ticket_seat_id.setText("");
+	                  tf_ticket_book_id.setText("");
+	                  tf_ticket_book_use.setText("");
+	                  tf_ticket_money.setText("");
+	                  tf_ticket_total.setText("");
+	        	}
+	        	
+	        }
+	    });
+
+        add(pninsertbtn);
+        add(pninserttxt);
+        add(pninsertok);
+	}
+}
