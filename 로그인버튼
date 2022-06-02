@@ -1,0 +1,24 @@
+btn_login.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(tf.getText().isEmpty()) {
+                	JOptionPane.showMessageDialog(null, "값을 입력해주세요.");
+                	//return;
+                }else {
+                	//Statement pstmt = con.createStatement();
+                	try {
+						rs = pstmt.executeQuery("SELECT * FROM customer where customer_id = '"+ tf.getText() +"'");
+						if(rs.next()) {
+							new member_chang();
+						}else {
+							JOptionPane.showMessageDialog(null, "회원아이디가 존재하지 않습니다.");
+							//return;
+						}
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+                }
+                
+            }
+        });
