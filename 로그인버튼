@@ -1,3 +1,5 @@
+//로그인 버트 actionlistener
+
 btn_login.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -22,3 +24,13 @@ btn_login.addActionListener(new ActionListener() {
                 
             }
         });
+	
+
+//회원창 클래스
+private class member_chang extends JFrame{
+	member_chang(){
+		super("회원창");
+		setSize(600,400);
+		setVisible(true);
+	}
+}
