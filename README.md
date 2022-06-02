@@ -508,3 +508,6 @@ if(btn_movie_info.isSelected()) {
 	                  JOptionPane.showMessageDialog(null, "튜플 추가에 실패.\nError Message: " + ex);
 	               }
 				}
+				
+				
+https://hiworldbye.tistory.com/25
