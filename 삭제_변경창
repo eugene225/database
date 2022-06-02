@@ -1,0 +1,13 @@
+btn_update.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new update_chang();
+                
+            }
+});
+
+private class update_chang extends JFrame{
+	update_chang(){
+		
+	}
+}
