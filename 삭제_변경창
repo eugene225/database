@@ -5,7 +5,6 @@ btn_update.addActionListener(new ActionListener() {
                 
             }
 });
-
 	private class update_chang extends JFrame{
 		update_chang(){
 			super("관리자 삭제/변경창");
@@ -45,6 +44,9 @@ btn_update.addActionListener(new ActionListener() {
 	        pnradiobtn.add(btn_ticket);
 	        
 	        
+	        JLabel lb_tmp = new JLabel(";");
+	        JLabel lb_tmp2 = new JLabel(";");
+	        
 	        JLabel lb_delete = new JLabel("DELETE FROM Tabel");
 	        JTextField tf_delete = new JTextField(20);
 	        JButton btn_delete = new JButton();
@@ -52,6 +54,7 @@ btn_update.addActionListener(new ActionListener() {
 			
 			pndelete.add(lb_delete);
 			pndelete.add(tf_delete);
+			pndelete.add(lb_tmp);
 			pndelete.add(btn_delete);
 			
 			JLabel lb_update = new JLabel("UPDATE Tabel");
@@ -61,6 +64,7 @@ btn_update.addActionListener(new ActionListener() {
 			
 			pnupdate.add(lb_update);
 			pnupdate.add(tf_update);
+			pnupdate.add(lb_tmp2);
 			pnupdate.add(btn_update);
 			
 			btn_movie_info.addActionListener(new ActionListener() {
@@ -133,23 +137,54 @@ btn_update.addActionListener(new ActionListener() {
 	                setVisible(true);
 	            }
 	        });
+			
 			btn_delete.addActionListener(new ActionListener() {
 	            @Override
 	            public void actionPerformed(ActionEvent e) {
-	            	
+
+		               try {
+		            	   
+		                  String query = lb_delete.getText()+ " "+ tf_delete.getText() + ";" ;
+		                 // System.out.println(query);
+		                  
+		                  
+		                  Statement stmt = con.createStatement();
+		                  stmt.executeUpdate(query);
+		                  
+		                  JOptionPane.showMessageDialog(null, "삭제 성공.\n");
+		                  tf_delete.setText("");
+
+		               } catch (SQLException ex) {
+		                  JOptionPane.showMessageDialog(null, "삭제 실패.\nError Message: " + ex);
+		               }
 
 	            	
 	                setVisible(true);
 	            }
 	        });
+			
 			btn_update.addActionListener(new ActionListener() {
 	            @Override
 	            public void actionPerformed(ActionEvent e) {
 	            	
+	            	try {
+		                  String query = lb_update.getText()+ " "+ tf_update.getText()+ ";" ;
+		                  //System.out.println(query);
+		                  
+		                  
+		                  Statement stmt = con.createStatement();
+		                  stmt.executeUpdate(query);
+		                  
+		                  JOptionPane.showMessageDialog(null, "변경 성공.\n");
+		                  tf_update.setText("");
 
-	            	
+		               } catch (SQLException ex) {
+		                  JOptionPane.showMessageDialog(null, "변경 실패.\nError Message: " + ex);
+		               }
+
 	                setVisible(true);
 	            }
+	            
 	        });
 			
 			
