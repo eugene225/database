@@ -8,6 +8,8 @@ btn_update.addActionListener(new ActionListener() {
 
 private class update_chang extends JFrame{
 	update_chang(){
-		
+		super("관리자 삭제/변경창");
+		setSize(600,400);
+		setVisible(true);
 	}
 }
