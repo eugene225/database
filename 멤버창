@@ -1,3 +1,15 @@
+//선언
+private String[] title_table1 = new String[] {"movie_name","movie_director","movie_actor","movie_genre"};
+	private String[][] data_table1 = new String[0][4];
+	private DefaultTableModel model_table1 = new DefaultTableModel(data_table1, title_table1);
+	private JTable table_1 = new JTable(model_table1);
+	
+	private String[] title_table2 = new String[] {"movie_name","schedule_start","room_id","seat_id","ticket_money"};
+	private String[][] data_table2 = new String[0][5];
+	private DefaultTableModel model_table2 = new DefaultTableModel(data_table2, title_table2);
+	private JTable table_2 = new JTable(model_table2);
+
+
 private class member_chang extends JFrame{
 	
 	private String customer_id;
@@ -38,11 +50,11 @@ private class member_chang extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
             	
-            	JScrollPane scrollPane1 = new JScrollPane(table_movie_info);
+            	JScrollPane scrollPane1 = new JScrollPane(table_1);
 	            pn2.add(scrollPane1);
-	    		sql = "select * from movie_info";
+	    		sql = "select movie_name, movie_director, movie_actor, movie_genre from movie_info";
 	    		table_movie_info.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);//테이블 사이즈에 맞게 테이블이 표현됨 스크롤 나옴
-	    		displayData(model_movie_info, title_movie_info);
+	    		displayData(model_table1, title_table1);
             }
         });
         
