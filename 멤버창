@@ -1,0 +1,57 @@
+private class member_chang extends JFrame{
+	
+	private String customer_id;
+	
+	member_chang(String customer_id){
+		super("현재 로그인한 회원 ID : "+customer_id);
+		this.customer_id = customer_id;
+		
+		setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.weightx = 1.0;
+        gbc.weighty = 0.5;
+		setSize(650,700);
+        setVisible(true);
+		
+		JPanel pn1 = new JPanel();  //조회예매예매조회 버튼
+		JPanel pn2 = new JPanel();  //movie_info 테이블
+		JPanel pn3 = new JPanel();  //해당아이디 예매정보  --> 영화명, 상영일, 상영관번호, 좌석번호, 판매가
+		JPanel pn4 = new JPanel();  //위의 정보 클릭시 보이는 --> 상영일정, 상영관, 티켓
+		JPanel pn5 = new JPanel();  //티켓번호, 예매번호 -> 삭제버튼
+        
+		JButton btn_movie = new JButton();
+		btn_movie.setText("영화조회");
+		
+		JButton btn_book = new JButton();
+		btn_book.setText("예매하기");
+		
+		JButton btn_book_see = new JButton();
+		btn_book_see.setText("예매조회");
+		
+		pn1.add(btn_movie);
+		pn1.add(btn_book);
+		pn1.add(btn_book_see);
+        
+		
+		btn_movie.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	
+            	JScrollPane scrollPane1 = new JScrollPane(table_movie_info);
+	            pn2.add(scrollPane1);
+	    		sql = "select * from movie_info";
+	    		table_movie_info.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);//테이블 사이즈에 맞게 테이블이 표현됨 스크롤 나옴
+	    		displayData(model_movie_info, title_movie_info);
+            }
+        });
+        
+        //비율
+		
+        add(pn1,gbc);
+        add(pn2);
+        add(pn3);
+        add(pn4);
+        add(pn5);
+	}
+}
