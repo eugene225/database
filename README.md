@@ -511,3 +511,13 @@ if(btn_movie_info.isSelected()) {
 				
 				
 https://hiworldbye.tistory.com/25
+
+
+
+			setLayout(new GridBagLayout());
+	        GridBagConstraints gbc = new GridBagConstraints();
+	        gbc.fill = GridBagConstraints.BOTH;
+	        gbc.weightx = 1.0;
+	        gbc.weighty = 0.5;
+			setSize(650,700);
+	        setVisible(true);
