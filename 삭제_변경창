@@ -45,8 +45,8 @@ btn_update.addActionListener(new ActionListener() {
 	        pnradiobtn.add(btn_ticket);
 	        
 	        
-	        JLabel lb_delete = new JLabel("Delete Tabel");
-	        JTextField tf_delete = new JTextField(10);
+	        JLabel lb_delete = new JLabel("DELETE FROM Tabel");
+	        JTextField tf_delete = new JTextField(20);
 	        JButton btn_delete = new JButton();
 			btn_delete.setText("삭제");
 			
@@ -54,8 +54,8 @@ btn_update.addActionListener(new ActionListener() {
 			pndelete.add(tf_delete);
 			pndelete.add(btn_delete);
 			
-			JLabel lb_update = new JLabel("Update Tabel");
-	        JTextField tf_update = new JTextField(10);
+			JLabel lb_update = new JLabel("UPDATE Tabel");
+	        JTextField tf_update = new JTextField(20);
 	        JButton btn_update = new JButton();
 			btn_update.setText("변경");
 			
@@ -63,10 +63,100 @@ btn_update.addActionListener(new ActionListener() {
 			pnupdate.add(tf_update);
 			pnupdate.add(btn_update);
 			
+			btn_movie_info.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	            	
+	            	lb_delete.setText("DELETE FROM movie_info");
+	            	lb_update.setText("UPDATE movie_info");
+	            	
+	                setVisible(true);
+	            }
+	        });
+			btn_room.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	            	
+	            	lb_delete.setText("DELETE FROM room");
+	            	lb_update.setText("UPDATE room");
+	            	
+	                setVisible(true);
+	            }
+	        });
+			btn_customer.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	            	
+	            	lb_delete.setText("DELETE FROM customer");
+	            	lb_update.setText("UPDATE customer");
+	            	
+	                setVisible(true);
+	            }
+	        });
+			btn_book.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	            	
+	            	lb_delete.setText("DELETE FROM book");
+	            	lb_update.setText("UPDATE book");
+	            	
+	                setVisible(true);
+	            }
+	        });
+			btn_schedule.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	            	
+	            	lb_delete.setText("DELETE FROM schedule");
+	            	lb_update.setText("UPDATE schedule");
+	            	
+	                setVisible(true);
+	            }
+	        });
+			btn_seat.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	            	
+	            	lb_delete.setText("DELETE FROM seat");
+	            	lb_update.setText("UPDATE seat");
+	            	
+	                setVisible(true);
+	            }
+	        });
+			btn_ticket.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	            	
+	            	lb_delete.setText("DELETE FROM ticket");
+	            	lb_update.setText("UPDATE ticket");
+	            	
+	                setVisible(true);
+	            }
+	        });
+			btn_delete.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	            	
+
+	            	
+	                setVisible(true);
+	            }
+	        });
+			btn_update.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	            	
+
+	            	
+	                setVisible(true);
+	            }
+	        });
+			
+			
+			
 			add(pnradiobtn);
 			add(pndelete);
 			add(pnupdate);
-			
-			
+
 		}
 	}
