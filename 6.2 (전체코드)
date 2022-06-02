@@ -182,7 +182,7 @@ public class J20011572_20011679 extends JFrame {
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;
         gbc.weighty = 0.5;
-		setSize(650,700);
+		setSize(650,500);
         setVisible(true);
 		
 		
@@ -363,6 +363,7 @@ public class J20011572_20011679 extends JFrame {
 	        	   //scrollPane_table.removeAll();
 	       	        	
 		            JScrollPane scrollPane1 = new JScrollPane(table_movie_info);
+		            scrollPane1.setPreferredSize(new Dimension(400,270));
 		            pntable.add(scrollPane1);
 		    		sql = "select * from movie_info";
 		    		table_movie_info.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);//테이블 사이즈에 맞게 테이블이 표현됨 스크롤 나옴
@@ -370,20 +371,23 @@ public class J20011572_20011679 extends JFrame {
 		        	
 
 		            JScrollPane scrollPane2 = new JScrollPane(table_room);
+		            scrollPane2.setPreferredSize(new Dimension(230,270));
 		            pntable.add(scrollPane2);
 		    		sql = "select * from room";
-		    		table_room.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		    		//table_room.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		    		displayData(model_room, title_room);
 		    		
 		       		
 		            JScrollPane scrollPane3 = new JScrollPane(table_customer);
+		            scrollPane3.setPreferredSize(new Dimension(310,270));
 		            pntable.add(scrollPane3);
 		    		sql = "select * from customer";
-		    		table_customer.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		    		//table_customer.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		    		displayData(model_customer, title_customer);
 		    		
 
 		            JScrollPane scrollPane4 = new JScrollPane(table_book);
+		            scrollPane4.setPreferredSize(new Dimension(400,270));
 		            pntable.add(scrollPane4);
 		    		sql = "select * from book";
 		    		table_book.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -391,6 +395,7 @@ public class J20011572_20011679 extends JFrame {
 		    		
 		    		
 		            JScrollPane scrollPane5 = new JScrollPane(table_schedule);
+		            scrollPane5.setPreferredSize(new Dimension(400,270));
 		            pntable.add(scrollPane5);
 		    		sql = "select * from schedule";
 		    		table_schedule.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -398,13 +403,15 @@ public class J20011572_20011679 extends JFrame {
 		    		
 
 		            JScrollPane scrollPane6 = new JScrollPane(table_seat);
+		            scrollPane6.setPreferredSize(new Dimension(250,270));
 		            pntable.add(scrollPane6);
 		    		sql = "select * from seat";
-		    		table_seat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		    		//table_seat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		    		displayData(model_seat, title_seat);
 		    		
 		    		
 		            JScrollPane scrollPane7 = new JScrollPane(table_ticket);
+		            scrollPane7.setPreferredSize(new Dimension(400,270));
 		            pntable.add(scrollPane7);
 		    		sql = "select * from ticket";
 		    		table_ticket.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -1236,6 +1243,7 @@ public class J20011572_20011679 extends JFrame {
 	        gbc.weighty = 0.5;
 			setSize(1000,700);
 	        setVisible(true);
+	        
 			
 			JPanel pn1 = new JPanel();  //조회예매예매조회 버튼
 			JPanel pn2 = new JPanel();  //movie_info 테이블
@@ -1276,9 +1284,10 @@ public class J20011572_20011679 extends JFrame {
 	            public void actionPerformed(ActionEvent e) {
 	            	
 	            	JScrollPane scrollPane1 = new JScrollPane(table_1);
+	            	scrollPane1.setPreferredSize(new Dimension(400,270));
 		            pn2.add(scrollPane1);
 		    		sql = "select movie_id, movie_name, movie_director, movie_actor, movie_genre from movie_info";
-		    		table_movie_info.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);//테이블 사이즈에 맞게 테이블이 표현됨 스크롤 나옴
+		    		//table_1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);//테이블 사이즈에 맞게 테이블이 표현됨 스크롤 나옴
 		    		displayData(model_table1, title_table1);
 		    		setVisible(true);
 	            }
@@ -1288,6 +1297,25 @@ public class J20011572_20011679 extends JFrame {
 	            @Override
 	            public void actionPerformed(ActionEvent e) {
 	            	new book_chang();
+	            	
+	            }
+	        });
+			
+			btn_book_see.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	            	JScrollPane scrollPane2 = new JScrollPane(table_2);
+	            	scrollPane2.setPreferredSize(new Dimension(400,270));
+		            pn2.add(scrollPane2);
+		            
+		    		sql = "select distinct movie_name, schedule_start, room_id, seat_id, ticket_money \r\n"
+		    				+ "from movie_info, ticket, schedule, book \r\n"
+		    				+ "where movie_info.movie_id = schedule.movie_id and schedule.schedule_id = ticket.schedule_id \r\n"
+		    				+ "and ticket.book_id = book.book_id and book.customer_id='"+ customer_id  +"';";
+		    		
+		    		//table_2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);//테이블 사이즈에 맞게 테이블이 표현됨 스크롤 나옴
+		    		displayData(model_table2, title_table2);
+		    		setVisible(true);
 	            	
 	            }
 	        });
