@@ -50,8 +50,8 @@ public class J20011572_20011679 extends JFrame {
 	private DefaultTableModel model_ticket = new DefaultTableModel(data_ticket, title_ticket);
 	private JTable table_ticket = new JTable(model_ticket);
 	
-	private String[] title_table1 = new String[] {"movie_name","movie_director","movie_actor","movie_genre"};
-	private String[][] data_table1 = new String[0][4];
+	private String[] title_table1 = new String[] {"movie_id","movie_name","movie_director","movie_actor","movie_genre"};
+	private String[][] data_table1 = new String[0][5];
 	private DefaultTableModel model_table1 = new DefaultTableModel(data_table1, title_table1);
 	private JTable table_1 = new JTable(model_table1);
 	
@@ -1277,10 +1277,18 @@ public class J20011572_20011679 extends JFrame {
 	            	
 	            	JScrollPane scrollPane1 = new JScrollPane(table_1);
 		            pn2.add(scrollPane1);
-		    		sql = "select movie_name, movie_director, movie_actor, movie_genre from movie_info";
+		    		sql = "select movie_id, movie_name, movie_director, movie_actor, movie_genre from movie_info";
 		    		table_movie_info.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);//테이블 사이즈에 맞게 테이블이 표현됨 스크롤 나옴
 		    		displayData(model_table1, title_table1);
 		    		setVisible(true);
+	            }
+	        });
+			
+			btn_book.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	            	new book_chang();
+	            	
 	            }
 	        });
 			
@@ -1299,12 +1307,76 @@ public class J20011572_20011679 extends JFrame {
 	        gbc.gridheight = 5;
 	        add(pn2, gbc);
 	        
-	        
 	        setVisible(true);
 			
 		}
 	}
-	
+	private class book_chang extends JFrame{
+		book_chang(){
+			super("예매하기");
+			
+			setLayout(new GridBagLayout());
+	        GridBagConstraints gbc = new GridBagConstraints();
+	        gbc.fill = GridBagConstraints.BOTH;
+	        gbc.weightx = 1.0;
+	        gbc.weighty = 0.5;
+	        setSize(600,700);
+	        setVisible(true);
+	        
+	        JPanel pn1 = new JPanel();  
+			JPanel pn2 = new JPanel(); 
+	        
+			JLabel lb = new JLabel("schedule_id");
+			JTextField tf = new JTextField(5);
+			JButton btn_book = new JButton();
+			btn_book.setText("예매하기");
+			pn1.add(lb);
+			pn1.add(tf);
+			pn1.add(btn_book);
+	        
+	        JScrollPane scrollPane1 = new JScrollPane(table_schedule);
+            pn2.add(scrollPane1);
+    		sql = "select * from schedule";
+    		displayData(model_schedule, title_schedule);
+    		setVisible(true);
+    		
+    		btn_book.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	            	try {
+		            	   
+		                  String query =";" ;
+		                  Statement stmt = con.createStatement();
+		                  stmt.executeUpdate(query);
+		                  
+		                  JOptionPane.showMessageDialog(null, "예매되었습니다.\n");
+		                  tf.setText("");
+
+		               } catch (SQLException ex) {
+		                  JOptionPane.showMessageDialog(null, "예매 실패.\nError Message: " + ex);
+		               }
+	            	setVisible(true);
+	            }
+	        });
+			
+    		
+    		gbc.gridx = 0;
+	        gbc.gridy = 0;
+	        gbc.gridwidth = 1;
+	        gbc.gridheight = 1;
+	        add(pn1, gbc);
+	        
+	        gbc.weighty = 8;
+
+	        gbc.gridx = 0;
+	        gbc.gridy = 1;
+	        gbc.gridwidth = 1;
+	        gbc.gridheight = 5;
+	        add(pn2, gbc);
+	        
+	        setVisible(true);
+			}
+	}
 	
 	private void displayData(DefaultTableModel model, String[] title) {
 	    model.setNumRows(0);
