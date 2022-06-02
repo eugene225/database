@@ -1256,9 +1256,13 @@ public class J20011572_20011679 extends JFrame {
 			pn1.add(btn_book);
 			pn1.add(btn_book_see);
 			
-			JTextField tf1 = new JTextField(10);
-			JTextField tf2 = new JTextField(10);
+			JTextField tf1 = new JTextField(5);
+			JLabel lb1 = new JLabel("ticket_id");
+			JTextField tf2 = new JTextField(5);
+			JLabel lb2 = new JLabel("book_id");
+			pn1.add(lb1);
 			pn1.add(tf1);
+			pn1.add(lb2);
 			pn1.add(tf2);
 			
 			JButton btn_delete = new JButton();
