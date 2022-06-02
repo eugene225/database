@@ -6,10 +6,67 @@ btn_update.addActionListener(new ActionListener() {
             }
 });
 
-private class update_chang extends JFrame{
-	update_chang(){
-		super("관리자 삭제/변경창");
-		setSize(600,400);
-		setVisible(true);
+	private class update_chang extends JFrame{
+		update_chang(){
+			super("관리자 삭제/변경창");
+			setSize(600,400);
+			setLayout(new GridLayout(3,1,5,5));
+			setVisible(true);
+			
+			JPanel pnradiobtn = new JPanel();
+			JPanel pndelete = new JPanel();
+			JPanel pnupdate = new JPanel();
+			
+			
+			JRadioButton btn_movie_info = new JRadioButton("movie_info");
+			JRadioButton btn_room = new JRadioButton("room");
+			JRadioButton btn_customer = new JRadioButton("customer");
+			JRadioButton btn_book = new JRadioButton("book");
+			JRadioButton btn_schedule = new JRadioButton("schedule");
+			JRadioButton btn_seat = new JRadioButton("seat");
+			JRadioButton btn_ticket = new JRadioButton("ticket");
+			
+			ButtonGroup btn_group = new ButtonGroup();
+			btn_group.add(btn_movie_info);
+			btn_group.add(btn_room);
+			btn_group.add(btn_customer);
+			btn_group.add(btn_book);
+			btn_group.add(btn_schedule);
+			btn_group.add(btn_seat);
+			btn_group.add(btn_ticket);
+	        
+	        
+	        pnradiobtn.add(btn_movie_info);
+	        pnradiobtn.add(btn_room);
+	        pnradiobtn.add(btn_customer);
+	        pnradiobtn.add(btn_book);
+	        pnradiobtn.add(btn_schedule);
+	        pnradiobtn.add(btn_seat);
+	        pnradiobtn.add(btn_ticket);
+	        
+	        
+	        JLabel lb_delete = new JLabel("Delete Tabel");
+	        JTextField tf_delete = new JTextField(10);
+	        JButton btn_delete = new JButton();
+			btn_delete.setText("삭제");
+			
+			pndelete.add(lb_delete);
+			pndelete.add(tf_delete);
+			pndelete.add(btn_delete);
+			
+			JLabel lb_update = new JLabel("Update Tabel");
+	        JTextField tf_update = new JTextField(10);
+	        JButton btn_update = new JButton();
+			btn_update.setText("변경");
+			
+			pnupdate.add(lb_update);
+			pnupdate.add(tf_update);
+			pnupdate.add(btn_update);
+			
+			add(pnradiobtn);
+			add(pndelete);
+			add(pnupdate);
+			
+			
+		}
 	}
-}
