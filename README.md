@@ -1,4 +1,11 @@
 # database
+select * 
+from room 
+where room.room_id=(select room_id from schedule 
+					where schedule.movie_id = (select movie_id from movie_info where movie_name = '명량'));
+
+
+
 
 select distinct movie_name, schedule_start, room_id, seat_id, ticket_money, customer_id
 from movie_info, ticket, schedule, book
