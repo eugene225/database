@@ -1414,12 +1414,13 @@ public class J20011572_20011679 extends JFrame {
 
 
 		                  String query ="INSERT INTO book VALUES (0, '" + strCombo.getSelectedItem().toString()+"', '완료',"+10000+",'" +customer_id+"',STR_TO_DATE('2021-01-15','%Y-%m-%d'));";
-		                  
-		                  
 		                  Statement stmt = con.createStatement();
 		                  stmt.executeUpdate(query);
 		                  
-		                  query = "INSERT INTO ticket VALUES (0, "+tf.getText()+","+tf2.getText()+","+intCombo.getSelectedItem()+","+table_book.getColumnCount()+", 'o', 10000, 10000);";
+		                  int bookid = table_book.getRowCount()+1;
+
+		                  
+		                  query = "INSERT INTO ticket VALUES (0, "+tf.getText()+","+tf2.getText()+","+intCombo.getSelectedItem()+","+bookid+", 'o', 10000, 10000);";
 		                  stmt.executeUpdate(query);
 		                  
 		                  JOptionPane.showMessageDialog(null, "예매되었습니다.\n");
