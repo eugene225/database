@@ -1,8 +1,15 @@
 # database
+
+select *
+from schedule
+where schedule.movie_id =(select movie_id from movie_info where movie_name = '암살');
+
 select * 
 from room 
 where room.room_id=(select room_id from schedule 
 					where schedule.movie_id = (select movie_id from movie_info where movie_name = '명량'));
+					
+					
 
 
 
