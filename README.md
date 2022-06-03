@@ -1,4 +1,14 @@
 # database
+table_2.addMouseListener(new MouseAdapter() {
+		    			@Override
+		    			public void mouseClicked(MouseEvent e) {
+		    				String movie_name;
+		    				movie_name = table_2.getValueAt(table_2.getSelectedRow(), 0).toString();
+		    				System.out.println(movie_name);
+		    				
+		    			}
+		    		});
+
 select * 
 from room 
 where room.room_id IN (select room_id from schedule 
