@@ -1245,7 +1245,7 @@ public class J20011572_20011679 extends JFrame {
 	        gbc.fill = GridBagConstraints.BOTH;
 	        gbc.weightx = 1.0;
 	        gbc.weighty = 0.5;
-			setSize(1000,700);
+			setSize(800,500);
 	        setVisible(true);
 	        
 			
@@ -1460,7 +1460,7 @@ public class J20011572_20011679 extends JFrame {
 	        gbc.fill = GridBagConstraints.BOTH;
 	        gbc.weightx = 1.0;
 	        gbc.weighty = 0.5;
-	        setSize(600,700);
+	        setSize(600,500);
 	        setVisible(true);
 	        
 	        JPanel pn1 = new JPanel();  
