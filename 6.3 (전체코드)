@@ -60,7 +60,7 @@ public class J20011572_20011679 extends JFrame {
 	private DefaultTableModel model_table2 = new DefaultTableModel(data_table2, title_table2);
 	private JTable table_2 = new JTable(model_table2);
 	
-
+	private String ID;
 	
      
     public J20011572_20011679() {
@@ -155,19 +155,23 @@ public class J20011572_20011679 extends JFrame {
 	                	return;
 	                }else {
 	                	try {
+	                		ID=tf.getText();
 	                		Statement stmt=con.createStatement();
-							rs = stmt.executeQuery("SELECT * FROM customer where customer_id = '"+ tf.getText() +"'");
+							rs = stmt.executeQuery("SELECT * FROM customer where customer_id = '"+ ID +"'");
+							
 							if(rs.next()) {
-								new member_chang(tf.getText());
+								new member_chang();
+								tf.setText("");
 							}else {
 								JOptionPane.showMessageDialog(null, "회원아이디가 존재하지 않습니다.");
-								tf.setText("");
+								
 								return;
 							}
 						} catch (SQLException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
+						
 	                }
 	                
 	            }
@@ -1231,10 +1235,10 @@ public class J20011572_20011679 extends JFrame {
 	}
 	
 	private class member_chang extends JFrame{
-		private String customer_id;
-		member_chang(String customer_id){
-			super("현재 로그인한 회원 ID : "+customer_id);
-			this.customer_id = customer_id;
+		
+		member_chang(){
+			super("현재 로그인한 회원 ID : "+ID);
+
 			
 			setLayout(new GridBagLayout());
 	        GridBagConstraints gbc = new GridBagConstraints();
@@ -1300,7 +1304,7 @@ public class J20011572_20011679 extends JFrame {
 			btn_book.addActionListener(new ActionListener() {
 	            @Override
 	            public void actionPerformed(ActionEvent e) {
-	            	new book_chang(customer_id);
+	            	new book_chang();
 	            	
 	            }
 	        });
@@ -1317,11 +1321,25 @@ public class J20011572_20011679 extends JFrame {
 		    		sql = "select distinct movie_name, schedule_start, room_id, seat_id, ticket_money \r\n"
 		    				+ "from movie_info, ticket, schedule, book \r\n"
 		    				+ "where movie_info.movie_id = schedule.movie_id and schedule.schedule_id = ticket.schedule_id \r\n"
-		    				+ "and ticket.book_id = book.book_id and book.customer_id='"+ customer_id  +"';";
+		    				+ "and ticket.book_id = book.book_id and book.customer_id='"+ ID  +"';";
+		    		
+		    		
 		    		
 		    		//table_2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);//테이블 사이즈에 맞게 테이블이 표현됨 스크롤 나옴
 		    		displayData(model_table2, title_table2);
 		    		setVisible(true);
+		    		
+		    		
+		    		table_2.addMouseListener(new MouseAdapter() {
+		    			@Override
+		    			public void mouseClicked(MouseEvent e) {
+		    				String movie_name;
+		    				movie_name = table_2.getValueAt(table_2.getSelectedRow(), 0).toString();
+		    				
+		    				new info_chang(movie_name);
+		    			}
+		    		});
+
 	            	
 	            }
 	        });
@@ -1357,12 +1375,85 @@ public class J20011572_20011679 extends JFrame {
 			
 		}
 	}
+	
+	private class info_chang extends JFrame{
+		private String movie_name;
+		info_chang(String movie_name){
+			super("정보창 : " + movie_name);
+			this.movie_name=movie_name;
+			
+			setLayout(new GridBagLayout());
+	        GridBagConstraints gbc = new GridBagConstraints();
+	        gbc.fill = GridBagConstraints.BOTH;
+	        gbc.weightx = 1.0;
+	        gbc.weighty = 1;
+	        setSize(700,500);
+	        setVisible(true);
+			
+			
+	        JPanel pn1 = new JPanel();  
+			JPanel pn2 = new JPanel(); 
+			JPanel pn3 = new JPanel(); 
+	        
+	        
+			JScrollPane scrollPane1 = new JScrollPane(table_schedule);
+			scrollPane1.setPreferredSize(new Dimension(500,100));
+            pn1.add(scrollPane1);
+    		sql = "select * from schedule where schedule.movie_id =(select movie_id from movie_info where movie_name = '"+movie_name+"');";
+    		//table_schedule.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);//테이블 사이즈에 맞게 테이블이 표현됨 스크롤 나옴
+    		displayData(model_schedule, title_schedule);
+    		
+
+			JScrollPane scrollPane2 = new JScrollPane(table_room);
+			scrollPane2.setPreferredSize(new Dimension(500,100));
+            pn2.add(scrollPane2);
+    		sql = "select * from room where room.room_id IN (select room_id from schedule where schedule.movie_id = (select movie_id from movie_info where movie_name = '"+ movie_name+"'));";
+    		displayData(model_room, title_room);
+    		
+    		
+    		
+			JScrollPane scrollPane3 = new JScrollPane(table_ticket);
+			scrollPane3.setPreferredSize(new Dimension(500,100));
+            pn3.add(scrollPane3);
+    		sql = "    		select * from ticket where ticket.schedule_id IN (select schedule_id from schedule\r\n"
+    				+ "    		where schedule.movie_id = (select movie_id from movie_info where movie_name = '" +movie_name+"')"+
+    				"and ticket.book_id IN (select book_id from book where book.customer_id = '"+ID+"'));";
+    		
+    		//table_ticket.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);//테이블 사이즈에 맞게 테이블이 표현됨 스크롤 나옴
+    		displayData(model_ticket, title_ticket);
+			
+
+    		
+    		
+    		gbc.gridx = 0;
+	        gbc.gridy = 0;
+	        gbc.gridwidth = 1;
+	        gbc.gridheight = 1;
+	        add(pn1, gbc);
+	        
+
+	        gbc.gridx = 0;
+	        gbc.gridy = 1;
+	        gbc.gridwidth = 1;
+	        gbc.gridheight = 1;
+	        add(pn2, gbc);
+	        
+	        gbc.gridx = 0;
+	        gbc.gridy = 2;
+	        gbc.gridwidth = 1;
+	        gbc.gridheight = 1;
+	        add(pn3, gbc);
+			
+			
+			setVisible(true);
+		}
+		
+	}
 	private class book_chang extends JFrame{
-		private String customer_id;
-		book_chang(String customer_id){
+
+		book_chang(){
 			super("예매하기");
 			
-			this.customer_id=customer_id;
 			
 			setLayout(new GridBagLayout());
 	        GridBagConstraints gbc = new GridBagConstraints();
@@ -1413,14 +1504,18 @@ public class J20011572_20011679 extends JFrame {
 	            	try {
 
 
-		                  String query ="INSERT INTO book VALUES (0, '" + strCombo.getSelectedItem().toString()+"', '완료',"+10000+",'" +customer_id+"',STR_TO_DATE('2021-01-15','%Y-%m-%d'));";
+		                  String query ="INSERT INTO book VALUES (0, '" + strCombo.getSelectedItem().toString()+"', '완료',"+10000+",'" + ID +"',STR_TO_DATE('2021-01-15','%Y-%m-%d'));";
 		                  Statement stmt = con.createStatement();
 		                  stmt.executeUpdate(query);
 		                  
-		                  int bookid = table_book.getRowCount()+1;
-
 		                  
-		                  query = "INSERT INTO ticket VALUES (0, "+tf.getText()+","+tf2.getText()+","+intCombo.getSelectedItem()+","+bookid+", 'o', 10000, 10000);";
+		                  
+		                  Integer cnt=0;
+		                  rs = stmt.executeQuery("SELECT * FROM book;");
+		                  while(rs.next())
+		                	  cnt++;
+							
+		                  query = "INSERT INTO ticket VALUES (0, "+tf.getText()+","+tf2.getText()+","+intCombo.getSelectedItem()+","+cnt+", 'o', 10000, 10000);";
 		                  stmt.executeUpdate(query);
 		                  
 		                  JOptionPane.showMessageDialog(null, "예매되었습니다.\n");
