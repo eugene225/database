@@ -1419,6 +1419,9 @@ public class J20011572_20011679 extends JFrame {
 		                  Statement stmt = con.createStatement();
 		                  stmt.executeUpdate(query);
 		                  
+		                  query = "INSERT INTO ticket VALUES (0, "+tf.getText()+","+tf2.getText()+","+intCombo.getSelectedItem()+","+table_book.getColumnCount()+", 'o', 10000, 10000);";
+		                  stmt.executeUpdate(query);
+		                  
 		                  JOptionPane.showMessageDialog(null, "예매되었습니다.\n");
 		                  tf.setText("");
 
