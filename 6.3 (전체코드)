@@ -1245,7 +1245,7 @@ public class J20011572_20011679 extends JFrame {
 	        gbc.fill = GridBagConstraints.BOTH;
 	        gbc.weightx = 1.0;
 	        gbc.weighty = 0.5;
-			setSize(800,500);
+			setSize(1000,500);
 	        setVisible(true);
 	        
 			
@@ -1493,10 +1493,12 @@ public class J20011572_20011679 extends JFrame {
 
 	        
 	        JScrollPane scrollPane1 = new JScrollPane(table_schedule);
+	        scrollPane1.setPreferredSize(new Dimension(400,300));
             pn2.add(scrollPane1);
     		sql = "select * from schedule";
     		displayData(model_schedule, title_schedule);
     		setVisible(true);
+    		
     		
     		btn_book.addActionListener(new ActionListener() {
 	            @Override
