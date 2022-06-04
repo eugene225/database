@@ -1,4 +1,4 @@
-private class info_chang extends JFrame{
+	private class info_chang extends JFrame{
 		private String movie_name;
 		info_chang(String movie_name){
 			super("정보창 : " + movie_name);
@@ -45,6 +45,10 @@ private class info_chang extends JFrame{
     		//table_ticket.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);//테이블 사이즈에 맞게 테이블이 표현됨 스크롤 나옴
     		displayData(model_ticket, title_ticket);
 			
+    	
+    		
+    		
+    		
 
 			JTextField tf1 = new JTextField(5);
 			JLabel lb1 = new JLabel("ticket_id");
@@ -58,7 +62,11 @@ private class info_chang extends JFrame{
 			JButton btn_delete = new JButton();
 			btn_delete.setText("삭제하기");
 			
+			JButton btn_change = new JButton();
+			btn_change.setText("예매정보변경");
+			
 			pn4.add(btn_delete);
+			pn4.add(btn_change);
     		
 			btn_delete.addActionListener(new ActionListener() {
 	            @Override
@@ -85,6 +93,16 @@ private class info_chang extends JFrame{
 		               }
 	            }
 			});
+			
+			btn_change.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	            	
+	            	new edit_chang();
+	            	dispose();
+	            }
+	            
+	        });
     		
     		gbc.gridx = 0;
 	        gbc.gridy = 0;
@@ -117,4 +135,92 @@ private class info_chang extends JFrame{
 			setVisible(true);
 		}
 		
+	}
+	private class edit_chang extends JFrame{
+
+		edit_chang(){
+			super("예매변경하기");
+			
+			
+			setLayout(new GridBagLayout());
+	        GridBagConstraints gbc = new GridBagConstraints();
+	        gbc.fill = GridBagConstraints.BOTH;
+	        gbc.weightx = 1.0;
+	        gbc.weighty = 0.5;
+	        setSize(600,500);
+	        setVisible(true);
+	        
+	        JPanel pn1 = new JPanel();  
+			JPanel pn2 = new JPanel(); 
+	        
+			JLabel lb = new JLabel("schedule_id");
+			JTextField tf = new JTextField(5);
+			pn1.add(lb);
+			pn1.add(tf);
+			
+			JLabel lb2 = new JLabel("room_id");
+			JTextField tf2 = new JTextField(5);
+			pn1.add(lb2);
+			pn1.add(tf2);
+			
+			JLabel lb3 = new JLabel("좌석번호");
+			pn1.add(lb3);
+			
+			Integer [] seatnum = {1,2,3};
+			JComboBox<Integer> intCombo = new JComboBox<Integer>(seatnum);
+			pn1.add(intCombo);
+
+			
+
+			JButton btn_book = new JButton();
+			btn_book.setText("예매변경하기");
+			pn1.add(btn_book);
+
+	        
+	        JScrollPane scrollPane1 = new JScrollPane(table_schedule);
+	        scrollPane1.setPreferredSize(new Dimension(400,300));
+            pn2.add(scrollPane1);
+    		sql = "select * from schedule";
+    		displayData(model_schedule, title_schedule);
+    		setVisible(true);
+    		
+    		
+    		btn_book.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	            	try {
+
+
+		                  String query ="";
+		                  Statement stmt = con.createStatement();
+		                  stmt.executeUpdate(query);
+
+		                  
+		                  JOptionPane.showMessageDialog(null, "변경되었습니다.\n");
+		                  dispose();
+
+		               } catch (SQLException ex) {
+		                  JOptionPane.showMessageDialog(null, "변경 실패.\nError Message: " + ex);
+		               }
+	            	setVisible(true);
+	            }
+	        });
+			
+    		
+    		gbc.gridx = 0;
+	        gbc.gridy = 0;
+	        gbc.gridwidth = 1;
+	        gbc.gridheight = 1;
+	        add(pn1, gbc);
+	        
+	        gbc.weighty = 8;
+
+	        gbc.gridx = 0;
+	        gbc.gridy = 1;
+	        gbc.gridwidth = 1;
+	        gbc.gridheight = 5;
+	        add(pn2, gbc);
+	        
+	        setVisible(true);
+			}
 	}
