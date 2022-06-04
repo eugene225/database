@@ -1,0 +1,95 @@
+	private class info_chang extends JFrame{
+		private String movie_name;
+		info_chang(String movie_name){
+			super("정보창 : " + movie_name);
+			this.movie_name=movie_name;
+			
+			setLayout(new GridBagLayout());
+	        GridBagConstraints gbc = new GridBagConstraints();
+	        gbc.fill = GridBagConstraints.BOTH;
+	        gbc.weightx = 1.0;
+	        gbc.weighty = 1;
+	        setSize(700,500);
+	        setVisible(true);
+			
+			
+	        JPanel pn1 = new JPanel();  
+			JPanel pn2 = new JPanel(); 
+			JPanel pn3 = new JPanel(); 
+			JPanel pn4 = new JPanel(); 
+	        
+	        
+			JScrollPane scrollPane1 = new JScrollPane(table_schedule);
+			scrollPane1.setPreferredSize(new Dimension(500,100));
+            pn1.add(scrollPane1);
+    		sql = "select * from schedule where schedule.movie_id =(select movie_id from movie_info where movie_name = '"+movie_name+"');";
+    		//table_schedule.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);//테이블 사이즈에 맞게 테이블이 표현됨 스크롤 나옴
+    		displayData(model_schedule, title_schedule);
+    		
+
+			JScrollPane scrollPane2 = new JScrollPane(table_room);
+			scrollPane2.setPreferredSize(new Dimension(500,100));
+            pn2.add(scrollPane2);
+    		sql = "select * from room where room.room_id IN (select room_id from schedule where schedule.movie_id = (select movie_id from movie_info where movie_name = '"+ movie_name+"'));";
+    		displayData(model_room, title_room);
+    		
+    		
+    		
+			JScrollPane scrollPane3 = new JScrollPane(table_ticket);
+			scrollPane3.setPreferredSize(new Dimension(500,100));
+            pn3.add(scrollPane3);
+    		sql = "    		select * from ticket where ticket.schedule_id IN (select schedule_id from schedule\r\n"
+    				+ "    		where schedule.movie_id = (select movie_id from movie_info where movie_name = '" +movie_name+"')"+
+    				"and ticket.book_id IN (select book_id from book where book.customer_id = '"+ID+"'));";
+    		
+    		//table_ticket.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);//테이블 사이즈에 맞게 테이블이 표현됨 스크롤 나옴
+    		displayData(model_ticket, title_ticket);
+			
+
+			JTextField tf1 = new JTextField(5);
+			JLabel lb1 = new JLabel("ticket_id");
+			JTextField tf2 = new JTextField(5);
+			JLabel lb2 = new JLabel("book_id");
+			pn4.add(lb1);
+			pn4.add(tf1);
+			pn4.add(lb2);
+			pn4.add(tf2);
+			
+			JButton btn_delete = new JButton();
+			btn_delete.setText("삭제하기");
+			
+			pn4.add(btn_delete);
+    		
+    		
+    		gbc.gridx = 0;
+	        gbc.gridy = 0;
+	        gbc.gridwidth = 1;
+	        gbc.gridheight = 1;
+	        add(pn1, gbc);
+	        
+
+	        gbc.gridx = 0;
+	        gbc.gridy = 1;
+	        gbc.gridwidth = 1;
+	        gbc.gridheight = 1;
+	        add(pn2, gbc);
+	        
+	        gbc.gridx = 0;
+	        gbc.gridy = 2;
+	        gbc.gridwidth = 1;
+	        gbc.gridheight = 1;
+	        add(pn3, gbc);
+	        
+	        gbc.weighty = 0.5;
+	        
+	        gbc.gridx = 0;
+	        gbc.gridy = 3;
+	        gbc.gridwidth = 1;
+	        gbc.gridheight = 1;
+	        add(pn4, gbc);
+			
+			
+			setVisible(true);
+		}
+		
+	}
