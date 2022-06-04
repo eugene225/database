@@ -137,8 +137,8 @@
 		
 	}
 	private class edit_chang extends JFrame{
-
-		edit_chang(){
+		
+		edit_chang(Object ticketid){
 			super("예매변경하기");
 			
 			
@@ -191,7 +191,9 @@
 	            	try {
 
 
-		                  String query ="";
+		                  String query ="UPDATE ticket\r\n"
+		                  		+ "SET ticket.schedule_id =" + tf.getText()+ ", ticket.room_id2="+tf2.getText() +", ticket.seat_id="+intCombo.getSelectedItem()+"\r\n"
+		                  		+ "WHERE ticket.ticket_id= "+ticketid+";";
 		                  Statement stmt = con.createStatement();
 		                  stmt.executeUpdate(query);
 
