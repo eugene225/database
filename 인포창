@@ -1,4 +1,4 @@
-	private class info_chang extends JFrame{
+private class info_chang extends JFrame{
 		private String movie_name;
 		info_chang(String movie_name){
 			super("정보창 : " + movie_name);
@@ -60,6 +60,31 @@
 			
 			pn4.add(btn_delete);
     		
+			btn_delete.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	            	try {
+		            	   
+		                  String query = "Delete from ticket where ticket.ticket_id = "+ tf1.getText() + ";" ;
+		                 // System.out.println(query);
+		                  
+		                  Statement stmt = con.createStatement();
+		                  stmt.executeUpdate(query);
+		                  
+		                  query = "Delete from book where book.book_id = "+ tf2.getText() + ";" ;
+			                 // System.out.println(query);
+			                  
+			              stmt = con.createStatement();
+			              stmt.executeUpdate(query);
+		                  
+		                  JOptionPane.showMessageDialog(null, "삭제 성공.\n");
+		                  dispose();
+
+		               } catch (SQLException ex) {
+		                  JOptionPane.showMessageDialog(null, "삭제 실패.\nError Message: " + ex);
+		               }
+	            }
+			});
     		
     		gbc.gridx = 0;
 	        gbc.gridy = 0;
