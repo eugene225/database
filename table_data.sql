@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS movie_info (
   PRIMARY KEY (customer_id),
   UNIQUE INDEX customer_mail_UNIQUE (customer_mail ASC) VISIBLE);
   
-      CREATE TABLE IF NOT EXISTS book (
+CREATE TABLE IF NOT EXISTS book (
   book_id INT NOT NULL,
   book_payway VARCHAR(45) NOT NULL,
   book_state VARCHAR(45) NOT NULL,
@@ -234,5 +234,3 @@ INSERT INTO ticket VALUES(10, 10, 10, 1, 10, 'o', 10000, 10000);
 
 
 commit;
-
-
